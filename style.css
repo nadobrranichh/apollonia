@@ -320,6 +320,14 @@ body {
     text-transform: none;
     font-size: 15px;
   }
+
+  .price {
+    font-family: Poppins, Arial;
+    font-size: 25px;
+    color: white;
+    font-weight: 500;
+    margin-right: 20px;
+  }
 }
 
 @media (width < 900px) {
@@ -328,12 +336,74 @@ body {
   }
 
   .option {
-    width: 90%;
+    width: 85%;
+    margin-bottom: 0;
+    margin-top: 0.9rem;
+    font-size: 0.75rem;
   }
 
   .service {
+    width: 85%;
+    min-height: 3rem;
+    border-radius: 8px;
+    text-align: start;
+    background: linear-gradient(90deg, #9035d2, rgba(0, 0, 0, 0));
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.1);
+    padding: 0.5rem 0;
+  }
+  .service-strategy {
+    width: 84%;
+    border-radius: 8px;
+    text-align: start;
+    background-color: rgba(0, 0, 0, 0);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.1);
+    border: 2px solid #9035d2;
+    margin-top: 15px;
+  }
+
+  .service-description {
+    margin-left: 0.7rem;
+    width: 70%;
+  }
+
+  .service-title {
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 600;
+    font-family: Poppins, Arial;
+    text-transform: uppercase;
+  }
+
+  .service-text {
+    color: white;
+    font-size: 0.65rem;
+    font-style: italic;
+    font-weight: 200;
+    font-family: Poppins, Arial;
+  }
+
+  .gem-span {
+    text-transform: none;
+    font-size: 0.5rem;
+  }
+
+  .price {
+    font-family: Poppins, Arial;
+    font-size: 1.25rem;
+    color: white;
+    font-weight: 500;
+    margin-right: 0.7rem;
+  }
+  /*
+  .service {
     width: 100%;
-    min-height: 3.5rem;
+    min-height: 3rem;
     border-radius: 8px;
     text-align: start;
     background: linear-gradient(90deg, #9035d2, rgba(0, 0, 0, 0));
@@ -381,14 +451,7 @@ body {
     text-transform: none;
     font-size: 0.7rem;
   }
-}
-
-.price {
-  font-family: Poppins, Arial;
-  font-size: 25px;
-  color: white;
-  font-weight: 500;
-  margin-right: 20px;
+    */
 }
 
 .per-tooth-text {
@@ -425,7 +488,8 @@ body {
   right: 0;
   background-color: #bc5fff;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   padding-top: 2rem;
 }
 
@@ -450,7 +514,7 @@ body {
 .review {
   margin-bottom: 1rem;
   display: inline-block;
-  width: 85%;
+  width: 70%;
   max-width: 380px;
   border-radius: 15px;
   background-color: #25102e;
@@ -527,12 +591,13 @@ body {
   margin-bottom: 30px;
   font-family: Poppins, Arial;
   font-weight: 400;
-  font-size: 17px;
+  font-size: 15px;
   margin-top: 2rem;
+  color: #c36fff;
 }
 
 .socials {
-  width: 350px;
+  width: 55%;
   display: flex;
   justify-content: space-between;
 }
@@ -553,4 +618,11 @@ body {
 
 .social-link:hover {
   background-color: #f6b1ff;
+}
+
+.reviews-text {
+  display: block;
+  text-transform: uppercase;
+  font-size: 40px;
+  margin-bottom: 14px;
 }

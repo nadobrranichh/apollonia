@@ -36,7 +36,7 @@ document.querySelector(".main").insertAdjacentHTML(
       <div class="main-text-info">
         <p class="main-text-photo">
           Originally from Ukraine and educated in Canada, she is committed to
-          making every dental procedure a comfortableand relaxing experience for
+          making every dental procedure a comfortable and relaxing experience for
           her clients.
         </p>
         <img src="assets/images/IMG_0148.jpg" class="main-img" alt="" />
