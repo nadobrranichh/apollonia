@@ -94,13 +94,14 @@ body {
 }
 
 .sidebar-links {
-  display: none;
+  /* display: none; */
   position: absolute;
   top: 120px;
-  right: 0px;
+  right: -200px;
   height: calc(100vh - 120px);
   width: 40%;
   background-color: #25102e;
+  transition: right 0.3s ease;
 }
 .sidebar-link {
   color: white;
@@ -523,8 +524,8 @@ body {
 }
 
 .review-img {
-  height: 3rem;
-  width: 3rem;
+  height: 2.5rem;
+  width: 2.5rem;
   border-radius: 1.5rem;
 }
 
@@ -543,6 +544,7 @@ body {
 .review-description {
   color: white;
   font-family: Poppins, Arial;
+  font-size: 0.9rem;
 }
 
 .review-title {
@@ -571,6 +573,7 @@ body {
 .review-author {
   color: white;
   font-family: Poppins, Arial;
+  font-size: 0.9rem;
 }
 
 .footer {
@@ -625,4 +628,5 @@ body {
   text-transform: uppercase;
   font-size: 40px;
   margin-bottom: 14px;
+  font-family: Times New Roman, Poppins, Arial;
 }

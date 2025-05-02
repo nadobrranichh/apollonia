@@ -4,13 +4,9 @@ let index = 0;
 
 const links = document.querySelector(".sidebar-links");
 document.querySelector(".hamburger").addEventListener("click", function () {
-  if (links.style.display === "block") {
-    links.style.display = "none";
-    document.body.style.overflow = "auto";
-  } else {
-    links.style.display = "block";
-    document.body.style.overflow = "hidden";
-  }
+  const computedStyle = getComputedStyle(links);
+  if (computedStyle.right === "-200px") links.style.right = "0";
+  else links.style.right = "-200px";
 });
 
 document
@@ -22,47 +18,62 @@ document
     }
   });
 
-document.querySelector(".main").insertAdjacentHTML(
-  "afterbegin",
-  window.innerWidth <= 768
-    ? `<div class="main-text-info">
-        <img src="assets/images/IMG_0238.JPG" class="main-img" alt="" />
-        <p class="main-text-photo">
-          Nataliia is an experienced dental hygienist, recognized for her
-          groundbreaking invention, the painless teeth whitening method known as
-          “Apollonia.”
-        </p>
-      </div>
-      <div class="main-text-info">
-        <p class="main-text-photo">
-          Originally from Ukraine and educated in Canada, she is committed to
-          making every dental procedure a comfortable and relaxing experience for
-          her clients.
-        </p>
-        <img src="assets/images/IMG_0148.jpg" class="main-img" alt="" />
-      </div>
-      <div class="main-text-info">
-        <img src="assets/images/IMG_0238.JPG" class="main-img" alt="" />
-        <p class="main-text-photo">
-          Driven by a passion for improving client care, Nataliia continually
-          seeks innovative solutions in oral care.
-        </p>
-      </div>`
-    : `<p class="main-text">
-        Nataliia is an experienced dental hygienist, recognized for her
-        groundbreaking invention, the painless teeth whitening method known as
-        “Apollonia.”
-      </p>
-      <div class="main-text-info">
-        <img src="assets/images/IMG_0238.JPG" class="main-img" alt="" />
-        <p class="main-text-photo">
-          Originally from Ukraine and educated in Canada, she is committed to
-          making every dental procedure a comfortable and relaxing experience
-          for her clients. Driven by a passion for improving client care,
-          Nataliia continually seeks innovative solutions in oral care.
-        </p>
-      </div>`
-);
+function debounce(fun, delay) {
+  let timeout = delay;
+  return function () {
+    clearTimeout(timeout);
+    timeout = setTimeout(fun, delay);
+  };
+}
+
+const fillMainSection = () => {
+  const main = document.querySelector(".main");
+  main.innerHTML = "";
+  main.insertAdjacentHTML(
+    "afterbegin",
+    window.innerWidth <= 768
+      ? `<div class="main-text-info">
+            <img src="assets/images/IMG_0238.JPG" class="main-img" alt="" />
+            <p class="main-text-photo">
+              Nataliia is an experienced dental hygienist, recognized for her
+              groundbreaking invention, the painless teeth whitening method known as
+              “Apollonia.”
+            </p>
+          </div>
+          <div class="main-text-info">
+            <p class="main-text-photo">
+              Originally from Ukraine and educated in Canada, she is committed to
+              making every dental procedure a comfortable and relaxing experience for
+              her clients.
+            </p>
+            <img src="assets/images/IMG_0148.jpg" class="main-img" alt="" />
+          </div>
+          <div class="main-text-info">
+            <img src="assets/images/IMG_0238.JPG" class="main-img" alt="" />
+            <p class="main-text-photo">
+              Driven by a passion for improving client care, Nataliia continually
+              seeks innovative solutions in oral care.
+            </p>
+          </div>`
+      : `<p class="main-text">
+            Nataliia is an experienced dental hygienist, recognized for her
+            groundbreaking invention, the painless teeth whitening method known as
+            “Apollonia.”
+          </p>
+          <div class="main-text-info">
+            <img src="assets/images/IMG_0238.JPG" class="main-img" alt="" />
+            <p class="main-text-photo">
+              Originally from Ukraine and educated in Canada, she is committed to
+              making every dental procedure a comfortable and relaxing experience
+              for her clients. Driven by a passion for improving client care,
+              Nataliia continually seeks innovative solutions in oral care.
+            </p>
+          </div>`
+  );
+};
+
+fillMainSection();
+window.addEventListener("resize", debounce(fillMainSection, 200));
 
 const createReview = function (name, avatarUrl, review) {
   return `
@@ -130,14 +141,22 @@ const reviewsData = [
   },
 ];
 
-let reviewsCount =
-  window.innerWidth <= 768 ? 3 : window.innerWidth <= 1024 ? 6 : 9;
-// console.log(reviewsCount);
+function getReviewsCount() {
+  return window.innerWidth <= 768 ? 3 : window.innerWidth <= 1024 ? 6 : 9;
+}
+
 const reviewsContainer = document.querySelector(".reviews-container");
 
-reviewsData.slice(0, reviewsCount).forEach(({ name, avatarUrl, review }, i) => {
-  reviewsContainer.insertAdjacentHTML(
-    "beforeend",
-    createReview(name, avatarUrl, review)
-  );
-});
+function renderReviews() {
+  const reviewsCount = getReviewsCount();
+  reviewsContainer.innerHTML = ""; // очищаємо попередні відгуки
+  reviewsData.slice(0, reviewsCount).forEach(({ name, avatarUrl, review }) => {
+    reviewsContainer.insertAdjacentHTML(
+      "beforeend",
+      createReview(name, avatarUrl, review)
+    );
+  });
+}
+
+renderReviews();
+window.addEventListener("resize", debounce(renderReviews, 200));
