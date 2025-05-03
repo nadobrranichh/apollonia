@@ -5,8 +5,15 @@ let index = 0;
 const links = document.querySelector(".sidebar-links");
 document.querySelector(".hamburger").addEventListener("click", function () {
   const computedStyle = getComputedStyle(links);
-  if (computedStyle.right === "-200px") links.style.right = "0";
-  else links.style.right = "-200px";
+  if (computedStyle.right === "-200px") {
+    links.style.display = "block";
+    setTimeout(() => {
+      links.style.right = "0";
+    }, 100);
+  } else {
+    links.style.right = "-200px";
+    setTimeout(() => (links.style.display = "none"), 300);
+  }
 });
 
 document
