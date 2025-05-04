@@ -595,14 +595,14 @@ body {
   margin-bottom: 30px;
   font-family: Poppins, Arial;
   font-weight: 400;
-  font-size: 15px;
+  font-size: 0.9rem;
   margin-top: 2rem;
   color: #c36fff;
 }
 
 .follow-me-text {
   font-family: Poppins, Arial;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   color: white;
   text-transform: uppercase;
   font-weight: 550;
@@ -646,7 +646,7 @@ body {
 .footer-info {
   margin-top: 1.5rem;
   display: flex;
-  gap: 3rem;
+  gap: 2.5rem;
   /* border: 2px solid red; */
 }
 
@@ -664,12 +664,14 @@ body {
 .footer-li-subtitle {
   font-family: Poppins, Arial;
   color: white;
+  font-size: 0.9rem;
 }
 
 .footer-li {
   text-decoration: none;
   font-family: Poppins, Arial;
   color: #c36fff;
+  font-size: 0.9rem;
 }
 .footer-li a {
   color: #c36fff;
