@@ -40,27 +40,21 @@ const fillMainSection = () => {
     "afterbegin",
     window.innerWidth <= 768
       ? `<div class="main-text-info">
-            <img src="assets/images/IMG_0238.JPG" class="main-img" alt="" />
+            <img src="assets/images/IMG_2780.JPG" class="main-img" alt="" />
             <p class="main-text-photo">
-              Nataliia is an experienced dental hygienist, recognized for her
+              Nataliia is an experienced dental hygienist (5 years), recognized for her
               groundbreaking invention, the painless teeth whitening method known as
               “Apollonia.”
             </p>
           </div>
+          <img src="assets/images/IMG_2777.jpg" class="main-img-full" alt="" />
           <div class="main-text-info">
+            
             <p class="main-text-photo">
-              Originally from Ukraine and educated in Canada, she is committed to
-              making every dental procedure a comfortable and relaxing experience for
-              her clients.
+              Originally from Ukraine and educated in Canada, she is committed to making every dental procedure a comfortable and 
+              relaxing experience for her clients.
             </p>
-            <img src="assets/images/IMG_0148.jpg" class="main-img" alt="" />
-          </div>
-          <div class="main-text-info">
-            <img src="assets/images/IMG_0238.JPG" class="main-img" alt="" />
-            <p class="main-text-photo">
-              Driven by a passion for improving client care, Nataliia continually
-              seeks innovative solutions in oral care.
-            </p>
+            <img src="assets/images/IMG_2779.JPG" class="main-img" alt="" />
           </div>`
       : `<p class="main-text">
             Nataliia is an experienced dental hygienist, recognized for her
@@ -68,13 +62,11 @@ const fillMainSection = () => {
             “Apollonia.”
           </p>
           <div class="main-text-info">
-            <img src="assets/images/IMG_0238.JPG" class="main-img" alt="" />
             <p class="main-text-photo">
-              Originally from Ukraine and educated in Canada, she is committed to
-              making every dental procedure a comfortable and relaxing experience
-              for her clients. Driven by a passion for improving client care,
-              Nataliia continually seeks innovative solutions in oral care.
+              Originally from Ukraine and educated in Canada, she is committed to making every dental procedure a comfortable and 
+              relaxing experience for her clients.
             </p>
+            <img src="assets/images/IMG_2779.JPG" class="main-img" alt="" />
           </div>`
   );
 };
