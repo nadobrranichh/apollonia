@@ -48,8 +48,8 @@ const fillMainSection = () => {
             </p>
           </div>
           <img src="assets/images/IMG_2777.jpg" class="main-img-full" alt="" />
+
           <div class="main-text-info">
-            
             <p class="main-text-photo">
               Originally from Ukraine and educated in Canada, she is committed to making every dental procedure a comfortable and 
               relaxing experience for her clients.
