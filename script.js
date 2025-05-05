@@ -163,17 +163,18 @@ window.addEventListener("resize", debounce(renderReviews, 200));
 let scrollDirection = 1;
 let lastTime = 0;
 const delay = 200; // milliseconds between scroll updates
+let animationRunning = false;
 
 function autoScroll(timestamp) {
-  const container = document.querySelector(".reviews-container");
-  if (!container) return;
+  if (!animationRunning) return;
 
   if (timestamp - lastTime > delay) {
-    container.scrollLeft += scrollDirection;
+    reviewsContainer.scrollLeft += scrollDirection;
 
     if (
-      container.scrollLeft >= container.scrollWidth - container.clientWidth ||
-      container.scrollLeft <= 0
+      reviewsContainer.scrollLeft >=
+        reviewsContainer.scrollWidth - reviewsContainer.clientWidth ||
+      reviewsContainer.scrollLeft <= 0
     ) {
       scrollDirection *= -1;
     }
@@ -184,4 +185,20 @@ function autoScroll(timestamp) {
   requestAnimationFrame(autoScroll);
 }
 
-requestAnimationFrame(autoScroll);
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        animationRunning = true;
+        requestAnimationFrame(autoScroll);
+      } else {
+        animationRunning = false;
+      }
+    });
+  },
+  {
+    threshold: 0.2,
+  }
+);
+
+observer.observe(reviewsContainer);
