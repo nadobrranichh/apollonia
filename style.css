@@ -452,8 +452,11 @@ body {
 
 .reviews-container {
   column-count: 3;
+  column-gap: 6.5rem;
   text-align: center;
   width: 93%;
+  overflow-x: scroll;
+  /* scroll-behavior: smooth; */
 }
 
 @media (max-width: 1024px) {
@@ -462,17 +465,18 @@ body {
   }
 }
 
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   .reviews-container {
     column-count: 1;
   }
-}
+} */
 
 .review {
   margin-bottom: 1rem;
   display: inline-block;
   width: 70%;
   max-width: 380px;
+  min-width: 240px;
   border-radius: 15px;
   background-color: #25102e;
   text-align: center;

@@ -147,7 +147,7 @@ function getReviewsCount() {
 const reviewsContainer = document.querySelector(".reviews-container");
 
 function renderReviews() {
-  const reviewsCount = getReviewsCount();
+  const reviewsCount = 9; // getReviewsCount();
   reviewsContainer.innerHTML = ""; // очищаємо попередні відгуки
   reviewsData.slice(0, reviewsCount).forEach(({ name, avatarUrl, review }) => {
     reviewsContainer.insertAdjacentHTML(
@@ -159,3 +159,29 @@ function renderReviews() {
 
 renderReviews();
 window.addEventListener("resize", debounce(renderReviews, 200));
+
+let scrollDirection = 1;
+let lastTime = 0;
+const delay = 200; // milliseconds between scroll updates
+
+function autoScroll(timestamp) {
+  const container = document.querySelector(".reviews-container");
+  if (!container) return;
+
+  if (timestamp - lastTime > delay) {
+    container.scrollLeft += scrollDirection;
+
+    if (
+      container.scrollLeft >= container.scrollWidth - container.clientWidth ||
+      container.scrollLeft <= 0
+    ) {
+      scrollDirection *= -1;
+    }
+
+    lastTime = timestamp;
+  }
+
+  requestAnimationFrame(autoScroll);
+}
+
+requestAnimationFrame(autoScroll);
