@@ -452,7 +452,7 @@ body {
 
 .reviews-container {
   column-count: 3;
-  column-gap: 11rem;
+  column-gap: 11.5rem;
   text-align: center;
   width: 93%;
   overflow-x: scroll;
