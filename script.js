@@ -101,26 +101,6 @@ const createReview = function (name, avatarUrl, review) {
 
 const reviewsData = [
   {
-    name: "Viktoriia Osipovych",
-    avatarUrl: "assets/images/customer-1.png",
-    review:
-      "The whitening procedure was <b>completely painless</b>! I felt comfortable throughout, and the results were even better than I expected. <b>Highly recommend</b> it for anyone looking to brighten their smile without any discomfort.",
-  },
-
-  {
-    name: "Анна Chebotar",
-    avatarUrl: "assets/images/customer-3.png",
-    review:
-      "I would like to thank Natalia for the pleasant and comfortable teeth whitening, it was my first experience, <b>I was very pleased with the result, everything went painlessly</b> ❤️",
-  },
-
-  {
-    name: "Lily Voloshyna",
-    avatarUrl: "assets/images/customer-2.png",
-    review:
-      "I had an <b>amazing experience</b> visiting Natalia for teeth whitening! <b>Natalia is an incredibly skilled and attentive professional.</b> The whitening procedure was <b>completely painless</b>, and <b>the results are just fantastic</b> – my teeth look so bright and beautiful! I highly recommend her to anyone looking for a high-quality teeth whitening service! 🔥🔥🔥",
-  },
-  {
     name: "Bryanna Trece",
     avatarUrl: "assets/images/customer-4.png",
     review:
@@ -133,10 +113,29 @@ const reviewsData = [
       "<b>Painless teeth whitening with great results</b>. Thank you, Nataliia! 🦷🤍",
   },
   {
+    name: "Lily Voloshyna",
+    avatarUrl: "assets/images/customer-2.png",
+    review:
+      "I had an <b>amazing experience</b> visiting Natalia for teeth whitening! <b>Natalia is an incredibly skilled and attentive professional.</b> The whitening procedure was <b>completely painless</b>, and <b>the results are just fantastic</b> – my teeth look so bright and beautiful! I highly recommend her to anyone looking for a high-quality teeth whitening service! 🔥🔥🔥",
+  },
+  {
     name: "Hoang Vo",
     avatarUrl: "assets/images/customer-6.png",
     review:
       "I had teeth whitening with Natalia, <b>it was painless and my teeth were 6-8 shades whiter</b>.",
+  },
+  {
+    name: "Viktoriia Osipovych",
+    avatarUrl: "assets/images/customer-1.png",
+    review:
+      "The whitening procedure was <b>completely painless</b>! I felt comfortable throughout, and the results were even better than I expected. <b>Highly recommend</b> it for anyone looking to brighten their smile without any discomfort.",
+  },
+
+  {
+    name: "Анна Chebotar",
+    avatarUrl: "assets/images/customer-3.png",
+    review:
+      "I would like to thank Natalia for the pleasant and comfortable teeth whitening, it was my first experience, <b>I was very pleased with the result, everything went painlessly</b> ❤️",
   },
 ];
 
@@ -161,7 +160,7 @@ function renderReviews() {
   const reviewsContainer = document.querySelector(".reviews-container");
   reviewsContainer.innerHTML = "";
   const reviewsCount = reviewsData.length;
-  const columnsCount = Math.ceil(reviewsCount / 3);
+  const columnsCount = Math.ceil(reviewsCount / 2);
   console.log(reviewsCount, columnsCount);
 
   for (let i = 1; i <= columnsCount; i++) {
@@ -173,7 +172,7 @@ function renderReviews() {
   }
 
   for (let i = 0; i < reviewsCount; i++) {
-    const columnNumber = Math.floor((i + 3) / 3);
+    const columnNumber = Math.floor((i + 2) / 2);
     const column = document.getElementById(`review-column-${columnNumber}`);
     console.log(`review-column-${columnNumber}`);
     column.innerHTML += createReview(
