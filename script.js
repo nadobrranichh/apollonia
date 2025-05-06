@@ -138,6 +138,24 @@ const reviewsData = [
     review:
       "I had teeth whitening with Natalia, <b>it was painless and my teeth were 6-8 shades whiter</b>.",
   },
+  {
+    name: "Bryanna Trece",
+    avatarUrl: "assets/images/customer-4.png",
+    review:
+      "I highly recommend Nataliia as a dentist. <b>She goes above and beyond to ensure her customers feel cared for</b>, and comfortable during their visit. She takes the time to explain the procedure, and gives you follow up tips. I got my teeth whitened by her here, and <b>I was incredibly impressed with the results after just one visit</b>. My teeth were significantly whiter after just one visit, what surprised me the most was that <b>I experienced no pain, or discomfort during the process or afterwards</b>. Her whitening technique is the best there is out there",
+  },
+  {
+    name: "simona apostol",
+    avatarUrl: "assets/images/customer-5.png",
+    review:
+      "<b>Painless teeth whitening with great results</b>. Thank you, Nataliia! 🦷🤍",
+  },
+  {
+    name: "Hoang Vo",
+    avatarUrl: "assets/images/customer-6.png",
+    review:
+      "I had teeth whitening with Natalia, <b>it was painless and my teeth were 6-8 shades whiter</b>.",
+  },
 ];
 
 function getReviewsCount() {
@@ -146,59 +164,58 @@ function getReviewsCount() {
 
 const reviewsContainer = document.querySelector(".reviews-container");
 
+// function renderReviews() {
+//   const reviewsCount = 9; // getReviewsCount();
+//   reviewsContainer.innerHTML = "";
+//   reviewsData.slice(0, reviewsCount).forEach(({ name, avatarUrl, review }) => {
+//     reviewsContainer.insertAdjacentHTML(
+//       "beforeend",
+//       createReview(name, avatarUrl, review)
+//     );
+//   });
+// }
+
 function renderReviews() {
-  const reviewsCount = 9; // getReviewsCount();
-  reviewsContainer.innerHTML = ""; // очищаємо попередні відгуки
-  reviewsData.slice(0, reviewsCount).forEach(({ name, avatarUrl, review }) => {
-    reviewsContainer.insertAdjacentHTML(
-      "beforeend",
-      createReview(name, avatarUrl, review)
+  const reviewsContainer = document.querySelector(".reviews-container");
+  reviewsContainer.innerHTML = "";
+  const reviewsCount = reviewsData.length;
+  const columnsCount = Math.ceil(reviewsCount / 3);
+  console.log(reviewsCount, columnsCount);
+
+  for (let i = 1; i <= columnsCount; i++) {
+    const column = document.createElement("div");
+    column.classList.add("review-column");
+    column.id = `review-column-${i}`;
+    // reviewsContainer.innerHTML += column;
+    reviewsContainer.insertAdjacentElement("beforeend", column);
+  }
+
+  for (let i = 0; i < reviewsCount; i++) {
+    const columnNumber = Math.floor((i + 3) / 3);
+    const column = document.getElementById(`review-column-${columnNumber}`);
+    console.log(`review-column-${columnNumber}`);
+    column.innerHTML += createReview(
+      reviewsData[i].name,
+      reviewsData[i].avatarUrl,
+      reviewsData[i].review
     );
-  });
+  }
 }
 
 renderReviews();
 window.addEventListener("resize", debounce(renderReviews, 200));
 
-let scrollDirection = 1;
-let lastTime = 0;
-const delay = 200; // milliseconds between scroll updates
-let animationRunning = false;
+const container = document.querySelector(".reviews-container");
+const leftBtn = document.querySelector(".arrow.left");
+const rightBtn = document.querySelector(".arrow.right");
 
-function autoScroll(timestamp) {
-  if (!animationRunning) return;
+//column + gap width: 19rem + 1.4rem = 20.4rem
+const scrollAmount = 20.4 * 16;
 
-  if (timestamp - lastTime > delay) {
-    reviewsContainer.scrollLeft += scrollDirection;
+leftBtn.addEventListener("click", () => {
+  container.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+});
 
-    if (
-      reviewsContainer.scrollLeft >=
-        reviewsContainer.scrollWidth - reviewsContainer.clientWidth ||
-      reviewsContainer.scrollLeft <= 0
-    ) {
-      scrollDirection *= -1;
-    }
-
-    lastTime = timestamp;
-  }
-
-  requestAnimationFrame(autoScroll);
-}
-
-const observer = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        animationRunning = true;
-        requestAnimationFrame(autoScroll);
-      } else {
-        animationRunning = false;
-      }
-    });
-  },
-  {
-    threshold: 0.2,
-  }
-);
-
-observer.observe(reviewsContainer);
+rightBtn.addEventListener("click", () => {
+  container.scrollBy({ left: scrollAmount, behavior: "smooth" });
+});
