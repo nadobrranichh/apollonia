@@ -221,7 +221,7 @@ body {
   font-family: Poppins, Arial;
   font-size: 17px;
   font-weight: 600;
-  background-color: #9035d2;
+  background-color: #f93483;
   color: white;
   display: block;
   text-decoration: none;
@@ -410,13 +410,22 @@ body {
   }
 }
 
-.per-tooth-text {
+.price-comment {
   font-family: Poppins, Arial;
   color: white;
-  font-size: 0.6rem;
+  font-size: 0.5rem;
   font-weight: 600;
-  margin-top: 3.5px;
   line-height: 0.7rem;
+}
+
+.double-price-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+}
+
+.per-tooth-text {
+  margin-top: 3.5px;
 }
 
 .price-container {
