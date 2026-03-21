@@ -3,6 +3,7 @@ import { Fragment } from "react/jsx-runtime";
 import { servicesList } from "../lists/servicesList";
 import Service from "../components/Service";
 import GemService from "../components/GemService";
+import { pageTitleStyle } from "../styles/typographyStyles";
 
 export default function ServicesPage() {
   return (
@@ -16,17 +17,7 @@ export default function ServicesPage() {
         padding: "3rem 0",
       }}
     >
-      <Typography
-        sx={{
-          fontWeight: 500,
-          fontSize: "2.5rem",
-          textTransform: "uppercase",
-          marginBottom: "1.25rem",
-          fontFamily: "Times New Roman",
-        }}
-      >
-        Services
-      </Typography>
+      <Typography sx={pageTitleStyle}>Services</Typography>
       <Box
         sx={{
           width: "75%",
