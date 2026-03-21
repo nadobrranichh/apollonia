@@ -15,4 +15,17 @@ export const theme = createTheme({
       contrastText: "#fff",
     },
   },
+  components: {
+    MuiCssBaseline: {
+      styleOverrides: {
+        main: {
+          minHeight: "100vh",
+          background: "linear-gradient(75deg, #000, #624190)",
+        },
+      },
+    },
+  },
+  typography: {
+    fontFamily: "Poppins, Arial",
+  },
 });

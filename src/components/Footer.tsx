@@ -62,7 +62,6 @@ export default function Footer() {
               to={item.url}
               target="_blank"
               sx={{
-                height: "2rem",
                 padding: "0.5rem",
                 bgcolor: "secondary.light",
                 borderRadius: "50%",
