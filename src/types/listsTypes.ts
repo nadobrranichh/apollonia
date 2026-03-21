@@ -8,3 +8,13 @@ export type SocialMediaListItem = {
   icon: string;
   url: string;
 };
+
+export type ServiceItem = {
+  id: number;
+  title: string;
+  description: string;
+  price: number;
+  priceComment?: string[];
+  image?: string;
+  imageStyles?: {};
+};
