@@ -1,4 +1,5 @@
 import { Box, Typography, Link, List, ListItem } from "@mui/material";
+import { Link as RouterLink } from "react-router-dom";
 import ApolloniaLogo from "../assets/logo.png";
 import { headerList } from "../lists/headerList";
 import { useLocation } from "react-router-dom";
@@ -27,7 +28,11 @@ export default function Header() {
       <List sx={{ display: "flex", gap: "0.6vw" }}>
         {headerList.map((item) => (
           <ListItem key={item.title}>
-            <Link href={item.url} sx={{ textDecoration: "none" }}>
+            <Link
+              component={RouterLink}
+              to={item.url}
+              sx={{ textDecoration: "none" }}
+            >
               <Typography
                 sx={{
                   color: "secondary.contrastText",
