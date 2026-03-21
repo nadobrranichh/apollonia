@@ -14,12 +14,41 @@ export const theme = createTheme({
       dark: "#25102e",
       contrastText: "#fff",
     },
+    text: {
+      primary: "#fff",
+      secondary: "#000",
+    },
   },
   components: {
     MuiCssBaseline: {
       styleOverrides: {
         main: {
           background: "linear-gradient(75deg, #000, #624190)",
+        },
+      },
+    },
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          background: "#fff",
+          color: "#000",
+          textTransform: "none",
+          fontWeight: 600,
+          fontSize: "16px",
+          borderRadius: 0,
+          "& .MuiContainedButton": {
+            borderColor: "#fff",
+          },
+          "&:hover .MuiContainedButton": {
+            borderColor: "#fff",
+          },
+          "&.Mui-focused .MuiContainedButton": {
+            borderColor: "#fff",
+          },
+          "&.Mui-disabled": {
+            background: "rgba(255,255,255, 0.5)",
+            color: "rgba(0,0,0,0.5)",
+          },
         },
       },
     },

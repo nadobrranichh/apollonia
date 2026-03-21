@@ -12,7 +12,7 @@ export default function ImageBox({
   src,
   alt = "",
   width,
-  height = "auto",
+  height,
   sx = {},
 }: ImageBoxProps) {
   return (
@@ -21,7 +21,7 @@ export default function ImageBox({
       src={src}
       alt={alt}
       loading="lazy"
-      sx={{ height, width, display: "block", ...sx }}
+      sx={{ height, width, ...sx }}
     />
   );
 }
