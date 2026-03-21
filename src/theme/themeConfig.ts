@@ -19,7 +19,6 @@ export const theme = createTheme({
     MuiCssBaseline: {
       styleOverrides: {
         main: {
-          minHeight: "100vh",
           background: "linear-gradient(75deg, #000, #624190)",
         },
       },
