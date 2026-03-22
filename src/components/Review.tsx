@@ -3,12 +3,32 @@ import QuoteIcon from "../assets/quote-22-double-open.svg";
 import StarIcon from "../assets/star-svgrepo-com.svg";
 import type { ReviewType } from "../types/reviewType";
 import ImageBox from "./ImageBox";
+import { useContext } from "react";
+import { ActiveReviewContext } from "../store/active-review-context";
 
-export default function Review({ reviewData }: { reviewData: ReviewType }) {
+export default function Review({
+  reviewData,
+  absolute = false,
+}: {
+  reviewData: ReviewType;
+  absolute?: boolean;
+}) {
   const { author_name, description, rating, avatar_url } = reviewData;
 
+  const { setReviewData } = useContext(ActiveReviewContext);
+
+  const handleHover = () => {
+    console.log("setting review");
+    setReviewData(reviewData);
+  };
+  const handleHoverEnd = () => {
+    console.log("unsetting review");
+    setReviewData(null);
+  };
   return (
     <Box
+      onMouseEnter={handleHover}
+      onMouseLeave={handleHoverEnd}
       sx={{
         minHeight: "250px",
         minWidth: "250px",
@@ -18,6 +38,13 @@ export default function Review({ reviewData }: { reviewData: ReviewType }) {
         padding: "1rem 1rem",
         display: "flex",
         flexDirection: "column",
+        ...(absolute && {
+          position: "absolute",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%,-50%)",
+          boxShadow: (theme) => `0 0 5rem ${theme.palette.secondary.light}`,
+        }),
       }}
     >
       <ImageBox src={QuoteIcon} alt="quote" height="1.5rem" />
@@ -32,10 +59,7 @@ export default function Review({ reviewData }: { reviewData: ReviewType }) {
           overflow: "hidden",
           display: "-webkit-box",
           WebkitBoxOrient: "vertical",
-          WebkitLineClamp: 8,
-          "&:hover": {
-            WebkitLineClamp: "initial",
-          },
+          WebkitLineClamp: absolute ? "initial" : 8,
         }}
       >
         {description}

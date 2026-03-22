@@ -1,15 +1,9 @@
 import { Box, Typography } from "@mui/material";
 import { pageTitleStyle } from "../styles/typographyStyles";
-import { useQuery } from "@tanstack/react-query";
-import { fetchReviews } from "../http/http";
-import ReviewRow from "../components/ReviewRow";
+import ActiveReviewContextProvider from "../store/active-review-context";
+import ReviewsContent from "../components/ReviewsContent";
 
 export default function ReviewsPage() {
-  const { data: reviews } = useQuery({
-    queryFn: fetchReviews,
-    queryKey: ["reviews"],
-  });
-
   return (
     <Box
       component="main"
@@ -26,14 +20,9 @@ export default function ReviewsPage() {
       <Typography sx={{ ...pageTitleStyle, color: "black" }}>
         Reviews
       </Typography>
-      {reviews ? (
-        <>
-          <ReviewRow reverse reviews={reviews} />
-          <ReviewRow reviews={reviews} />
-        </>
-      ) : (
-        "loading..."
-      )}
+      <ActiveReviewContextProvider>
+        <ReviewsContent />
+      </ActiveReviewContextProvider>
     </Box>
   );
 }
