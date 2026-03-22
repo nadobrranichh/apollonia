@@ -17,14 +17,8 @@ export default function Review({
 
   const { setReviewData } = useContext(ActiveReviewContext);
 
-  const handleHover = () => {
-    console.log("setting review");
-    setReviewData(reviewData);
-  };
-  const handleHoverEnd = () => {
-    console.log("unsetting review");
-    setReviewData(null);
-  };
+  const handleHover = () => setReviewData(reviewData);
+  const handleHoverEnd = () => setReviewData(null);
   return (
     <Box
       onMouseEnter={handleHover}
