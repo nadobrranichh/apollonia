@@ -54,7 +54,7 @@ export default function ReviewRow({
         msOverflowStyle: "none",
       }}
     >
-      {[...reviews, ...reviews].map((r, i) => (
+      {reviews.map((r, i) => (
         <Review reviewData={r} key={i} />
       ))}
     </Box>
