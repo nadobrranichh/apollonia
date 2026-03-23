@@ -1,5 +1,5 @@
 import { createContext, useState, type ReactNode } from "react";
-import type { ReviewType } from "../types/reviewType";
+import type { ReviewType } from "../types";
 
 export const ActiveReviewContext = createContext<{
   reviewData: ReviewType | null;
