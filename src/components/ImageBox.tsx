@@ -6,7 +6,7 @@ type ImageBoxProps = {
   width?: number | string;
   height?: number | string;
   sx?: SxProps<Theme>;
-};
+} & React.ImgHTMLAttributes<HTMLImageElement>;
 
 export default function ImageBox({
   src,
@@ -14,14 +14,15 @@ export default function ImageBox({
   width,
   height,
   sx = {},
+  ...props
 }: ImageBoxProps) {
   return (
     <Box
       component="img"
       src={src}
       alt={alt}
-      loading="lazy"
       sx={{ height, width, ...sx }}
+      {...props}
     />
   );
 }
