@@ -1,14 +1,17 @@
 import { Box, Typography } from "@mui/material";
 import LoadingSpinnerIcon from "../assets/spinner-svgrepo-com.svg";
+import LoadingSpinnerIconLight from "../assets/spinner-light-svgrepo-com.svg";
 import ImageBox from "./ImageBox";
 import { useEffect, useState } from "react";
 
 export default function LoadingBlock({
   title,
   height = "auto",
+  light = false,
 }: {
   title: string;
   height?: number | string;
+  light?: boolean;
 }) {
   const [ellipsis, setEllipsis] = useState<string>(".");
 
@@ -33,7 +36,7 @@ export default function LoadingBlock({
       }}
     >
       <ImageBox
-        src={LoadingSpinnerIcon}
+        src={light ? LoadingSpinnerIconLight : LoadingSpinnerIcon}
         alt=""
         sx={{
           "@keyframes spin": {
@@ -52,7 +55,8 @@ export default function LoadingBlock({
       <Typography
         component="h3"
         sx={{
-          color: (theme) => theme.palette.text.secondary,
+          color: (theme) =>
+            light ? theme.palette.text.primary : theme.palette.text.secondary,
         }}
       >
         {title}
