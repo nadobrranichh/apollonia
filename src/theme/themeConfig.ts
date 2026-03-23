@@ -52,6 +52,32 @@ export const theme = createTheme({
         },
       },
     },
+    MuiInputLabel: {
+      styleOverrides: {
+        root: {
+          color: "#fff",
+        },
+      },
+    },
+    MuiOutlinedInput: {
+      styleOverrides: {
+        root: {
+          color: "#fff",
+          "& .MuiOutlinedInput-notchedOutline": {
+            borderColor: "#fff",
+          },
+          "&:hover .MuiOutlinedInput-notchedOutline": {
+            borderColor: "#fff",
+          },
+          "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+            borderColor: "#fff",
+          },
+        },
+        input: {
+          color: "#fff",
+        },
+      },
+    },
   },
   typography: {
     fontFamily: "Poppins, Arial",
