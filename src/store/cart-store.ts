@@ -2,7 +2,7 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import type { ProductType } from "../types";
 
-type CartItem = ProductType & { quantity: number };
+export type CartItem = ProductType & { quantity: number };
 
 type CartStore = {
   cart: CartItem[];
