@@ -7,6 +7,7 @@ import ReviewsPage from "../pages/ReviewsPage.tsx";
 import ShopPage from "../pages/ShopPage.tsx";
 import ShopItemPage from "../pages/ShopItemPage.tsx";
 import CartPage from "../pages/CartPage.tsx";
+import CheckoutPage from "../pages/CheckoutPage.tsx";
 
 export const router = createBrowserRouter([
   {
@@ -33,6 +34,7 @@ export const router = createBrowserRouter([
       { path: "/shop", element: <ShopPage /> },
       { path: "/shopitem/:id", element: <ShopItemPage /> },
       { path: "/cart", element: <CartPage /> },
+      { path: "/checkout", element: <CheckoutPage /> },
     ],
   },
 ]);

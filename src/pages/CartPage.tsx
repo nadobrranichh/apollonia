@@ -52,6 +52,8 @@ export default function CartPage() {
                 Subtotal: ${subTotal}
               </Typography>
               <Button
+                component={RouterLink}
+                to="/checkout"
                 sx={{ padding: "0.7rem 2rem", textDecoration: "none" }}
                 variant="contained"
               >
