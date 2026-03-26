@@ -27,7 +27,7 @@ export async function submitCheckoutForm({
 }) {
   const { data } = await axiosAPI.post("/create-checkout-session", {
     formData,
-    cart,
+    cart: cart.map(({ id, quantity }) => ({ id, quantity })),
   });
 
   return data.url;
