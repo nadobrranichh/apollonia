@@ -32,3 +32,12 @@ export async function submitCheckoutForm({
 
   return data.url;
 }
+
+export async function fetchSessionStatus(sessionId: string) {
+  const { data } = await axiosAPI.get("/session-status", {
+    params: {
+      sessionId,
+    },
+  });
+  return data.status;
+}
