@@ -8,6 +8,7 @@ import type { FormValues } from "../types/checkout";
 import { submitCheckoutForm } from "../http/http";
 import ErrorText from "./ErrorText";
 import AddressFields from "./AddressFields";
+import { countriesStates } from "../constants/variables-constants";
 
 export default function DeliveryForm() {
   const { cart } = useCartStore();
@@ -15,15 +16,15 @@ export default function DeliveryForm() {
   const [billingSameAsShipping, setBillingSameAsShipping] = useState(false);
   const {
     register,
-    getValues,
+    handleSubmit,
     formState: { errors },
     control,
   } = useForm<FormValues>({
     defaultValues: {
       email: "",
       billingSameAsShipping: false,
-      shipping: { country: "Canada", state: "" },
-      billing: { country: "Canada", state: "" },
+      shipping: { country: "Canada", state: countriesStates["Canada"][0] },
+      billing: { country: "Canada", state: countriesStates["Canada"][0] },
     },
   });
 
@@ -33,7 +34,7 @@ export default function DeliveryForm() {
   const { mutate } = useMutation({
     mutationFn: submitCheckoutForm,
     onSuccess: (data) => {
-      window.location.href = data.url;
+      window.location.href = data;
     },
   });
 
@@ -47,7 +48,7 @@ export default function DeliveryForm() {
     >
       <Typography>Delivery Information</Typography>
       <form
-        onSubmit={() => mutate({ formData: { ...getValues() }, cart })}
+        onSubmit={handleSubmit((formData) => mutate({ formData, cart }))}
         noValidate
         style={{
           padding: "1rem 0",
