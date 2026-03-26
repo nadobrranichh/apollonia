@@ -1,13 +1,16 @@
 import { Box, Typography } from "@mui/material";
 import ImageBox from "./ImageBox";
 import ErrorIcon from "../assets/cross-svgrepo-com.svg";
+import ErrorIconLight from "../assets/cross-light-svgrepo-com.svg";
 
 export default function ErrorBlock({
   message,
   height,
+  light = false,
 }: {
   message: string;
   height?: number | string;
+  light?: boolean;
 }) {
   return (
     <Box
@@ -19,11 +22,16 @@ export default function ErrorBlock({
         textAlign: "center",
       }}
     >
-      <ImageBox src={ErrorIcon} alt="error" sx={{ height: "3rem" }} />
+      <ImageBox
+        src={light ? ErrorIconLight : ErrorIcon}
+        alt="error"
+        sx={{ height: "3rem" }}
+      />
       <Typography
         component="h3"
         sx={{
-          color: (theme) => theme.palette.text.secondary,
+          color: (theme) =>
+            light ? theme.palette.text.primary : theme.palette.text.secondary,
           fontSize: "1.2rem",
         }}
       >
@@ -31,7 +39,8 @@ export default function ErrorBlock({
       </Typography>
       <Typography
         sx={{
-          color: (theme) => theme.palette.text.secondary,
+          color: (theme) =>
+            light ? theme.palette.text.primary : theme.palette.text.secondary,
           fontSize: "0.9rem",
         }}
       >

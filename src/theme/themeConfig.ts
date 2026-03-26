@@ -52,6 +52,86 @@ export const theme = createTheme({
         },
       },
     },
+    MuiInputLabel: {
+      styleOverrides: {
+        root: {
+          color: "#fff",
+        },
+      },
+    },
+    MuiOutlinedInput: {
+      styleOverrides: {
+        root: {
+          color: "#fff",
+          "& .MuiOutlinedInput-notchedOutline": {
+            borderColor: "#fff",
+          },
+          "&:hover .MuiOutlinedInput-notchedOutline": {
+            borderColor: "#fff",
+          },
+          "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+            borderColor: "#fff",
+          },
+        },
+        input: {
+          color: "#fff",
+        },
+      },
+    },
+    MuiSelect: {
+      styleOverrides: {
+        icon: {
+          color: "#fff",
+        },
+      },
+    },
+    MuiList: {
+      styleOverrides: {
+        root: {
+          padding: 0,
+        },
+      },
+    },
+    MuiMenu: {
+      styleOverrides: {
+        paper: ({ theme }) => ({
+          p: 0,
+          "&::-webkit-scrollbar": {
+            width: "0.75rem",
+          },
+          scrollbarColor: "#fff",
+          "&::-webkit-scrollbar-thumb": {
+            backgroundColor: theme.palette.secondary.light,
+            borderRadius: "3px",
+          },
+          "&::-webkit-scrollbar-track": {
+            background: theme.palette.secondary.dark,
+          },
+        }),
+      },
+    },
+    MuiMenuItem: {
+      styleOverrides: {
+        root: ({ theme }) => ({
+          backgroundColor: theme.palette.secondary.main,
+          "&.Mui-selected": {
+            backgroundColor: theme.palette.secondary.main,
+          },
+          "&:hover": {
+            backgroundColor: theme.palette.secondary.light,
+            color: theme.palette.primary.main,
+          },
+          "&.Mui-selected:hover": {
+            backgroundColor: theme.palette.secondary.light,
+            color: theme.palette.primary.main,
+          },
+          "&.Mui-selected:disabled": {
+            backgroundColor: theme.palette.secondary.light,
+            color: theme.palette.primary.main,
+          },
+        }),
+      },
+    },
   },
   typography: {
     fontFamily: "Poppins, Arial",

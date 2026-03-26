@@ -1,7 +1,7 @@
 import { Box, Link, Typography } from "@mui/material";
 import QuoteIcon from "../assets/quote-22-double-open.svg";
 import StarIcon from "../assets/star-svgrepo-com.svg";
-import type { ReviewType } from "../types/reviewType";
+import type { ReviewType } from "../types";
 import ImageBox from "./ImageBox";
 import { useContext } from "react";
 import { ActiveReviewContext } from "../store/active-review-context";
