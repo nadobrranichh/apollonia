@@ -34,7 +34,6 @@ export default function DeliveryForm() {
   const { mutate } = useMutation({
     mutationFn: submitCheckoutForm,
     onSuccess: (data) => {
-      //   console.log(data);
       window.location.href = data;
     },
   });
@@ -49,10 +48,7 @@ export default function DeliveryForm() {
     >
       <Typography>Delivery Information</Typography>
       <form
-        onSubmit={handleSubmit(
-          (formData) => mutate({ formData, cart }),
-          (errors) => console.log("ERRORS:", errors),
-        )}
+        onSubmit={handleSubmit((formData) => mutate({ formData, cart }))}
         noValidate
         style={{
           padding: "1rem 0",
