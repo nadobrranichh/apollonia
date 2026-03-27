@@ -19,6 +19,7 @@ export default function ReviewsContent() {
     queryFn: fetchReviews,
     queryKey: ["reviews"],
   });
+
   return (
     <>
       {reviews && (
@@ -28,6 +29,7 @@ export default function ReviewsContent() {
             width: "100%",
             display: "flex",
             flexDirection: "column",
+            alignItems: "center",
             gap: "1.5rem",
             position: "relative",
             zIndex: 1,
@@ -36,6 +38,7 @@ export default function ReviewsContent() {
           {activeReviewContext.reviewData ? (
             <Review reviewData={activeReviewContext.reviewData} absolute />
           ) : null}
+          {/* box-shadow: inset 1rem 0 15px 0 white, inset -1rem 0 1rem 0 white; */}
 
           <ReviewRow reverse reviews={reviews} />
           <ReviewRow reviews={reviews} />

@@ -46,6 +46,7 @@ export default function ReviewRow({
     <Box
       ref={rowRef}
       sx={{
+        // width: "85%",
         width: "100%",
         display: "flex",
         gap: 3,

@@ -25,7 +25,7 @@ export default function Review({
       onMouseLeave={handleHoverEnd}
       sx={{
         minHeight: "250px",
-        minWidth: "250px",
+        minWidth: "275px",
         borderRadius: "1rem",
         bgcolor: "secondary.dark",
         textAlign: "center",
