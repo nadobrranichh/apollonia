@@ -25,8 +25,4 @@ export const headerList: HeaderListItem[] = [
     title: "Cart",
     url: "cart",
   },
-  {
-    title: "FAQ",
-    url: "faq",
-  },
 ];
