@@ -1,9 +1,10 @@
-import { Box, Skeleton, Typography, IconButton } from "@mui/material";
+import { Box, Typography, IconButton, useMediaQuery } from "@mui/material";
 import ImageBox from "./ImageBox";
 import type { CartItem } from "../store/cart-store";
 import { useState } from "react";
 import CrossIcon from "../assets/cross-light-svgrepo-com.svg";
 import QuantityControls from "./QuantityControls";
+import { theme } from "../theme/themeConfig";
 
 export default function CartItemContainer({
   item,
@@ -15,23 +16,11 @@ export default function CartItemContainer({
   removeItem: (id: number) => void;
 }) {
   const [ShowImageSkeleton, setShowImageSkeleton] = useState<boolean>(true);
+
+  const isMd = useMediaQuery(theme.breakpoints.up("md"));
   return (
-    <Box sx={{ border: "1px solid white" }}>
-      <Box sx={{ display: "flex" }}>
-        {ShowImageSkeleton && (
-          <Skeleton
-            variant="rectangular"
-            animation="wave"
-            sx={{
-              width: "10rem",
-              height: "10rem",
-              zIndex: 1,
-              "&::after": {
-                background: `linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent)`,
-              },
-            }}
-          />
-        )}
+    <Box sx={{ border: "1px solid white", display: { md: "flex" } }}>
+      <Box sx={{ display: "flex", gap: { xs: "0.5rem", md: "1rem" } }}>
         <ImageBox
           src={
             item.image_urls ? item.image_urls[0] : "https://picsum.photos/800"
@@ -47,8 +36,8 @@ export default function CartItemContainer({
         />
         <Box
           sx={{
-            p: "1rem",
-            width: "30%",
+            paddingTop: { xs: "0.5rem", md: "1rem" },
+            flex: 1,
           }}
         >
           <Typography
@@ -70,38 +59,82 @@ export default function CartItemContainer({
             Price per item: ${Math.ceil(item.price_in_cents / 100)}
           </Typography>
         </Box>
-        <QuantityControls
-          quantity={item.quantity}
-          updateQuantity={(newQuantity: number) =>
-            updateQuantity(item.id, newQuantity)
-          }
-          elementsWidth={22}
-        />
-        <Box
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            ml: "auto",
-            mr: "2rem",
-          }}
-        >
-          <Typography
+      </Box>
+
+      {isMd ? (
+        <>
+          <QuantityControls
+            quantity={item.quantity}
+            updateQuantity={(newQuantity: number) =>
+              updateQuantity(item.id, newQuantity)
+            }
+          />
+          <Box
             sx={{
-              fontWeight: 400,
-              fontSize: "1.2rem",
+              display: "flex",
+              justifyContent: "end",
+              alignItems: "center",
+              mr: "2rem",
+
+              width: "6.5rem",
             }}
           >
-            ${item.quantity * Math.ceil(item.price_in_cents / 100)}
-          </Typography>
-          <IconButton sx={{ padding: 0 }} onClick={() => removeItem(item.id)}>
-            <ImageBox
-              src={CrossIcon}
-              alt="icon"
-              sx={{ width: "1.25rem", marginLeft: "0.75rem" }}
-            />
-          </IconButton>
+            <Typography
+              sx={{
+                fontWeight: 400,
+                fontSize: "1.2rem",
+              }}
+            >
+              ${item.quantity * Math.ceil(item.price_in_cents / 100)}
+            </Typography>
+            <IconButton sx={{ padding: 0 }} onClick={() => removeItem(item.id)}>
+              <ImageBox
+                src={CrossIcon}
+                alt="icon"
+                sx={{ width: "1.25rem", marginLeft: "0.75rem" }}
+              />
+            </IconButton>
+          </Box>
+        </>
+      ) : (
+        <Box
+          sx={{
+            borderTop: "1px solid white",
+            display: "flex",
+            justifyContent: "space-around",
+            paddingY: "0.5rem",
+          }}
+        >
+          <QuantityControls
+            quantity={item.quantity}
+            updateQuantity={(newQuantity: number) =>
+              updateQuantity(item.id, newQuantity)
+            }
+          />
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
+            <Typography
+              sx={{
+                fontWeight: 400,
+                fontSize: "1.2rem",
+              }}
+            >
+              ${item.quantity * Math.ceil(item.price_in_cents / 100)}
+            </Typography>
+            <IconButton sx={{ padding: 0 }} onClick={() => removeItem(item.id)}>
+              <ImageBox
+                src={CrossIcon}
+                alt="icon"
+                sx={{ width: "1.25rem", marginLeft: "0.75rem" }}
+              />
+            </IconButton>
+          </Box>
         </Box>
-      </Box>
+      )}
     </Box>
   );
 }

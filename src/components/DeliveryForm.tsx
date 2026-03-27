@@ -42,7 +42,7 @@ export default function DeliveryForm() {
     <Box
       sx={{
         border: "1px solid white",
-        width: "80%",
+        width: { xs: "95%", sm: "80%", lg: "45%" },
         padding: "1.5rem",
       }}
     >

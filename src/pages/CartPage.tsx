@@ -13,14 +13,19 @@ export default function CartPage() {
     <Box
       component="main"
       sx={{
-        padding: "1.5rem 0 4rem 0",
+        paddingY: "2rem",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
       }}
     >
       <Typography sx={pageTitleStyle}>Cart</Typography>
-      <Box sx={{ margin: "8rem 0", width: "90%" }}>
+      <Box
+        sx={{
+          marginY: "4rem",
+          width: { xs: "90%", md: "85%", lg: "70%", xl: "55%" },
+        }}
+      >
         {cart.length > 0 ? (
           <>
             <Box

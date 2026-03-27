@@ -19,9 +19,17 @@ export default function LocationPage() {
       </Typography>
       <Box
         sx={{
-          marginTop: "1rem",
-          width: "75%",
-          height: "35rem",
+          marginY: "4vh",
+          width: {
+            xs: "85%",
+            sm: "80%",
+            md: "65%",
+            lg: "45rem",
+          },
+          height: {
+            xs: "18.5rem",
+            md: "37.5rem",
+          },
         }}
       >
         <iframe

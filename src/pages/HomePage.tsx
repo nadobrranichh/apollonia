@@ -10,7 +10,14 @@ export default function HomePage() {
       component="main"
       sx={{ padding: "6% 0", display: "flex", justifyContent: "center" }}
     >
-      <Box sx={{ width: "55%" }}>
+      <Box
+        sx={{
+          width: { xs: "85%", sm: "80%", md: "65%", lg: "45rem" },
+          "* + *": {
+            marginTop: { xs: "1rem", sm: "none" },
+          },
+        }}
+      >
         <Box
           sx={{
             display: "grid",
@@ -23,14 +30,14 @@ export default function HomePage() {
           <ImageBox
             src={VerticalHeroImg1}
             sx={{
-              height: "15rem",
+              height: { xs: "15rem", sm: "20rem" },
               objectFit: "cover",
               borderRadius: "1.25rem",
             }}
           />
           <Typography
             sx={{
-              fontSize: "1rem",
+              fontSize: { xs: "1rem", sm: "1.3rem" },
               textAlign: "end",
               marginTop: "0.5rem",
               color: "primary.contrastText",
@@ -52,9 +59,9 @@ export default function HomePage() {
         >
           <Typography
             sx={{
-              fontSize: "1rem",
+              fontSize: { xs: "1rem", sm: "1.3rem" },
               textAlign: "start",
-              marginTop: "1.5rem",
+              marginTop: { xs: 0, md: "1.5rem" },
               color: "primary.contrastText",
             }}
           >
@@ -65,10 +72,16 @@ export default function HomePage() {
           <ImageBox
             src={VerticalHeroImg2}
             sx={{
-              transform: "translateY(-40%)",
-              height: "15rem",
+              transform: {
+                xs: 0,
+                md: "translateY(-25%)",
+                lg: "translateY(-40%)",
+              },
+              height: { xs: "15rem", sm: "20rem" },
               objectFit: "cover",
-              justifySelf: "end",
+              justifySelf: { xs: "auto", md: "end" },
+              margin: 0,
+              marginLeft: { xs: "auto", md: "none" },
               borderRadius: "1.25rem",
             }}
           />
@@ -76,7 +89,10 @@ export default function HomePage() {
         <ImageBox
           src={HorizontalHeroImg}
           width="100%"
-          sx={{ marginTop: "-5rem", borderRadius: "2.5rem" }}
+          sx={{
+            marginTop: { xs: "none", md: "-3rem", lg: "-6rem" },
+            borderRadius: "2.5rem",
+          }}
         />
       </Box>
     </Box>

@@ -5,11 +5,9 @@ import PlusIcon from "../assets/plus-svgrepo-com.svg";
 export default function QuantityControls({
   quantity,
   updateQuantity,
-  elementsWidth,
 }: {
   quantity: number;
   updateQuantity: (newQuantity: number) => void;
-  elementsWidth: number;
 }) {
   return (
     <Box
@@ -17,12 +15,15 @@ export default function QuantityControls({
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
-        width: elementsWidth * 4,
-        ml: "15%",
+        width: "65px",
+        ml: { md: "auto" },
       }}
     >
-      <IconButton onClick={() => updateQuantity(quantity - 1)}>
-        <img src={MinusIcon} alt="icon" style={{ width: elementsWidth }} />
+      <IconButton
+        sx={{ padding: 0 }}
+        onClick={() => updateQuantity(quantity - 1)}
+      >
+        <img src={MinusIcon} alt="icon" style={{ width: "1.2rem" }} />
       </IconButton>
       <Typography
         sx={{
@@ -32,8 +33,11 @@ export default function QuantityControls({
       >
         {quantity}
       </Typography>
-      <IconButton onClick={() => updateQuantity(quantity + 1)}>
-        <img src={PlusIcon} alt="icon" style={{ width: elementsWidth }} />
+      <IconButton
+        sx={{ padding: 0 }}
+        onClick={() => updateQuantity(quantity + 1)}
+      >
+        <img src={PlusIcon} alt="icon" style={{ width: "1.2rem" }} />
       </IconButton>
     </Box>
   );

@@ -1,4 +1,4 @@
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Button, Typography, useMediaQuery } from "@mui/material";
 import {
   gemServiceSubtitleStyles,
   serviceStyles,
@@ -9,21 +9,26 @@ import ToothGemsImg from "../assets/tooth-gems.png";
 import GoldenToothGemsImg from "../assets/golden-tooth-gems.png";
 import ServicePriceContainer from "./ServicePriceContainer";
 import ImageBox from "./ImageBox";
+import { theme } from "../theme/themeConfig";
 
 export default function GemService() {
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   return (
-    <Box sx={{ ...serviceStyles, padding: "0.5rem 0" }}>
+    <Box sx={{ ...serviceStyles, paddingTop: "0.75rem" }}>
       <Box sx={gemServiceDescriptionContainerStyles}>
-        <Box sx={{ marginLeft: "1.25rem" }}>
+        <Box sx={{ marginLeft: { xs: "0.7rem", md: "1.2rem" } }}>
           <Typography sx={serviceTitleStyles}>
             Tooth gems {"\u2005"}
-            <span style={{ textTransform: "none", fontSize: "1rem" }}>
+            <span
+              style={{
+                textTransform: "none",
+                fontSize: isMobile ? "0.7rem" : "1rem",
+              }}
+            >
               (+$20 for each additional gem)
             </span>
           </Typography>
-          <Typography sx={serviceTitleStyles}>
-            Swarovski crystals {"\u2005"}
-          </Typography>
+          <Typography sx={serviceTitleStyles}>Swarovski crystals</Typography>
           <Typography sx={gemServiceSubtitleStyles}>
             <b>Options:</b> semi-permanent (3-12 months), <br />
             temporary (2-7 days)
@@ -31,8 +36,8 @@ export default function GemService() {
               src={ToothGemsImg}
               sx={{
                 position: "absolute",
-                width: "12rem",
-                marginLeft: "1rem",
+                width: { xs: "7.5rem", md: "12rem" },
+                marginLeft: { xs: "5px", md: "15px" },
               }}
             />
           </Typography>
@@ -44,14 +49,14 @@ export default function GemService() {
       <Box
         sx={{ ...gemServiceDescriptionContainerStyles, marginTop: "0.5rem" }}
       >
-        <Box sx={{ marginLeft: "1.25rem" }}>
+        <Box sx={{ marginLeft: { xs: "0.7rem", md: "1.2rem" } }}>
           <ImageBox
             src={GoldenToothGemsImg}
             sx={{
               position: "absolute",
-              width: "12rem",
-              marginLeft: "7rem",
-              marginTop: "1.5rem",
+              width: { xs: "7.5rem", md: "12rem" },
+              marginLeft: { xs: "5rem", md: "7rem" },
+              marginTop: { xs: "1.2rem", md: "1.5rem" },
             }}
           />
           <Typography sx={serviceTitleStyles}>Golden 18K tooth gem</Typography>
@@ -64,6 +69,7 @@ export default function GemService() {
       <Typography
         sx={{
           textAlign: "center",
+          fontSize: { xs: "0.8rem", md: "1rem" },
           mx: "0.75rem",
           mt: "0.75rem",
         }}
@@ -74,7 +80,13 @@ export default function GemService() {
       <Button
         variant="contained"
         sx={{ my: "1rem" }}
-        href="https://www.instagram.com/apollonia_whitening"
+        href={
+          isMobile
+            ? `sms:+16475141552?body=${encodeURIComponent(
+                "Hello! I'd like to book an appointment for Tooth gems",
+              )}`
+            : "https://www.instagram.com/apollonia_whitening"
+        }
       >
         BOOK NOW
       </Button>
