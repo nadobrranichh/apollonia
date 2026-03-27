@@ -5,7 +5,7 @@ export const serviceStyles = {
   borderRadius: "8px",
   boxShadow: "5px 10px 10px rgba(0, 0, 0, 0.1)",
   textAlign: "start",
-  padding: { xs: "0.5rem 0", md: 0 },
+  paddingTop: { xs: "0.75rem", md: 0 },
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
@@ -13,13 +13,13 @@ export const serviceStyles = {
 
 export const serviceTitleStyles = {
   fontWeight: 600,
-  fontSize: "1.1rem",
+  fontSize: { xs: "0.9rem", md: "1rem" },
   textTransform: "uppercase",
 };
 
 export const gemServiceSubtitleStyles = {
   fontWeight: 200,
-  fontSize: "1rem",
+  fontSize: { xs: "0.7rem", md: "1rem" },
   fontStyle: "italic",
 };
 

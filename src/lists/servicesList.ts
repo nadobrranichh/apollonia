@@ -29,8 +29,8 @@ export const servicesList: ServiceItem[] = [
     image: RegularWhiteningTeethImg,
     imageStyles: {
       position: "absolute",
-      width: "4.5rem",
-      marginLeft: "72.5%",
+      width: { xs: "3.8rem", md: "4.5rem" },
+      marginLeft: { xs: "63%", sm: "70%" },
     },
   },
   {
@@ -42,8 +42,8 @@ export const servicesList: ServiceItem[] = [
     image: ApolloniaWhiteningTeethImg,
     imageStyles: {
       position: "absolute",
-      width: "4.5rem",
-      marginLeft: "72.5%",
+      width: { xs: "3.8rem", md: "4.5rem" },
+      marginLeft: { xs: "63%", sm: "70%" },
     },
   },
   {
@@ -78,8 +78,8 @@ export const servicesList: ServiceItem[] = [
     image: GrillzImg,
     imageStyles: {
       position: "absolute",
-      width: "4.5rem",
-      marginLeft: "70%",
+      width: { xs: "3.4rem", md: "4.5rem" },
+      marginLeft: { xs: "55%", sm: "65%" },
       rotate: "10deg",
     },
   },
@@ -92,7 +92,7 @@ export const servicesList: ServiceItem[] = [
     image: WhiteningTrayImg,
     imageStyles: {
       position: "absolute",
-      width: "3.5rem",
+      width: { xs: "2.8rem", md: "3.5rem" },
       marginLeft: "95.5%",
     },
   },
@@ -105,7 +105,7 @@ export const servicesList: ServiceItem[] = [
     image: SportsguardImg,
     imageStyles: {
       position: "absolute",
-      width: "5rem",
+      width: { xs: "4.2rem", md: "5rem" },
       marginLeft: "63%",
     },
   },

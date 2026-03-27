@@ -20,7 +20,7 @@ export default function ServicesPage() {
       <Typography sx={pageTitleStyle}>Services</Typography>
       <Box
         sx={{
-          width: "75%",
+          width: { xs: "100%", sm: "75%" },
           display: "flex",
           flexDirection: "column",
           alignItems: "center",

@@ -23,8 +23,8 @@ export default function ServicePriceContainer({
         component="p"
         sx={{
           fontWeight: 500,
-          fontSize: "1.5rem",
-          marginRight: comment ? "2px" : { xs: "0.7rem", md: "20px" },
+          fontSize: { xs: "1.25rem", md: "1.5rem" },
+          marginRight: comment ? "0.2rem" : { xs: "0.7rem", md: "1.2rem" },
         }}
       >
         ${price}
