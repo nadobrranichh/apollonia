@@ -18,6 +18,7 @@ export default function ShopItem({ item }: { item: ProductType }) {
         onMouseEnter={() => setHoverVisibility(true)}
         onMouseLeave={() => setHoverVisibility(false)}
         sx={{
+          height: "100%",
           border: "1px solid white",
           cursor: "pointer",
           position: "relative",
@@ -41,7 +42,7 @@ export default function ShopItem({ item }: { item: ProductType }) {
             sx={{
               textTransform: "uppercase",
               fontSize: "1rem",
-              bgcolor: "#25102e",
+              bgcolor: "secondary.dark",
               padding: "0.5rem",
               color: "text.primary",
               fontWeight: 500,
@@ -86,7 +87,15 @@ export default function ShopItem({ item }: { item: ProductType }) {
           />
         </Box>
 
-        <Box sx={{ padding: "0.7rem" }}>
+        <Box
+          sx={{
+            padding: "0.7rem",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-between",
+            height: "7.5rem",
+          }}
+        >
           <Typography
             sx={{
               textTransform: "uppercase",
@@ -100,12 +109,9 @@ export default function ShopItem({ item }: { item: ProductType }) {
           </Typography>
           <Typography
             sx={{
-              textTransform: "uppercase",
               fontSize: "1.2rem",
-              fontWeight: 400,
               color: "text.primary",
               fontFamily: "Times New Roman",
-              alignSelf: "start",
               lineHeight: "1.5rem",
             }}
           >

@@ -26,9 +26,13 @@ export default function ShopPage() {
           sx={{
             justifySelf: "center",
             display: "grid",
-            gridTemplateColumns: "repeat(2, 1fr)",
-            width: "90%",
-            gap: "2.5rem",
+            gridTemplateColumns: {
+              xs: "1fr",
+              md: "1fr 1fr",
+              xl: "1fr 1fr 1fr",
+            },
+            width: { xs: "80%", sm: "60%", md: "80%" },
+            gap: { xs: "2rem", md: "4rem" },
           }}
         >
           {products.map((item, i) => (
