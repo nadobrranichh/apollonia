@@ -2,13 +2,13 @@ import { Box, Typography, TextField, Button, Checkbox } from "@mui/material";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useMutation } from "@tanstack/react-query";
-import { useCartStore } from "../store/cart-store";
-import { useAddressState } from "../hooks/useAddressState";
-import type { FormValues } from "../types/checkout";
-import { submitCheckoutForm } from "../http/http";
-import ErrorText from "./ErrorText";
+import { useCartStore } from "../../store/cart-store";
+import { useAddressState } from "../../hooks/useAddressState";
+import type { FormValues } from "../../types/checkout";
+import { submitCheckoutForm } from "../../http/http";
+import ErrorText from "../ErrorText";
 import AddressFields from "./AddressFields";
-import { countriesStates } from "../constants/variables-constants";
+import { countriesStates } from "../../constants/variables-constants";
 
 export default function DeliveryForm() {
   const { cart } = useCartStore();

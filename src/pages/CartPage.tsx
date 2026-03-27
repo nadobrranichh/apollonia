@@ -1,7 +1,7 @@
 import { Box, Typography, Button } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
 import { useCartStore } from "../store/cart-store";
-import CartItemContainer from "../components/CartItemContainer";
+import CartItemContainer from "../components/shop/CartItemContainer";
 import { pageTitleStyle } from "../styles/typographyStyles";
 export default function CartPage() {
   const { cart, removeItem, updateQuantity } = useCartStore();

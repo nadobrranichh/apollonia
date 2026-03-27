@@ -1,8 +1,8 @@
 import { Box, Typography, Button, useMediaQuery } from "@mui/material";
-import type { ServiceItem } from "../types/listsTypes";
+import type { ServiceItem } from "../../types/listsTypes";
 import ServicePriceContainer from "./ServicePriceContainer";
-import { serviceStyles, serviceTitleStyles } from "../styles/servicesStyles";
-import { theme } from "../theme/themeConfig";
+import { serviceStyles, serviceTitleStyles } from "../../styles/servicesStyles";
+import { theme } from "../../theme/themeConfig";
 
 export default function Service({ item }: { item: ServiceItem }) {
   const { title, description, price, priceComment, image, imageStyles } = item;

@@ -1,8 +1,8 @@
 import { Box, Typography } from "@mui/material";
 import { ONTARIO_HST } from "../constants/variables-constants";
 import { useCartStore } from "../store/cart-store";
-import CheckoutItem from "../components/CheckoutItem";
-import DeliveryForm from "../components/DeliveryForm";
+import CheckoutItem from "../components/shop/CheckoutItem";
+import DeliveryForm from "../components/shop/DeliveryForm";
 
 export default function CheckoutPage() {
   const { cart } = useCartStore();

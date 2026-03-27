@@ -1,7 +1,7 @@
 import { Controller } from "react-hook-form";
-import { countriesStates } from "../constants/variables-constants";
+import { countriesStates } from "../../constants/variables-constants";
 import { Box, MenuItem, Select, TextField, Typography } from "@mui/material";
-import ErrorText from "./ErrorText";
+import ErrorText from "../ErrorText";
 
 type AddressFieldsProps = {
   value: "billing" | "shipping";

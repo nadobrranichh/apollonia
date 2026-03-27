@@ -1,7 +1,7 @@
 import { Box, Typography, TextField, Button } from "@mui/material";
-import { useCartStore } from "../store/cart-store";
+import { useCartStore } from "../../store/cart-store";
 import { useState } from "react";
-import type { ProductType } from "../types";
+import type { ProductType } from "../../types";
 
 export default function ShopItemControls({ item }: { item: ProductType }) {
   const { cart, addItem } = useCartStore();

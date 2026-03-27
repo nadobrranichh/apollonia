@@ -1,8 +1,8 @@
 import { useState } from "react";
-import type { ProductType } from "../types";
+import type { ProductType } from "../../types";
 import { Box, Link, Skeleton, Typography } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
-import ImageBox from "./ImageBox";
+import ImageBox from "../ImageBox";
 
 export default function ShopItem({ item }: { item: ProductType }) {
   const [hoverVisibility, setHoverVisibility] = useState<boolean>(false);

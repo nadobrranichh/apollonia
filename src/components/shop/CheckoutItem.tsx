@@ -1,7 +1,7 @@
 import { Box, Typography, Button } from "@mui/material";
-import { useCartStore, type CartItem } from "../store/cart-store";
+import { useCartStore, type CartItem } from "../../store/cart-store";
 import QuantityControls from "./QuantityControls";
-import ImageBox from "./ImageBox";
+import ImageBox from "../ImageBox";
 
 export default function CheckoutItem({ item }: { item: CartItem }) {
   const { updateQuantity, removeItem } = useCartStore();

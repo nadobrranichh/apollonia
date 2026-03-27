@@ -1,6 +1,6 @@
 import { Box } from "@mui/material";
 import SwipeButton from "./SwipeButton";
-import ImageBox from "./ImageBox";
+import ImageBox from "../ImageBox";
 import { useRef, useState } from "react";
 
 export default function ProductImagesContainer({

@@ -4,12 +4,12 @@ import {
   serviceStyles,
   serviceTitleStyles,
   gemServiceDescriptionContainerStyles,
-} from "../styles/servicesStyles";
-import ToothGemsImg from "../assets/tooth-gems.png";
-import GoldenToothGemsImg from "../assets/golden-tooth-gems.png";
+} from "../../styles/servicesStyles";
+import ToothGemsImg from "../../assets/tooth-gems.png";
+import GoldenToothGemsImg from "../../assets/golden-tooth-gems.png";
 import ServicePriceContainer from "./ServicePriceContainer";
-import ImageBox from "./ImageBox";
-import { theme } from "../theme/themeConfig";
+import ImageBox from "../ImageBox";
+import { theme } from "../../theme/themeConfig";
 
 export default function GemService() {
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));

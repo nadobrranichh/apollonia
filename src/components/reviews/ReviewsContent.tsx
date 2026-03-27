@@ -1,12 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
 import { useContext } from "react";
-import { fetchReviews } from "../http/http";
+import { fetchReviews } from "../../http/http";
 import { Box } from "@mui/material";
-import { ActiveReviewContext } from "../store/active-review-context";
+import { ActiveReviewContext } from "../../store/active-review-context";
 import ReviewRow from "./ReviewRow";
 import Review from "./Review";
-import LoadingBlock from "./LoadingBlock";
-import ErrorBlock from "./ErrorBlock";
+import LoadingBlock from "../LoadingBlock";
+import ErrorBlock from "../ErrorBlock";
 
 export default function ReviewsContent() {
   const activeReviewContext = useContext(ActiveReviewContext);

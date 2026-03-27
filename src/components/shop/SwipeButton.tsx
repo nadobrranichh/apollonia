@@ -1,7 +1,7 @@
 import { IconButton } from "@mui/material";
-import ArrowLeftSvg from "../assets/arrow-left.svg";
-import ArrowRightSvg from "../assets/arrow-right.svg";
-import ImageBox from "./ImageBox";
+import ArrowLeftSvg from "../../assets/arrow-left.svg";
+import ArrowRightSvg from "../../assets/arrow-right.svg";
+import ImageBox from "../ImageBox";
 
 interface SwipeButtonProps {
   variant: "light" | "dark";

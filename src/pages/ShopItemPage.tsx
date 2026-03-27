@@ -3,9 +3,9 @@ import { useQuery } from "@tanstack/react-query";
 import { useNavigate, useParams } from "react-router-dom";
 import { Box, Link, Typography } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
-import ProductImagesContainer from "../components/ProductImagesContainer";
+import ProductImagesContainer from "../components/shop/ProductImagesContainer";
 import { useEffect } from "react";
-import ShopItemControls from "../components/ShopItemControls";
+import ShopItemControls from "../components/shop/ShopItemControls";
 import ArrowLeftIcon from "../assets/arrow-left.svg";
 import ImageBox from "../components/ImageBox";
 

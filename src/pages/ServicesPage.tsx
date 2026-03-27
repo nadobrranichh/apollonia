@@ -1,8 +1,8 @@
 import { Box, Typography } from "@mui/material";
 import { Fragment } from "react/jsx-runtime";
 import { servicesList } from "../lists/servicesList";
-import Service from "../components/Service";
-import GemService from "../components/GemService";
+import Service from "../components/services/Service";
+import GemService from "../components/services/GemService";
 import { pageTitleStyle } from "../styles/typographyStyles";
 
 export default function ServicesPage() {

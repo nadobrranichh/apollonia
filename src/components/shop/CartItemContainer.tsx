@@ -1,10 +1,10 @@
 import { Box, Typography, IconButton, useMediaQuery } from "@mui/material";
-import ImageBox from "./ImageBox";
-import type { CartItem } from "../store/cart-store";
+import ImageBox from "../ImageBox";
+import type { CartItem } from "../../store/cart-store";
 import { useState } from "react";
-import CrossIcon from "../assets/cross-light-svgrepo-com.svg";
+import CrossIcon from "../../assets/cross-light-svgrepo-com.svg";
 import QuantityControls from "./QuantityControls";
-import { theme } from "../theme/themeConfig";
+import { theme } from "../../theme/themeConfig";
 
 export default function CartItemContainer({
   item,

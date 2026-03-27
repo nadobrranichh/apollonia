@@ -1,6 +1,6 @@
 import { Box, IconButton, Typography } from "@mui/material";
-import MinusIcon from "../assets/minus-svgrepo-com.svg";
-import PlusIcon from "../assets/plus-svgrepo-com.svg";
+import MinusIcon from "../../assets/minus-svgrepo-com.svg";
+import PlusIcon from "../../assets/plus-svgrepo-com.svg";
 
 export default function QuantityControls({
   quantity,

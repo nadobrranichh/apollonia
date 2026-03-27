@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import type { ReviewType } from "../types";
+import type { ReviewType } from "../../types";
 import Review from "./Review";
 import { useEffect, useRef } from "react";
 

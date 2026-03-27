@@ -1,7 +1,7 @@
 import { Box, Typography, useMediaQuery } from "@mui/material";
 import { pageTitleStyle } from "../styles/typographyStyles";
 import ActiveReviewContextProvider from "../store/active-review-context";
-import ReviewsContent from "../components/ReviewsContent";
+import ReviewsContent from "../components/reviews/ReviewsContent";
 import { theme } from "../theme/themeConfig";
 
 export default function ReviewsPage() {

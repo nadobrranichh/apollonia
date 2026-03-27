@@ -2,7 +2,7 @@ import { Box, Typography } from "@mui/material";
 import { pageTitleStyle } from "../styles/typographyStyles";
 import { useQuery } from "@tanstack/react-query";
 import { fetchProducts } from "../http/http";
-import ShopItem from "../components/ShopItem";
+import ShopItem from "../components/shop/ShopItem";
 import LoadingBlock from "../components/LoadingBlock";
 import ErrorBlock from "../components/ErrorBlock";
 
