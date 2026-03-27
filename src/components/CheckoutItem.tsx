@@ -1,12 +1,11 @@
-import { Box, Typography, Skeleton, Button } from "@mui/material";
+import { Box, Typography, Button } from "@mui/material";
 import { useCartStore, type CartItem } from "../store/cart-store";
 import QuantityControls from "./QuantityControls";
-import { useState } from "react";
+import ImageBox from "./ImageBox";
 
 export default function CheckoutItem({ item }: { item: CartItem }) {
   const { updateQuantity, removeItem } = useCartStore();
 
-  const [ShowImageSkeleton, setShowImageSkeleton] = useState<boolean>(true);
   return (
     <Box
       sx={{
@@ -18,32 +17,16 @@ export default function CheckoutItem({ item }: { item: CartItem }) {
       }}
     >
       <Box sx={{ width: "100px", height: "100px" }}>
-        {ShowImageSkeleton && (
-          <Skeleton
-            variant="rectangular"
-            animation="wave"
-            sx={{
-              width: "100%",
-              height: "100%",
-              zIndex: 1,
-              "&::after": {
-                background: `linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent)`,
-              },
-            }}
-          />
-        )}
-        <img
+        <ImageBox
           src={
             item.image_urls ? item!.image_urls[0] : "https://picsum.photos/800"
           }
           alt="icon"
-          style={{
+          sx={{
             width: "100%",
-            height: "100%",
+            aspectRatio: "1 / 1",
             objectFit: "cover",
-            display: ShowImageSkeleton ? "none" : "block",
           }}
-          onLoad={() => setShowImageSkeleton(false)}
         />
       </Box>
       <Typography
@@ -69,7 +52,12 @@ export default function CheckoutItem({ item }: { item: CartItem }) {
         </Typography>
         {(item.quantity > 1 || item.max_quantity > 1) && (
           <>
-            <Typography sx={{ fontWeight: 500 }}>
+            <Typography
+              sx={{
+                fontWeight: 500,
+                fontSize: { xs: "0.65rem", sm: "0.8rem" },
+              }}
+            >
               ${Math.ceil(item.price_in_cents / 100)} per item
             </Typography>
             <QuantityControls
@@ -77,7 +65,6 @@ export default function CheckoutItem({ item }: { item: CartItem }) {
               updateQuantity={(newQuantity: number) =>
                 updateQuantity(item.id, newQuantity)
               }
-              elementsWidth={22}
             />
           </>
         )}
