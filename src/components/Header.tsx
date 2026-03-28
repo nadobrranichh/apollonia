@@ -15,8 +15,10 @@ import ImageBox from "./ImageBox";
 import { theme } from "../theme/themeConfig";
 import HamburgerMenuIcon from "../assets/hamburger-menu-svgrepo-com.svg";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 export default function Header() {
+  const { t } = useTranslation();
   const location = useLocation();
   const [drawerIsOpen, setDrawerIsOpen] = useState<boolean>(false);
   const isMd = useMediaQuery(theme.breakpoints.up("md"));
@@ -51,14 +53,14 @@ export default function Header() {
       {isMd ? (
         <List sx={{ display: "flex", gap: "0.6vw" }}>
           {headerList.map((item) => (
-            <ListItem key={item.title}>
+            <ListItem key={item.titleKey}>
               <Link
                 component={RouterLink}
                 to={item.url}
                 sx={{ textDecoration: "none" }}
               >
                 <Typography sx={listItemStyles(item.url)}>
-                  {item.title}
+                  {t(`${item.titleKey}`)}
                 </Typography>
               </Link>
             </ListItem>
@@ -92,10 +94,10 @@ export default function Header() {
               }}
             >
               {headerList.map((item) => (
-                <ListItem key={item.title}>
+                <ListItem key={item.titleKey}>
                   <Link component={RouterLink} to={item.url}>
                     <Typography sx={listItemStyles(item.url)}>
-                      {item.title}
+                      {t(`${item.titleKey}`)}
                     </Typography>
                   </Link>
                 </ListItem>

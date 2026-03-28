@@ -1,5 +1,5 @@
 export type HeaderListItem = {
-  title: string;
+  titleKey: string;
   url: string;
 };
 
