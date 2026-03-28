@@ -44,7 +44,7 @@ export default function ReviewsContent() {
           <ReviewRow reviews={reviews} />
         </Box>
       )}
-      {isLoading && <LoadingBlock title="Loading reviews" height="40vh" />}
+      {isLoading && <LoadingBlock i18nKey="reviews" height="40vh" />}
       {isError && <ErrorBlock message={error.message} height="40vh" />}
     </>
   );

@@ -42,9 +42,7 @@ export default function ShopPage() {
           ))}
         </Box>
       )}
-      {isLoading && (
-        <LoadingBlock title="Loading products" height="50vh" light />
-      )}
+      {isLoading && <LoadingBlock i18nKey="products" height="50vh" light />}
       {isError && <ErrorBlock message={error.message} height="50vh" light />}
     </Box>
   );

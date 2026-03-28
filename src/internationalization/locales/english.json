@@ -199,5 +199,10 @@
     "call": "Call",
     "email": "Email",
     "navigate": "Navigate"
-  }
+  },
+  "loading": {
+    "reviews": "Loading reviews",
+    "products": "Loading products"
+  },
+  "error": "An error occured!"
 }
