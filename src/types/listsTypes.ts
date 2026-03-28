@@ -11,10 +11,8 @@ export type SocialMediaListItem = {
 
 export type ServiceItem = {
   id: number;
-  title: string;
-  description: string;
+  i18nKey: string;
   price: number;
-  priceComment?: string[];
   image?: string;
   imageStyles?: {};
 };

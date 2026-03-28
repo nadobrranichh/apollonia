@@ -48,7 +48,8 @@
       "swarovskiCrystals": {
         "title": "Swarovski Crystals",
         "description1": "Options:",
-        "description2": "semi-permanent (3-12 months), temporary (2-7 days)"
+        "description2": "semi-permanent (3-12 months),",
+        "description3": "temporary (2-7 days)"
       },
       "goldenToothGem": {
         "title": "Golden 18K Tooth Gem",

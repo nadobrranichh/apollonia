@@ -3,12 +3,15 @@ import type { ServiceItem } from "../../types/listsTypes";
 import ServicePriceContainer from "./ServicePriceContainer";
 import { serviceStyles, serviceTitleStyles } from "../../styles/servicesStyles";
 import { theme } from "../../theme/themeConfig";
+import { useTranslation } from "react-i18next";
 
 export default function Service({ item }: { item: ServiceItem }) {
-  const { title, description, price, priceComment, image, imageStyles } = item;
+  const { t, i18n } = useTranslation();
+  const { i18nKey, price, image, imageStyles } = item;
+  const priceCommentExists = i18n.exists(`${i18nKey}.priceComment`);
 
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-  const message = `Hello! I'd like to book an appointment for ${title}`;
+  const message = `Hello! I'd like to book an appointment for ${t(`${i18nKey}.title`)}`;
   return (
     <Box sx={{ ...serviceStyles, position: image ? "relative" : "static" }}>
       <Box
@@ -29,10 +32,15 @@ export default function Service({ item }: { item: ServiceItem }) {
             maxWidth: "400px",
           }}
         >
-          {title}
+          {t(`${i18nKey}.title`)}
         </Typography>
 
-        <ServicePriceContainer price={price} comment={priceComment} />
+        <ServicePriceContainer
+          price={price}
+          comment={
+            priceCommentExists ? t(`${i18nKey}.priceComment`) : undefined
+          }
+        />
 
         {image && (
           <Box component="img" src={image} sx={imageStyles || null}></Box>
@@ -45,12 +53,13 @@ export default function Service({ item }: { item: ServiceItem }) {
           fontSize: { xs: "0.8rem", md: "0.9rem" },
         }}
       >
-        {description}
+        {t(`${i18nKey}.description`)}
       </Typography>
       <Button
         variant="contained"
         sx={{
           my: "1rem",
+          textTransform: "uppercase",
         }}
         href={
           isMobile
@@ -58,7 +67,7 @@ export default function Service({ item }: { item: ServiceItem }) {
             : "https://www.instagram.com/apollonia_whitening"
         }
       >
-        BOOK NOW
+        {t("services.bookService")}
       </Button>
     </Box>
   );

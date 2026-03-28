@@ -48,7 +48,8 @@
       "swarovskiCrystals": {
         "title": "Кристали Swarovski",
         "description1": "Опції:",
-        "description2": "напів-постійні (3-12 місяців), тимчасові (2-7 днів)"
+        "description2": "напів-постійні (3-12 місяців),",
+        "description3": "тимчасові (2-7 днів)"
       },
       "goldenToothGem": {
         "title": "Золоті (18K) Кристали",
