@@ -1,5 +1,7 @@
 import { Box, Typography } from "@mui/material";
+import { useTranslation } from "react-i18next";
 export default function LocationPage() {
+  const { t } = useTranslation();
   return (
     <Box
       component="main"
@@ -15,7 +17,7 @@ export default function LocationPage() {
         component="p"
         sx={{ color: "white", fontWeight: 500, fontSize: "1.5rem" }}
       >
-        Location: <br /> 821 Eglinton Ave W, Toronto <br /> ON M5N 1E6, Canada
+        {t("location.address")}
       </Typography>
       <Box
         sx={{
