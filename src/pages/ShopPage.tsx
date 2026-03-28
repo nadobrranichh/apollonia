@@ -5,8 +5,10 @@ import { fetchProducts } from "../http/http";
 import ShopItem from "../components/shop/ShopItem";
 import LoadingBlock from "../components/LoadingBlock";
 import ErrorBlock from "../components/ErrorBlock";
+import { useTranslation } from "react-i18next";
 
 export default function ShopPage() {
+  const { t } = useTranslation();
   const {
     data: products,
     isLoading,
@@ -19,7 +21,7 @@ export default function ShopPage() {
   return (
     <Box component="main" sx={{ padding: "4rem 0" }}>
       <Typography sx={{ ...pageTitleStyle, textAlign: "center" }}>
-        Shop
+        {t("shop.title")}
       </Typography>
       {products && (
         <Box

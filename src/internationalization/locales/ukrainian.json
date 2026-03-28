@@ -72,13 +72,15 @@
     }
   },
   "reviews": {
-    "title": "Відгуки"
+    "title": "Відгуки",
+    "review": "відгук"
   },
   "shop": {
     "title": "Магазин",
     "viewMore": "Більше"
   },
   "shopitem": {
+    "backToShop": "Назад до Магазину",
     "price": "Ціна",
     "quantity": "Кількість",
     "addToCart": "Додати в кошик",
@@ -88,7 +90,9 @@
     "title": "Кошик",
     "pricePerItem": "Ціна за одиницю",
     "subtotal": "Проміжна сума",
-    "checkout": "Придбати"
+    "checkout": "Придбати",
+    "noItems": "Схоже у вашому кошику ще нічого немає.",
+    "continueShopping": "Продовжити покупки"
   },
   "checkout": {
     "deliveryForm": {

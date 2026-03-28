@@ -72,13 +72,15 @@
     }
   },
   "reviews": {
-    "title": "Reviews"
+    "title": "Reviews",
+    "review": "review"
   },
   "shop": {
     "title": "Shop",
     "viewMore": "View More"
   },
   "shopitem": {
+    "backToShop": "Back to Shop",
     "price": "Price",
     "quantity": "Quantity",
     "addToCart": "Add to Cart",
@@ -88,7 +90,9 @@
     "title": "Cart",
     "pricePerItem": "Price per item",
     "subtotal": "Subtotal",
-    "checkout": "Checkout"
+    "checkout": "Checkout",
+    "noItems": "Looks like you don't have anything in the cart yet.",
+    "continueShopping": "Continue Shopping"
   },
   "checkout": {
     "deliveryForm": {

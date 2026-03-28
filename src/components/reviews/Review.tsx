@@ -79,7 +79,7 @@ export default function Review({
           <Typography sx={{ fontSize: "0.8rem" }}>
             {rating}
             <ImageBox src={StarIcon} alt="star" sx={{ height: "0.75rem" }} />
-            review, {"\u2005"}
+            {"\u2005"}
             <Link
               style={{ color: "white" }}
               href="https://www.google.com/maps/place/821+Eglinton+Ave+W,+Toronto,+ON+M5N+1E6,+%D0%9A%D0%B0%D0%BD%D0%B0%D0%B4%D0%B0/@43.7009396,-79.425269,21z/data=!4m6!3m5!1s0x882b330aae3c9813:0x3ec0b80f2cde8279!8m2!3d43.7009369!4d-79.4250718!16s%2Fg%2F11bw3h3mgt?entry=ttu&g_ep=EgoyMDI1MDMzMC4wIKXMDSoJLDEwMjExNDUzSAFQAw%3D%3D"
