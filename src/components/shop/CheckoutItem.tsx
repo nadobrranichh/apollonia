@@ -2,8 +2,10 @@ import { Box, Typography, Button } from "@mui/material";
 import { useCartStore, type CartItem } from "../../store/cart-store";
 import QuantityControls from "./QuantityControls";
 import ImageBox from "../ImageBox";
+import { useTranslation } from "react-i18next";
 
 export default function CheckoutItem({ item }: { item: CartItem }) {
+  const { t } = useTranslation();
   const { updateQuantity, removeItem } = useCartStore();
 
   return (
@@ -58,7 +60,7 @@ export default function CheckoutItem({ item }: { item: CartItem }) {
                 fontSize: { xs: "0.65rem", sm: "0.8rem" },
               }}
             >
-              ${Math.ceil(item.price_in_cents / 100)} per item
+              ${Math.ceil(item.price_in_cents / 100)} {t("checkout.perItem")}
             </Typography>
             <QuantityControls
               quantity={item.quantity}
@@ -77,7 +79,7 @@ export default function CheckoutItem({ item }: { item: CartItem }) {
           variant="outlined"
           onClick={() => removeItem(item.id)}
         >
-          Remove
+          {t("checkout.remove")}
         </Button>
       </Box>
     </Box>

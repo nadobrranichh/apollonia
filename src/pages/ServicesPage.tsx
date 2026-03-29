@@ -4,8 +4,11 @@ import { servicesList } from "../lists/servicesList";
 import Service from "../components/services/Service";
 import GemService from "../components/services/GemService";
 import { pageTitleStyle } from "../styles/typographyStyles";
+import { useTranslation } from "react-i18next";
 
 export default function ServicesPage() {
+  const { t } = useTranslation();
+
   return (
     <Box
       component="main"
@@ -17,7 +20,7 @@ export default function ServicesPage() {
         padding: "3rem 0",
       }}
     >
-      <Typography sx={pageTitleStyle}>Services</Typography>
+      <Typography sx={pageTitleStyle}>{t("services.title")}</Typography>
       <Box
         sx={{
           width: { xs: "100%", sm: "75%" },

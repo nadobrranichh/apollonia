@@ -3,7 +3,9 @@ import { Link as RouterLink } from "react-router-dom";
 import { useCartStore } from "../store/cart-store";
 import CartItemContainer from "../components/shop/CartItemContainer";
 import { pageTitleStyle } from "../styles/typographyStyles";
+import { useTranslation } from "react-i18next";
 export default function CartPage() {
+  const { t } = useTranslation();
   const { cart, removeItem, updateQuantity } = useCartStore();
 
   const subTotal = Math.round(
@@ -19,7 +21,7 @@ export default function CartPage() {
         alignItems: "center",
       }}
     >
-      <Typography sx={pageTitleStyle}>Cart</Typography>
+      <Typography sx={pageTitleStyle}>{t("cart.title")}</Typography>
       <Box
         sx={{
           marginY: "4rem",
@@ -54,7 +56,7 @@ export default function CartPage() {
               }}
             >
               <Typography sx={{ fontWeight: 500, fontSize: "1.5rem" }}>
-                Subtotal: ${subTotal}
+                {t("cart.subtotal")}: ${subTotal}
               </Typography>
               <Button
                 component={RouterLink}
@@ -62,7 +64,7 @@ export default function CartPage() {
                 sx={{ padding: "0.7rem 2rem", textDecoration: "none" }}
                 variant="contained"
               >
-                Checkout
+                {t("cart.checkout")}
               </Button>
             </Box>
           </>
@@ -76,7 +78,7 @@ export default function CartPage() {
             }}
           >
             <Typography sx={{ fontSize: "1.2rem" }}>
-              Looks like you don't have anything in the cart yet.
+              {t("cart.noItems")}
             </Typography>
             <Button
               variant="contained"
@@ -84,7 +86,7 @@ export default function CartPage() {
               sx={{ padding: "0.7rem 1.5rem" }}
               to="/shop"
             >
-              Continue Shopping
+              {t("cart.continueShopping")}
             </Button>
           </Box>
         )}

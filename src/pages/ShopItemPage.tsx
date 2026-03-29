@@ -8,8 +8,10 @@ import { useEffect } from "react";
 import ShopItemControls from "../components/shop/ShopItemControls";
 import ArrowLeftIcon from "../assets/arrow-left.svg";
 import ImageBox from "../components/ImageBox";
+import { useTranslation } from "react-i18next";
 
 export default function ShopItemPage() {
+  const { t } = useTranslation();
   const params = useParams();
   const navigate = useNavigate();
   const { data: products } = useQuery({
@@ -52,7 +54,7 @@ export default function ShopItemPage() {
             sx={{ width: "24px", height: "24px" }}
           />
           <Typography sx={{ display: "inline", color: "text.primary" }}>
-            Back to Shop
+            {t("shopitem.backToShop")}
           </Typography>
         </Link>
         {item && (

@@ -5,6 +5,7 @@ import { useState } from "react";
 import CrossIcon from "../../assets/cross-light-svgrepo-com.svg";
 import QuantityControls from "./QuantityControls";
 import { theme } from "../../theme/themeConfig";
+import { useTranslation } from "react-i18next";
 
 export default function CartItemContainer({
   item,
@@ -15,6 +16,7 @@ export default function CartItemContainer({
   updateQuantity: (id: number, newQuantity: number) => void;
   removeItem: (id: number) => void;
 }) {
+  const { t } = useTranslation();
   const [ShowImageSkeleton, setShowImageSkeleton] = useState<boolean>(true);
 
   const isMd = useMediaQuery(theme.breakpoints.up("md"));
@@ -56,26 +58,29 @@ export default function CartItemContainer({
               mt: "0.5rem",
             }}
           >
-            Price per item: ${Math.ceil(item.price_in_cents / 100)}
+            {t("cart.pricePerItem")}: ${Math.ceil(item.price_in_cents / 100)}
           </Typography>
         </Box>
       </Box>
 
       {isMd ? (
         <>
-          <QuantityControls
-            quantity={item.quantity}
-            updateQuantity={(newQuantity: number) =>
-              updateQuantity(item.id, newQuantity)
-            }
-          />
+          {item.max_quantity > 1 && (
+            <QuantityControls
+              quantity={item.quantity}
+              updateQuantity={(newQuantity: number) =>
+                updateQuantity(item.id, newQuantity)
+              }
+            />
+          )}
           <Box
             sx={{
               display: "flex",
+
               justifyContent: "end",
               alignItems: "center",
               mr: "2rem",
-
+              ml: item.max_quantity > 1 ? 0 : "auto",
               width: "6.5rem",
             }}
           >

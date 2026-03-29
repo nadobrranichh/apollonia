@@ -1,5 +1,5 @@
 export type HeaderListItem = {
-  title: string;
+  titleKey: string;
   url: string;
 };
 
@@ -11,10 +11,8 @@ export type SocialMediaListItem = {
 
 export type ServiceItem = {
   id: number;
-  title: string;
-  description: string;
+  i18nKey: string;
   price: number;
-  priceComment?: string[];
   image?: string;
   imageStyles?: {};
 };

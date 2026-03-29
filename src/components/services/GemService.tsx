@@ -10,28 +10,33 @@ import GoldenToothGemsImg from "../../assets/golden-tooth-gems.png";
 import ServicePriceContainer from "./ServicePriceContainer";
 import ImageBox from "../ImageBox";
 import { theme } from "../../theme/themeConfig";
+import { useTranslation } from "react-i18next";
 
 export default function GemService() {
+  const { t } = useTranslation();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   return (
     <Box sx={{ ...serviceStyles, paddingTop: "0.75rem" }}>
       <Box sx={gemServiceDescriptionContainerStyles}>
         <Box sx={{ marginLeft: { xs: "0.7rem", md: "1.2rem" } }}>
           <Typography sx={serviceTitleStyles}>
-            Tooth gems {"\u2005"}
+            {t("services.toothGems.title")} {"\u2005"}
             <span
               style={{
                 textTransform: "none",
                 fontSize: isMobile ? "0.7rem" : "1rem",
               }}
             >
-              (+$20 for each additional gem)
+              {t("services.toothGems.titleComment")}
             </span>
           </Typography>
-          <Typography sx={serviceTitleStyles}>Swarovski crystals</Typography>
+          <Typography sx={serviceTitleStyles}>
+            {t("services.toothGems.swarovskiCrystals.title")}
+          </Typography>
           <Typography sx={gemServiceSubtitleStyles}>
-            <b>Options:</b> semi-permanent (3-12 months), <br />
-            temporary (2-7 days)
+            <b>{t("services.toothGems.swarovskiCrystals.description1")}</b>{" "}
+            {t("services.toothGems.swarovskiCrystals.description2")} <br />
+            {t("services.toothGems.swarovskiCrystals.description3")}
             <ImageBox
               src={ToothGemsImg}
               sx={{
@@ -59,8 +64,12 @@ export default function GemService() {
               marginTop: { xs: "1.2rem", md: "1.5rem" },
             }}
           />
-          <Typography sx={serviceTitleStyles}>Golden 18K tooth gem</Typography>
-          <Typography sx={gemServiceSubtitleStyles}>(permanent)</Typography>
+          <Typography sx={serviceTitleStyles}>
+            {t("services.toothGems.goldenToothGem.title")}
+          </Typography>
+          <Typography sx={gemServiceSubtitleStyles}>
+            {t("services.toothGems.goldenToothGem.description")}
+          </Typography>
         </Box>
         <ServicePriceContainer
           price={import.meta.env.VITE_SERVICE_GOLDEN_18K_GEM_PRICE}
@@ -74,8 +83,7 @@ export default function GemService() {
           mt: "0.75rem",
         }}
       >
-        No drilling. Applied with dental bond and orthodontic composite resin.
-        Can be polished off any time as needed.
+        {t("services.toothGems.description")}
       </Typography>
       <Button
         variant="contained"

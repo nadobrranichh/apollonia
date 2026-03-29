@@ -3,8 +3,10 @@ import VerticalHeroImg1 from "../assets/IMG_2780-s.jpg";
 import VerticalHeroImg2 from "../assets/IMG_2779-s.jpg";
 import HorizontalHeroImg from "../assets/IMG_2777-s.jpg";
 import ImageBox from "../components/ImageBox";
+import { useTranslation } from "react-i18next";
 
 export default function HomePage() {
+  const { t } = useTranslation();
   return (
     <Box
       component="main"
@@ -43,9 +45,7 @@ export default function HomePage() {
               color: "primary.contrastText",
             }}
           >
-            Nataliia is an experienced dental hygienist (6 years), recognized
-            for her groundbreaking invention, the painless teeth whitening
-            method known as “Apollonia.”
+            {t("home.paragraph1")}
           </Typography>
         </Box>
         <Box
@@ -65,9 +65,7 @@ export default function HomePage() {
               color: "primary.contrastText",
             }}
           >
-            Originally from Ukraine and educated in Canada, she is committed to
-            making every dental procedure a comfortable and relaxing experience
-            for her clients.
+            {t("home.paragraph2")}
           </Typography>
           <ImageBox
             src={VerticalHeroImg2}

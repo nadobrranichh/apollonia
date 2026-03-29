@@ -2,6 +2,7 @@ import { Controller } from "react-hook-form";
 import { countriesStates } from "../../constants/variables-constants";
 import { Box, MenuItem, Select, TextField, Typography } from "@mui/material";
 import ErrorText from "../ErrorText";
+import { useTranslation } from "react-i18next";
 
 type AddressFieldsProps = {
   value: "billing" | "shipping";
@@ -26,6 +27,7 @@ export default function AddressFields({
   onCountryChange,
   onStateChange,
 }: AddressFieldsProps) {
+  const { t } = useTranslation();
   const required = (message: string) => ({
     required: { value: !disabled, message },
   });
@@ -33,14 +35,14 @@ export default function AddressFields({
   return (
     <>
       <Typography sx={{ textTransform: "uppercase" }}>
-        {value} address information
+        {t(`checkout.${value}Info`)}
       </Typography>
       <Box
         sx={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem" }}
       >
         <Box>
           <TextField
-            placeholder="First Name"
+            placeholder={t("checkout.firstName")}
             {...register(
               `${value}.firstName`,
               required("First name is required"),
@@ -54,7 +56,7 @@ export default function AddressFields({
 
         <Box>
           <TextField
-            placeholder="Last Name"
+            placeholder={t("checkout.lastName")}
             {...register(
               `${value}.lastName`,
               required("Last name is required"),
@@ -69,7 +71,7 @@ export default function AddressFields({
 
       <Box>
         <TextField
-          placeholder="Address 1"
+          placeholder={t("checkout.address1")}
           {...register(`${value}.address1`, required("Address is required"))}
           sx={{ width: "100%" }}
         />
@@ -77,7 +79,10 @@ export default function AddressFields({
           <ErrorText>{errors[value].address1.message}</ErrorText>
         )}
       </Box>
-      <TextField placeholder="Address 2" {...register(`${value}.address2`)} />
+      <TextField
+        placeholder={t("checkout.address2")}
+        {...register(`${value}.address2`)}
+      />
 
       <Box
         sx={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem" }}
@@ -98,7 +103,7 @@ export default function AddressFields({
             >
               {Object.keys(countriesStates).map((c) => (
                 <MenuItem key={c} value={c}>
-                  {c}
+                  {t(`checkout.countries.${c.toLowerCase()}.label`)}
                 </MenuItem>
               ))}
             </Select>
@@ -120,7 +125,9 @@ export default function AddressFields({
             >
               {countriesStates[selectedCountry].map((s) => (
                 <MenuItem key={s} value={s}>
-                  {s}
+                  {t(
+                    `checkout.countries.${selectedCountry.toLowerCase()}.states.${s}`,
+                  )}
                 </MenuItem>
               ))}
             </Select>
@@ -133,7 +140,7 @@ export default function AddressFields({
       >
         <Box>
           <TextField
-            placeholder="Postal Code"
+            placeholder={t("checkout.postalCode")}
             {...register(
               `${value}.postalCode`,
               required("Postal code is required"),
@@ -147,7 +154,7 @@ export default function AddressFields({
 
         <Box>
           <TextField
-            placeholder="City"
+            placeholder={t("checkout.city")}
             {...register(`${value}.city`, required("City is required"))}
             sx={{ width: "100%" }}
           />
@@ -157,7 +164,7 @@ export default function AddressFields({
         </Box>
       </Box>
       <TextField
-        placeholder="Phone Number"
+        placeholder={t("checkout.phoneNumber")}
         {...register(
           `${value}.phoneNumber`,
           required("Phone number is required"),

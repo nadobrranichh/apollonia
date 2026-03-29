@@ -1,0 +1,206 @@
+{
+  "pages": {
+    "home": "Home",
+    "location": "Location",
+    "services": "Services",
+    "reviews": "Reviews",
+    "shop": "Shop",
+    "cart": "Cart"
+  },
+  "home": {
+    "paragraph1": "Nataliia is an experienced dental hygienist (6 years), recognized for her groundbreaking invention, the painless teeth whitening method known as “Apollonia”.",
+    "paragraph2": "Originally from Ukraine and educated in Canada, she is committed to making every dental procedure a comfortable and relaxing experience for her clients."
+  },
+  "location": {
+    "address": "Location: 821 Eglinton Ave W, Toronto, ON M5N 1E6, Canada"
+  },
+  "services": {
+    "title": "Services",
+    "bookService": "Book Now",
+    "professionalTeethCleaning": {
+      "title": "Professional Teeth Cleaning",
+      "description": "Ultrasonic scaling followed by manual scaling and polishing.Add-ons as per client request: air polishing, AirFlow cleaning and fluoride.",
+      "priceComment": "without insurance"
+    },
+    "painlessTeethWhiteningTreatment": {
+      "title": "Painless Teeth Whitening Treatment",
+      "description": "LED whitening with red light therapy (anti inflammatory), gum protection and anti-sensitivity dental grade materials (fluoride and hydroxyapatite). 2 applications 15 min each will get you 8-10 shades whiter. Recommended for yellowish-white teeth to achieve white results and for white teeth to achieve extremely white results. 70 min procedure."
+    },
+    "apolloniaWhiteningTreatment": {
+      "title": "Apollonia Whitening Treatment",
+      "description": "2 visits, 70 minutes each. 2-14 days apart. Recommended for yellow teeth to achieve white results, for yellowish-white teeth to achieve extremely white results and for super sensitive teeth to avoid discomfort. Each visit includes LED whitening with red light therapy (anti-inflammatory), gum protection and anti-sensitivity dental grade materials (fluoride and hydroxyapatite). 2 visits will get you 18-20 shades whiter."
+    },
+    "goldenGlowWhiteningTreatment": {
+      "title": "Golden Glow Whitening Treatment",
+      "description": "New luxury pampering service which includes application of 24K gold and nano-hydroxyapatite infused gel to teeth. Reduces risks of sensitivity dramatically and cures gums with real gold. Includes Painless Teeth Whitening Treatment."
+    },
+    "teethWhiteningMaintenanceSession": {
+      "title": "Teeth Whitening 3-6 Months Maintenance Session",
+      "description": "Quick maintenance session recommended 3-6 months after initial whitening (35-40mins)."
+    },
+    "whiteSpotLesionsRemoval": {
+      "title": "White Spot Lesions Removal",
+      "description": "Icon® Infiltration Concept is used for the microinvasive treatment of white dental lesions. In one patient visit, and with no drilling, Icon® can arrest the progression of early enamel white spot caries-like lesions (demineralization)."
+    },
+    "toothGems": {
+      "title": "Tooth Gems",
+      "titleComment": "(+$20 for each additional gem)",
+      "swarovskiCrystals": {
+        "title": "Swarovski Crystals",
+        "description1": "Options:",
+        "description2": "semi-permanent (3-12 months),",
+        "description3": "temporary (2-7 days)"
+      },
+      "goldenToothGem": {
+        "title": "Golden 18K Tooth Gem",
+        "description": "(permanent)"
+      },
+      "description": "No drilling. Applied with dental bond and orthodontic composite resin. Can be polished off any time as needed."
+    },
+    "grillz": {
+      "title": "Grillz",
+      "description": "Decorative removeable covers, worn over the teeth, made of titanium and can appear as gold or silver.",
+      "priceComment": "per tooth"
+    },
+    "customTeethWhiteningTrays": {
+      "title": "Custom Teeth Whitening Trays",
+      "description": "Designed to hold a whitening gel against your teeth, helping to lighten stains and discoloration"
+    },
+    "sportsguard": {
+      "title": "Sportsguard",
+      "description": "Custom fit protective device worn over the teeth — typically covering the upper teeth — to safeguard the mouth from injuries during sports and physical activities."
+    }
+  },
+  "reviews": {
+    "title": "Reviews",
+    "review": "review"
+  },
+  "shop": {
+    "title": "Shop",
+    "viewMore": "View More"
+  },
+  "shopitem": {
+    "backToShop": "Back to Shop",
+    "price": "Price",
+    "quantity": "Quantity",
+    "addToCart": "Add to Cart",
+    "inCart": "In cart"
+  },
+  "cart": {
+    "title": "Cart",
+    "pricePerItem": "Price per item",
+    "subtotal": "Subtotal",
+    "checkout": "Checkout",
+    "noItems": "Looks like you don't have anything in the cart yet.",
+    "continueShopping": "Continue Shopping"
+  },
+  "checkout": {
+    "title": "Delivery Information",
+    "email": "Email",
+    "shippingInfo": "Shipping Address Information",
+    "billingInfo": "Billing Address Information",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "address1": "Address1",
+    "address2": "Address2",
+    "countries": {
+      "canada": {
+        "label": "Canada",
+        "states": {
+          "AB": "Alberta",
+          "BC": "British Columbia",
+          "MB": "Manitoba",
+          "NB": "New Brunswick",
+          "NL": "Newfoundland and Labrador",
+          "NS": "Nova Scotia",
+          "ON": "Ontario",
+          "PE": "Prince Edward Island",
+          "QC": "Quebec",
+          "SK": "Saskatchewan"
+        }
+      },
+      "usa": {
+        "label": "USA",
+        "states": {
+          "AL": "Alabama",
+          "AK": "Alaska",
+          "AZ": "Arizona",
+          "AR": "Arkansas",
+          "CA": "California",
+          "CO": "Colorado",
+          "CT": "Connecticut",
+          "DE": "Delaware",
+          "FL": "Florida",
+          "GA": "Georgia",
+          "HI": "Hawaii",
+          "ID": "Idaho",
+          "IL": "Illinois",
+          "IN": "Indiana",
+          "IA": "Iowa",
+          "KS": "Kansas",
+          "KY": "Kentucky",
+          "LA": "Louisiana",
+          "ME": "Maine",
+          "MD": "Maryland",
+          "MA": "Massachusetts",
+          "MI": "Michigan",
+          "MN": "Minnesota",
+          "MS": "Mississippi",
+          "MO": "Missouri",
+          "MT": "Montana",
+          "NE": "Nebraska",
+          "NV": "Nevada",
+          "NH": "New Hampshire",
+          "NJ": "New Jersey",
+          "NM": "New Mexico",
+          "NY": "New York",
+          "NC": "North Carolina",
+          "ND": "North Dakota",
+          "OH": "Ohio",
+          "OK": "Oklahoma",
+          "OR": "Oregon",
+          "PA": "Pennsylvania",
+          "RI": "Rhode Island",
+          "SC": "South Carolina",
+          "SD": "South Dakota",
+          "TN": "Tennessee",
+          "TX": "Texas",
+          "UT": "Utah",
+          "VT": "Vermont",
+          "VA": "Virginia",
+          "WA": "Washington",
+          "WV": "West Virginia",
+          "WI": "Wisconsin",
+          "WY": "Wyoming"
+        }
+      }
+    },
+    "postalCode": "Postal Code",
+    "city": "City",
+    "phoneNumber": "Phone Number",
+    "billingSameAsShipping": "Billing address is the same as shipping",
+    "submitAndCheckout": "Submit And Checkout",
+    "summary": "Order Summary",
+    "perItem": "per item",
+    "remove": "Remove",
+    "subtotal": "Subtotal",
+    "hst": "HST"
+  },
+  "paymentResult": {
+    "successful": "Payment successful! Please check your email for the receipt.",
+    "canceled": "Payment canceled."
+  },
+  "footer": {
+    "follow": "Follow",
+    "book": "To Book",
+    "dm": "DM on insta or FB",
+    "call": "Call",
+    "email": "Email",
+    "navigate": "Navigate"
+  },
+  "loading": {
+    "reviews": "Loading reviews",
+    "products": "Loading products"
+  },
+  "error": "An error occured!"
+}

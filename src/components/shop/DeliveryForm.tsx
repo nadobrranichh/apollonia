@@ -9,8 +9,10 @@ import { submitCheckoutForm } from "../../http/http";
 import ErrorText from "../ErrorText";
 import AddressFields from "./AddressFields";
 import { countriesStates } from "../../constants/variables-constants";
+import { useTranslation } from "react-i18next";
 
 export default function DeliveryForm() {
+  const { t } = useTranslation();
   const { cart } = useCartStore();
 
   const [billingSameAsShipping, setBillingSameAsShipping] = useState(false);
@@ -46,7 +48,7 @@ export default function DeliveryForm() {
         padding: "1.5rem",
       }}
     >
-      <Typography>Delivery Information</Typography>
+      <Typography>{t("checkout.title")}</Typography>
       <form
         onSubmit={handleSubmit((formData) => mutate({ formData, cart }))}
         noValidate
@@ -59,7 +61,7 @@ export default function DeliveryForm() {
       >
         <Box>
           <TextField
-            placeholder="Email"
+            placeholder={t("checkout.email")}
             {...register("email", {
               required: { value: true, message: "Email is required" },
               pattern: {
@@ -94,7 +96,7 @@ export default function DeliveryForm() {
               onChange: (e) => setBillingSameAsShipping(e.target.checked),
             })}
           />
-          <Typography>Billing address is the same as shipping</Typography>
+          <Typography>{t("checkout.billingSameAsShipping")}</Typography>
         </Box>
 
         {!billingSameAsShipping && (
@@ -118,7 +120,7 @@ export default function DeliveryForm() {
           type="submit"
           sx={{ width: "100%", mt: "1rem" }}
         >
-          Submit And Checkout
+          {t("checkout.submitAndCheckout")}
         </Button>
       </form>
     </Box>

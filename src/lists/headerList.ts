@@ -2,27 +2,27 @@ import type { HeaderListItem } from "../types/listsTypes";
 
 export const headerList: HeaderListItem[] = [
   {
-    title: "Home",
+    titleKey: "pages.home",
     url: "",
   },
   {
-    title: "Location",
+    titleKey: "pages.location",
     url: "location",
   },
   {
-    title: "Services",
+    titleKey: "pages.services",
     url: "services",
   },
   {
-    title: "Reviews",
+    titleKey: "pages.reviews",
     url: "reviews",
   },
   {
-    title: "Shop",
+    titleKey: "pages.shop",
     url: "shop",
   },
   {
-    title: "Cart",
+    titleKey: "pages.cart",
     url: "cart",
   },
 ];
