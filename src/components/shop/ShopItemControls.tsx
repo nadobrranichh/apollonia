@@ -2,8 +2,10 @@ import { Box, Typography, TextField, Button } from "@mui/material";
 import { useCartStore } from "../../store/cart-store";
 import { useState } from "react";
 import type { ProductType } from "../../types";
+import { useTranslation } from "react-i18next";
 
 export default function ShopItemControls({ item }: { item: ProductType }) {
+  const { t } = useTranslation();
   const { cart, addItem } = useCartStore();
   const isInCart = cart.find((cartItem) => cartItem.id === item?.id)
     ? true
@@ -66,7 +68,7 @@ export default function ShopItemControls({ item }: { item: ProductType }) {
         {item.max_quantity !== 1 && (
           <TextField
             id="outlined-basic"
-            label="Quantity:"
+            label={t("shopitem.quantity")}
             value={quantity}
             onChange={(e) =>
               setQuantity(
@@ -96,7 +98,7 @@ export default function ShopItemControls({ item }: { item: ProductType }) {
           onClick={() => addItem(item, quantity)}
           disabled={isInCart}
         >
-          {isInCart ? "In cart" : "Add to cart"}
+          {isInCart ? t("shopitem.inCart") : t("shopitem.addToCart")}
         </Button>
       </Box>
     </Box>

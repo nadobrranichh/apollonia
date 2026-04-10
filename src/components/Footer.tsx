@@ -3,6 +3,7 @@ import { headerList } from "../lists/headerList";
 import { Link as RouterLink } from "react-router-dom";
 import { socialMediaist } from "../lists/socialMediaList";
 import ImageBox from "./ImageBox";
+import { useTranslation } from "react-i18next";
 
 const titleStyles = {
   fontFamily: "Poppins,Arial",
@@ -31,6 +32,7 @@ const textStyles = {
 };
 
 export default function Footer() {
+  const { t } = useTranslation();
   return (
     <Box
       component="footer"
@@ -44,7 +46,7 @@ export default function Footer() {
       }}
     >
       <Typography component="p" sx={{ ...titleStyles, marginBottom: "0.5rem" }}>
-        Follow
+        {t("footer.follow")}
       </Typography>
       <Box
         sx={{
@@ -83,21 +85,21 @@ export default function Footer() {
       </Box>
       <Box sx={{ display: "flex", gap: "2.5rem", marginTop: "1.5rem" }}>
         <Box>
-          <Typography sx={titleStyles}>To book:</Typography>
-          <Typography sx={subtitleStyles}>DM on insta or FB</Typography>
+          <Typography sx={titleStyles}>{t("footer.book")}:</Typography>
+          <Typography sx={subtitleStyles}>{t("footer.dm")}</Typography>
 
-          <Typography sx={subtitleStyles}>Call:</Typography>
+          <Typography sx={subtitleStyles}>{t("footer.call")}:</Typography>
           <Typography sx={textStyles}>+1 647 514 1552</Typography>
 
-          <Typography sx={subtitleStyles}>Email:</Typography>
+          <Typography sx={subtitleStyles}>{t("footer.email")}:</Typography>
           <Typography sx={textStyles}>nshchepaniak@hotmail.com</Typography>
         </Box>
         <List sx={{ listStyle: "none", padding: 0 }}>
-          <Typography sx={titleStyles}>Navigate</Typography>
+          <Typography sx={titleStyles}>{t("footer.navigate")}</Typography>
           {headerList.slice(0, 5).map((item) => (
-            <ListItem sx={{ padding: 0 }} key={item.title}>
+            <ListItem sx={{ padding: 0 }} key={item.titleKey}>
               <Link component={RouterLink} to={item.url} sx={textStyles}>
-                {item.title}
+                {t(`${item.titleKey}`)}
               </Link>
             </ListItem>
           ))}

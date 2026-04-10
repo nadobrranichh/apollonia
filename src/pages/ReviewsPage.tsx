@@ -3,8 +3,10 @@ import { pageTitleStyle } from "../styles/typographyStyles";
 import ActiveReviewContextProvider from "../store/active-review-context";
 import ReviewsContent from "../components/reviews/ReviewsContent";
 import { theme } from "../theme/themeConfig";
+import { useTranslation } from "react-i18next";
 
 export default function ReviewsPage() {
+  const { t } = useTranslation();
   const isLg = useMediaQuery(theme.breakpoints.up("lg"));
   return (
     <Box
@@ -20,7 +22,7 @@ export default function ReviewsPage() {
       }}
     >
       <Typography sx={{ ...pageTitleStyle, color: "black", margin: { lg: 0 } }}>
-        Reviews
+        {t("reviews.title")}
       </Typography>
 
       <Box

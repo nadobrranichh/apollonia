@@ -1,8 +1,9 @@
 import { Box, Typography } from "@mui/material";
 import { Fragment } from "react";
 
-const splitByLines = function (text: string[]) {
-  return text.map((line, index) => (
+const splitByLines = function (text: string) {
+  const arr = text.split(" ");
+  return arr.map((line, index) => (
     <Fragment key={index}>
       {line}
       <br />
@@ -15,7 +16,7 @@ export default function ServicePriceContainer({
   comment,
 }: {
   price: number;
-  comment?: string[];
+  comment?: string;
 }) {
   return (
     <Box sx={{ display: "flex" }}>

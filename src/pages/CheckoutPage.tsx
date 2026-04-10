@@ -3,6 +3,7 @@ import { ONTARIO_HST } from "../constants/variables-constants";
 import { useCartStore } from "../store/cart-store";
 import CheckoutItem from "../components/shop/CheckoutItem";
 import DeliveryForm from "../components/shop/DeliveryForm";
+import { t } from "i18next";
 
 export default function CheckoutPage() {
   const { cart } = useCartStore();
@@ -34,13 +35,17 @@ export default function CheckoutPage() {
         }}
       >
         <Typography sx={{ fontWeight: 600, fontSize: "1.5rem" }}>
-          Order Summary:
+          {t("checkout.summary")}:
         </Typography>
         {cart.map((item) => (
           <CheckoutItem key={item.id} item={item} />
         ))}
-        <Typography>Subtotal: ${subTotal}</Typography>
-        <Typography>HST: ${hst}</Typography>
+        <Typography>
+          {t("checkout.subtotal")}: ${subTotal}
+        </Typography>
+        <Typography>
+          {t("checkout.hst")}: ${hst}
+        </Typography>
       </Box>
     </Box>
   );

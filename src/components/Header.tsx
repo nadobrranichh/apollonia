@@ -12,14 +12,16 @@ import ApolloniaLogo from "../assets/logo.png";
 import { headerList } from "../lists/headerList";
 import { useLocation } from "react-router-dom";
 import ImageBox from "./ImageBox";
-import { theme } from "../theme/themeConfig";
 import HamburgerMenuIcon from "../assets/hamburger-menu-svgrepo-com.svg";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
+import LanguageToggle from "./LanguageToggle";
 
 export default function Header() {
+  const { t } = useTranslation();
   const location = useLocation();
   const [drawerIsOpen, setDrawerIsOpen] = useState<boolean>(false);
-  const isMd = useMediaQuery(theme.breakpoints.up("md"));
+  const isMd = useMediaQuery("(min-width: 1000px)");
 
   const listItemStyles = (url: string) => ({
     fontSize: "1.2rem",
@@ -30,15 +32,19 @@ export default function Header() {
     borderBottom: location.pathname === `/${url}` ? "1px solid white" : "none",
   });
 
+  function toggleDrawer() {
+    setDrawerIsOpen((prev) => !prev);
+  }
+
   return (
     <Box
       component="header"
       sx={{
         display: "flex",
-        justifyContent: { xs: "space-between", md: "center" },
-        paddingX: { xs: "1rem", md: 0 },
+        justifyContent: isMd ? "center" : "space-between",
+        paddingX: isMd ? 0 : "1rem",
         alignItems: "center",
-        height: { xs: "7.5rem", md: "10rem" },
+        height: isMd ? "10rem" : "7.5rem",
         bgcolor: "secondary.main",
       }}
     >
@@ -51,31 +57,34 @@ export default function Header() {
       {isMd ? (
         <List sx={{ display: "flex", gap: "0.6vw" }}>
           {headerList.map((item) => (
-            <ListItem key={item.title}>
+            <ListItem key={item.titleKey}>
               <Link
                 component={RouterLink}
                 to={item.url}
                 sx={{ textDecoration: "none" }}
               >
                 <Typography sx={listItemStyles(item.url)}>
-                  {item.title}
+                  {t(`${item.titleKey}`)}
                 </Typography>
               </Link>
             </ListItem>
           ))}
+          <ListItem key="language-toggle">
+            <LanguageToggle />
+          </ListItem>
         </List>
       ) : (
         <>
           <ImageBox
             src={HamburgerMenuIcon}
             height={"3rem"}
-            onClick={() => setDrawerIsOpen(true)}
+            onClick={toggleDrawer}
           />
           <SwipeableDrawer
             anchor="right"
             open={drawerIsOpen}
-            onClose={() => setDrawerIsOpen(false)}
-            onOpen={() => setDrawerIsOpen(true)}
+            onClose={toggleDrawer}
+            onOpen={toggleDrawer}
             transitionDuration={{ enter: 200, exit: 200 }}
             slotProps={{
               backdrop: { sx: { background: "transparent" } },
@@ -92,14 +101,17 @@ export default function Header() {
               }}
             >
               {headerList.map((item) => (
-                <ListItem key={item.title}>
+                <ListItem key={item.titleKey} onClick={toggleDrawer}>
                   <Link component={RouterLink} to={item.url}>
                     <Typography sx={listItemStyles(item.url)}>
-                      {item.title}
+                      {t(`${item.titleKey}`)}
                     </Typography>
                   </Link>
                 </ListItem>
               ))}
+              <ListItem key="language-toggle">
+                <LanguageToggle />
+              </ListItem>
             </List>
           </SwipeableDrawer>
         </>
