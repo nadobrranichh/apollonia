@@ -1,11 +1,12 @@
 import { Box, Typography } from "@mui/material";
 import { pageTitleStyle } from "../styles/typographyStyles";
 import { useQuery } from "@tanstack/react-query";
-import { fetchProducts } from "../http/http";
+import { configureConversionRate, fetchProducts } from "../http/http";
 import ShopItem from "../components/shop/ShopItem";
 import LoadingBlock from "../components/LoadingBlock";
 import ErrorBlock from "../components/ErrorBlock";
 import { useTranslation } from "react-i18next";
+import { useEffect } from "react";
 
 export default function ShopPage() {
   const { t } = useTranslation();
@@ -18,12 +19,24 @@ export default function ShopPage() {
     queryFn: fetchProducts,
     queryKey: ["products"],
   });
+
+  const { data: conversionRate } = useQuery({
+    queryFn: configureConversionRate,
+    queryKey: ["conversionRate"],
+    staleTime: Infinity, // remains fresh
+    gcTime: Infinity, // doesn't get garbage collected
+  });
+
+  useEffect(() => {
+    console.log(conversionRate);
+  }, [conversionRate]);
+
   return (
     <Box component="main" sx={{ padding: "4rem 0" }}>
       <Typography sx={{ ...pageTitleStyle, textAlign: "center" }}>
         {t("shop.title")}
       </Typography>
-      {products && (
+      {products && conversionRate && (
         <Box
           sx={{
             justifySelf: "center",
@@ -38,7 +51,7 @@ export default function ShopPage() {
           }}
         >
           {products.map((item, i) => (
-            <ShopItem key={i} item={item} />
+            <ShopItem key={i} item={item} conversionRate={conversionRate} />
           ))}
         </Box>
       )}
