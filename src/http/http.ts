@@ -41,3 +41,25 @@ export async function fetchSessionStatus(sessionId: string) {
   });
   return data.status;
 }
+
+// if the user is not in Canada, sends the CAD-USD conversion rate back.
+// if they are (or if the apiip hits its api calls limit),
+// returns 1 so the prices will be shown in CAD
+export async function configureConversionRate() {
+  try {
+    const { data: countryData } = await axiosAPI.get(
+      `https://apiip.net/api/check?accessKey=${import.meta.env.VITE_APIIP_ACCESS_KEY}`,
+    );
+    if (countryData.countryCode !== "CA") {
+      const {
+        data: { rate },
+      } = await axiosAPI.get<{ rate: number }>(
+        "https://api.frankfurter.dev/v2/rate/CAD/USD",
+      );
+      return { rate, currency: "USD" };
+    }
+    return { rate: 1, currency: "CAD" };
+  } catch {
+    return { rate: 1, currency: "CAD" };
+  }
+}
