@@ -6,6 +6,8 @@ import CrossIcon from "../../assets/cross-light-svgrepo-com.svg";
 import QuantityControls from "./QuantityControls";
 import { theme } from "../../theme/themeConfig";
 import { useTranslation } from "react-i18next";
+import { useQuery } from "@tanstack/react-query";
+import { configureConversionRate } from "../../http/http";
 
 export default function CartItemContainer({
   item,
@@ -20,6 +22,16 @@ export default function CartItemContainer({
   const [ShowImageSkeleton, setShowImageSkeleton] = useState<boolean>(true);
 
   const isMd = useMediaQuery(theme.breakpoints.up("md"));
+
+  const { data: conversionRate } = useQuery({
+    queryFn: configureConversionRate,
+    queryKey: ["conversionRate"],
+    staleTime: Infinity, // remains fresh
+    gcTime: Infinity, // doesn't get garbage collected
+    placeholderData: { rate: 1, currency: "CAD" },
+  });
+  const { rate, currency } = conversionRate!;
+
   return (
     <Box sx={{ border: "1px solid white", display: { md: "flex" } }}>
       <Box sx={{ display: "flex", gap: { xs: "0.5rem", md: "1rem" } }}>
@@ -58,7 +70,8 @@ export default function CartItemContainer({
               mt: "0.5rem",
             }}
           >
-            {t("cart.pricePerItem")}: ${Math.ceil(item.price_in_cents / 100)}
+            {t("cart.pricePerItem")}: $
+            {Math.round((item.price_in_cents / 100) * rate)} {currency}
           </Typography>
         </Box>
       </Box>
@@ -90,7 +103,7 @@ export default function CartItemContainer({
                 fontSize: "1.2rem",
               }}
             >
-              ${item.quantity * Math.ceil(item.price_in_cents / 100)}
+              ${item.quantity * Math.round((item.price_in_cents / 100) * rate)}
             </Typography>
             <IconButton sx={{ padding: 0 }} onClick={() => removeItem(item.id)}>
               <ImageBox
@@ -128,7 +141,7 @@ export default function CartItemContainer({
                 fontSize: "1.2rem",
               }}
             >
-              ${item.quantity * Math.ceil(item.price_in_cents / 100)}
+              ${item.quantity * Math.round((item.price_in_cents / 100) * rate)}
             </Typography>
             <IconButton sx={{ padding: 0 }} onClick={() => removeItem(item.id)}>
               <ImageBox

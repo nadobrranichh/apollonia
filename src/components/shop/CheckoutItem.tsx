@@ -3,10 +3,21 @@ import { useCartStore, type CartItem } from "../../store/cart-store";
 import QuantityControls from "./QuantityControls";
 import ImageBox from "../ImageBox";
 import { useTranslation } from "react-i18next";
+import { useQuery } from "@tanstack/react-query";
+import { configureConversionRate } from "../../http/http";
 
 export default function CheckoutItem({ item }: { item: CartItem }) {
   const { t } = useTranslation();
   const { updateQuantity, removeItem } = useCartStore();
+
+  const { data: conversionRate } = useQuery({
+    queryFn: configureConversionRate,
+    queryKey: ["conversionRate"],
+    staleTime: Infinity, // remains fresh
+    gcTime: Infinity, // doesn't get garbage collected
+    placeholderData: { rate: 1, currency: "CAD" },
+  });
+  const { rate, currency } = conversionRate!;
 
   return (
     <Box
@@ -50,7 +61,7 @@ export default function CheckoutItem({ item }: { item: CartItem }) {
         }}
       >
         <Typography sx={{ fontWeight: 500 }}>
-          ${item.quantity * Math.ceil(item.price_in_cents / 100)}
+          ${item.quantity * Math.round((item.price_in_cents / 100) * rate)}
         </Typography>
         {(item.quantity > 1 || item.max_quantity > 1) && (
           <>
@@ -60,7 +71,8 @@ export default function CheckoutItem({ item }: { item: CartItem }) {
                 fontSize: { xs: "0.65rem", sm: "0.8rem" },
               }}
             >
-              ${Math.ceil(item.price_in_cents / 100)} {t("checkout.perItem")}
+              ${Math.round((item.price_in_cents / 100) * rate)} {currency}{" "}
+              {t("checkout.perItem")}
             </Typography>
             <QuantityControls
               quantity={item.quantity}
