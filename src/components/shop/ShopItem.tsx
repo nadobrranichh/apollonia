@@ -4,7 +4,14 @@ import { Box, Link, Skeleton, Typography } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
 import ImageBox from "../ImageBox";
 
-export default function ShopItem({ item }: { item: ProductType }) {
+export default function ShopItem({
+  item,
+  conversionRate,
+}: {
+  item: ProductType;
+  conversionRate: { rate: number; currency: string };
+}) {
+  const { rate, currency } = conversionRate;
   const [hoverVisibility, setHoverVisibility] = useState<boolean>(false);
   const [showSkeleton, setShowSkeleton] = useState<boolean>(true);
 
@@ -115,7 +122,7 @@ export default function ShopItem({ item }: { item: ProductType }) {
               lineHeight: "1.5rem",
             }}
           >
-            ${item.price_in_cents / 100}
+            ${Math.round((item.price_in_cents / 100) * rate)} {currency}
           </Typography>
         </Box>
       </Box>

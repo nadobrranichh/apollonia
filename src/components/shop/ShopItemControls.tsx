@@ -3,6 +3,8 @@ import { useCartStore } from "../../store/cart-store";
 import { useState } from "react";
 import type { ProductType } from "../../types";
 import { useTranslation } from "react-i18next";
+import { useQuery } from "@tanstack/react-query";
+import { configureConversionRate } from "../../http/http";
 
 export default function ShopItemControls({ item }: { item: ProductType }) {
   const { t } = useTranslation();
@@ -11,6 +13,15 @@ export default function ShopItemControls({ item }: { item: ProductType }) {
     ? true
     : false;
   const [quantity, setQuantity] = useState<number>(1);
+
+  const { data: conversionRate } = useQuery({
+    queryFn: configureConversionRate,
+    queryKey: ["conversionRate"],
+    staleTime: Infinity, // remains fresh
+    gcTime: Infinity, // doesn't get garbage collected
+    placeholderData: { rate: 1, currency: "CAD" },
+  });
+  const { rate, currency } = conversionRate!;
 
   return (
     <Box
@@ -50,11 +61,13 @@ export default function ShopItemControls({ item }: { item: ProductType }) {
           textAlign: "center",
         }}
       >
-        Price: ${Math.ceil(item.price_in_cents / 100) * quantity}
+        {/* ${Math.round((item.price_in_cents / 100) * rate)} {currency} */}
+        Price: ${Math.round((item.price_in_cents / 100) * rate) * quantity}{" "}
+        {currency}
         <br />
         {item.max_quantity > 1 &&
           quantity > 1 &&
-          `($${Math.ceil(item.price_in_cents / 100)} per item)`}
+          `($${Math.round((item.price_in_cents / 100) * rate)} ${currency} per item)`}
       </Typography>
       <Box
         sx={{
