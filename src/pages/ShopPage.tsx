@@ -50,9 +50,15 @@ export default function ShopPage() {
             gap: { xs: "2rem", md: "4rem" },
           }}
         >
-          {products.map((item, i) => (
-            <ShopItem key={i} item={item} conversionRate={conversionRate} />
-          ))}
+          {products
+            .toSorted((a, b) => a.id - b.id)
+            .map((item) => (
+              <ShopItem
+                key={item.id}
+                item={item}
+                conversionRate={conversionRate}
+              />
+            ))}
         </Box>
       )}
       {isLoading && <LoadingBlock i18nKey="products" height="50vh" light />}
