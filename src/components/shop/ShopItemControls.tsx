@@ -83,7 +83,12 @@ export default function ShopItemControls({ item }: { item: ProductType }) {
             ),
             li: ({ node, ...props }) => (
               <ListItem
-                sx={{ width: "100%", justifyContent: "center", p: 0 }}
+                sx={{
+                  width: "100%",
+                  justifyContent: "center",
+                  textAlign: "center",
+                  p: 0,
+                }}
                 {...props}
               />
             ),
