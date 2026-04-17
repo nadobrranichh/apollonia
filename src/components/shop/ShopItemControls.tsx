@@ -1,10 +1,18 @@
-import { Box, Typography, TextField, Button } from "@mui/material";
+import {
+  Box,
+  Typography,
+  TextField,
+  Button,
+  List,
+  ListItem,
+} from "@mui/material";
 import { useCartStore } from "../../store/cart-store";
 import { useState } from "react";
 import type { ProductType } from "../../types";
 import { useTranslation } from "react-i18next";
 import { useQuery } from "@tanstack/react-query";
 import { configureConversionRate } from "../../http/http";
+import ReactMarkdown from "react-markdown";
 
 export default function ShopItemControls({ item }: { item: ProductType }) {
   const { t } = useTranslation();
@@ -43,16 +51,47 @@ export default function ShopItemControls({ item }: { item: ProductType }) {
       >
         {item.title}
       </Typography>
-      <Typography
+      <Box
         sx={{
-          fontWeight: 400,
-          fontSize: "1rem",
-          width: "75%",
+          width: "85%",
           textAlign: "center",
         }}
       >
-        {item.description}
-      </Typography>
+        <ReactMarkdown
+          components={{
+            h2: ({ node, ...props }) => (
+              <Typography
+                component="h2"
+                sx={{ fontWeight: 700, fontSize: "1.6rem" }}
+                {...props}
+              />
+            ),
+            h3: ({ node, ...props }) => (
+              <Typography
+                component="h3"
+                sx={{ mt: "0.75rem", fontWeight: 700, fontSize: "1.3rem" }}
+                {...props}
+              />
+            ),
+            ul: ({ node, ...props }) => (
+              <List
+                sx={{
+                  listStyle: "none",
+                }}
+                {...props}
+              />
+            ),
+            li: ({ node, ...props }) => (
+              <ListItem
+                sx={{ width: "100%", justifyContent: "center", p: 0 }}
+                {...props}
+              />
+            ),
+          }}
+        >
+          {item.description}
+        </ReactMarkdown>
+      </Box>
       <Typography
         sx={{
           fontWeight: 600,
