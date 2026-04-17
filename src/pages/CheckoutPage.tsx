@@ -3,11 +3,12 @@ import { ONTARIO_HST } from "../constants/variables-constants";
 import { useCartStore } from "../store/cart-store";
 import CheckoutItem from "../components/shop/CheckoutItem";
 import DeliveryForm from "../components/shop/DeliveryForm";
-import { t } from "i18next";
 import { useQuery } from "@tanstack/react-query";
 import { configureConversionRate } from "../http/http";
+import { useTranslation } from "react-i18next";
 
 export default function CheckoutPage() {
+  const { t } = useTranslation();
   const { cart } = useCartStore();
 
   const { data: conversionRate } = useQuery({
