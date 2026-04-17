@@ -4,12 +4,25 @@ import { useCartStore } from "../store/cart-store";
 import CheckoutItem from "../components/shop/CheckoutItem";
 import DeliveryForm from "../components/shop/DeliveryForm";
 import { t } from "i18next";
+import { useQuery } from "@tanstack/react-query";
+import { configureConversionRate } from "../http/http";
 
 export default function CheckoutPage() {
   const { cart } = useCartStore();
 
-  const subTotal = Math.round(
-    cart.reduce((acc, el) => acc + el.quantity * el.price_in_cents, 0) / 100,
+  const { data: conversionRate } = useQuery({
+    queryFn: configureConversionRate,
+    queryKey: ["conversionRate"],
+    staleTime: Infinity, // remains fresh
+    gcTime: Infinity, // doesn't get garbage collected
+    placeholderData: { rate: 1, currency: "CAD" },
+  });
+  const { rate, currency } = conversionRate!;
+
+  const subTotal = cart.reduce(
+    (acc, el) =>
+      acc + el.quantity * Math.round((el.price_in_cents / 100) * rate),
+    0,
   );
   const hst = Math.ceil(subTotal * ONTARIO_HST * 100) / 100;
 
@@ -41,10 +54,10 @@ export default function CheckoutPage() {
           <CheckoutItem key={item.id} item={item} />
         ))}
         <Typography>
-          {t("checkout.subtotal")}: ${subTotal}
+          {t("checkout.subtotal")}: ${subTotal} {currency}
         </Typography>
         <Typography>
-          {t("checkout.hst")}: ${hst}
+          {t("checkout.hst")}: ${hst} {currency}
         </Typography>
       </Box>
     </Box>
