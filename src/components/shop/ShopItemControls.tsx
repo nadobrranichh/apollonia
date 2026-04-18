@@ -62,14 +62,19 @@ export default function ShopItemControls({ item }: { item: ProductType }) {
             h2: ({ node, ...props }) => (
               <Typography
                 component="h2"
-                sx={{ fontWeight: 700, fontSize: "1.6rem" }}
+                sx={{ fontWeight: 700, fontSize: "1.6rem", textAlign: "start" }}
                 {...props}
               />
             ),
             h3: ({ node, ...props }) => (
               <Typography
                 component="h3"
-                sx={{ mt: "0.75rem", fontWeight: 700, fontSize: "1.3rem" }}
+                sx={{
+                  mt: "0.75rem",
+                  fontWeight: 700,
+                  fontSize: "1.3rem",
+                  textAlign: "start",
+                }}
                 {...props}
               />
             ),
@@ -85,12 +90,15 @@ export default function ShopItemControls({ item }: { item: ProductType }) {
               <ListItem
                 sx={{
                   width: "100%",
-                  justifyContent: "center",
-                  textAlign: "center",
+                  justifyContent: "start",
+                  textAlign: "start",
                   p: 0,
                 }}
                 {...props}
               />
+            ),
+            p: ({ node, ...props }) => (
+              <Typography sx={{ textAlign: "start" }} {...props} />
             ),
           }}
         >
