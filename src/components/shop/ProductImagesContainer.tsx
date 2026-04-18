@@ -14,17 +14,27 @@ export default function ProductImagesContainer({
   const [containerHeight, setContainerHeight] = useState<number>(0);
 
   const hasMultiple = imageUrls.length > 1;
-  const prevImage = () =>
-    setCurrentImage((i) => (i === 0 ? imageUrls.length - 1 : i - 1));
+  const prevImage = () => {
+    setCurrentImage((i) => {
+      const newIndex = i === 0 ? imageUrls.length - 1 : i - 1;
+      setContainerHeight(imageHeights.current[newIndex]);
+      return newIndex;
+    });
+  };
+
   const nextImage = () =>
-    setCurrentImage((i) => (i === imageUrls.length - 1 ? 0 : i + 1));
+    setCurrentImage((i) => {
+      const newIndex = i === imageUrls.length - 1 ? 0 : i + 1;
+      setContainerHeight(imageHeights.current[newIndex]);
+      return newIndex;
+    });
 
   return (
     <Box
       sx={{
         display: "flex",
         justifyContent: hasMultiple ? "space-between" : "center",
-        alignItems: "center",
+        alignItems: "start",
       }}
     >
       {hasMultiple && (
@@ -32,6 +42,7 @@ export default function ProductImagesContainer({
           variant="light"
           direction="left"
           onClickCallback={prevImage}
+          sx={{ mt: `${containerHeight / 2 - 20}px` }}
         />
       )}
       <Box
@@ -71,6 +82,7 @@ export default function ProductImagesContainer({
           variant="light"
           direction="right"
           onClickCallback={nextImage}
+          sx={{ mt: `${containerHeight / 2 - 20}px` }}
         />
       )}
     </Box>
