@@ -10,11 +10,14 @@ import ErrorText from "../ErrorText";
 import AddressFields from "./AddressFields";
 import { countriesStates } from "../../constants/variables-constants";
 import { useTranslation } from "react-i18next";
+import { useEllipsis } from "../../hooks/useEllipsis";
 
 export default function DeliveryForm() {
   const { t } = useTranslation();
+  const ellipsis = useEllipsis();
   const { cart } = useCartStore();
-
+  const shipping = useAddressState();
+  const billing = useAddressState();
   const [billingSameAsShipping, setBillingSameAsShipping] = useState(false);
   const {
     register,
@@ -29,11 +32,7 @@ export default function DeliveryForm() {
       billing: { country: "Canada", state: countriesStates["Canada"][0] },
     },
   });
-
-  const shipping = useAddressState();
-  const billing = useAddressState();
-
-  const { mutate } = useMutation({
+  const { mutate, isPending, error } = useMutation({
     mutationFn: submitCheckoutForm,
     onSuccess: (data) => {
       window.location.href = data;
@@ -120,9 +119,17 @@ export default function DeliveryForm() {
           type="submit"
           sx={{ width: "100%", mt: "1rem" }}
         >
-          {t("checkout.submitAndCheckout")}
+          {isPending
+            ? t("checkout.submitting") + ellipsis
+            : t("checkout.submitAndCheckout")}
         </Button>
       </form>
+      {error && (
+        <Box sx={{ color: "#ffafaf" }}>
+          <Typography>An error occured!</Typography>
+          <Typography>{error.message}</Typography>
+        </Box>
+      )}
     </Box>
   );
 }
