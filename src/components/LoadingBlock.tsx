@@ -2,8 +2,8 @@ import { Box, Typography } from "@mui/material";
 import LoadingSpinnerIcon from "../assets/spinner-svgrepo-com.svg";
 import LoadingSpinnerIconLight from "../assets/spinner-light-svgrepo-com.svg";
 import ImageBox from "./ImageBox";
-import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useEllipsis } from "../hooks/useEllipsis";
 
 export default function LoadingBlock({
   i18nKey,
@@ -15,16 +15,7 @@ export default function LoadingBlock({
   light?: boolean;
 }) {
   const { t } = useTranslation();
-  const [ellipsis, setEllipsis] = useState<string>(".");
-
-  useEffect(() => {
-    const interval = setInterval(
-      () => setEllipsis((prev) => (prev.length === 3 ? "" : prev + ".")),
-      500,
-    );
-
-    return () => clearInterval(interval);
-  }, []);
+  const ellipsis = useEllipsis();
 
   return (
     <Box
