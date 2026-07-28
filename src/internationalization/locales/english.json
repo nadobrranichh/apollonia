@@ -26,14 +26,6 @@
       "title": "Painless Teeth Whitening Treatment",
       "description": "LED whitening with red light therapy (anti inflammatory), gum protection and anti-sensitivity dental grade materials (fluoride and hydroxyapatite). 2 applications 15 min each will get you 8-10 shades whiter. Recommended for yellowish-white teeth to achieve white results and for white teeth to achieve extremely white results. 70 min procedure."
     },
-    "apolloniaWhiteningTreatment": {
-      "title": "Apollonia Whitening Treatment",
-      "description": "2 visits, 70 minutes each. 2-14 days apart. Recommended for yellow teeth to achieve white results, for yellowish-white teeth to achieve extremely white results and for super sensitive teeth to avoid discomfort. Each visit includes LED whitening with red light therapy (anti-inflammatory), gum protection and anti-sensitivity dental grade materials (fluoride and hydroxyapatite). 2 visits will get you 18-20 shades whiter."
-    },
-    "goldenGlowWhiteningTreatment": {
-      "title": "Golden Glow Whitening Treatment",
-      "description": "New luxury pampering service which includes application of 24K gold and nano-hydroxyapatite infused gel to teeth. Reduces risks of sensitivity dramatically and cures gums with real gold. Includes Painless Teeth Whitening Treatment."
-    },
     "teethWhiteningMaintenanceSession": {
       "title": "Teeth Whitening 3-6 Months Maintenance Session",
       "description": "Quick maintenance session recommended 3-6 months after initial whitening (35-40mins)."
@@ -56,11 +48,6 @@
         "description": "(permanent)"
       },
       "description": "No drilling. Applied with dental bond and orthodontic composite resin. Can be polished off any time as needed."
-    },
-    "grillz": {
-      "title": "Grillz",
-      "description": "Decorative removeable covers, worn over the teeth, made of titanium and can appear as gold or silver.",
-      "priceComment": "per tooth"
     },
     "customTeethWhiteningTrays": {
       "title": "Custom Teeth Whitening Trays",

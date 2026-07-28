@@ -30,11 +30,11 @@ export default function ServicesPage() {
           gap: "1rem",
         }}
       >
-        {servicesList.map((s, i) => {
+        {servicesList.map((s) => {
           return (
             <Fragment key={s.id}>
               <Service item={s} />
-              {i === 5 && <GemService />}
+              {s.id === 3 && <GemService />}
             </Fragment>
           );
         })}
