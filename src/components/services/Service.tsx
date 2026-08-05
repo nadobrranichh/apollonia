@@ -2,7 +2,6 @@ import { Box, Typography, Button, useMediaQuery } from "@mui/material";
 import type { ServiceItem } from "../../types/listsTypes";
 import ServicePriceContainer from "./ServicePriceContainer";
 import { serviceStyles, serviceTitleStyles } from "../../styles/servicesStyles";
-import { theme } from "../../theme/themeConfig";
 import { useTranslation } from "react-i18next";
 
 export default function Service({ item }: { item: ServiceItem }) {
@@ -10,7 +9,7 @@ export default function Service({ item }: { item: ServiceItem }) {
   const { i18nKey, price, image, imageStyles } = item;
   const priceCommentExists = i18n.exists(`${i18nKey}.priceComment`);
 
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isMobile = useMediaQuery("(max-width: 600px)");
   const message = `Hello! I'd like to book an appointment for ${t(`${i18nKey}.title`)}`;
   return (
     <Box sx={{ ...serviceStyles, position: image ? "relative" : "static" }}>

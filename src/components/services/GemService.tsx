@@ -9,12 +9,11 @@ import ToothGemsImg from "../../assets/tooth-gems.png";
 import GoldenToothGemsImg from "../../assets/golden-tooth-gems.png";
 import ServicePriceContainer from "./ServicePriceContainer";
 import ImageBox from "../ImageBox";
-import { theme } from "../../theme/themeConfig";
 import { useTranslation } from "react-i18next";
 
 export default function GemService() {
   const { t } = useTranslation();
-  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+  const isMobile = useMediaQuery("(max-width: 1000px)");
   return (
     <Box sx={{ ...serviceStyles, paddingTop: "0.75rem" }}>
       <Box sx={gemServiceDescriptionContainerStyles}>

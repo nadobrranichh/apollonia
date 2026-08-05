@@ -4,7 +4,6 @@ import type { CartItem } from "../../store/cart-store";
 import { useState } from "react";
 import CrossIcon from "../../assets/cross-light-svgrepo-com.svg";
 import QuantityControls from "./QuantityControls";
-import { theme } from "../../theme/themeConfig";
 import { useTranslation } from "react-i18next";
 import { useQuery } from "@tanstack/react-query";
 import { configureConversionRate } from "../../http/http";
@@ -21,7 +20,7 @@ export default function CartItemContainer({
   const { t } = useTranslation();
   const [ShowImageSkeleton, setShowImageSkeleton] = useState<boolean>(true);
 
-  const isMd = useMediaQuery(theme.breakpoints.up("md"));
+  const isMd = useMediaQuery("(min-width: 1000px)");
 
   const { data: conversionRate } = useQuery({
     queryFn: configureConversionRate,

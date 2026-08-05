@@ -2,12 +2,11 @@ import { Box, Typography, useMediaQuery } from "@mui/material";
 import { pageTitleStyle } from "../styles/typographyStyles";
 import ActiveReviewContextProvider from "../store/active-review-context";
 import ReviewsContent from "../components/reviews/ReviewsContent";
-import { theme } from "../theme/themeConfig";
 import { useTranslation } from "react-i18next";
 
 export default function ReviewsPage() {
   const { t } = useTranslation();
-  const isLg = useMediaQuery(theme.breakpoints.up("lg"));
+  const isLg = useMediaQuery("(min-width: 1200px)");
   return (
     <Box
       component="main"
