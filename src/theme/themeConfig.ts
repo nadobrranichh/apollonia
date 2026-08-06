@@ -1,5 +1,6 @@
 import { createTheme } from "@mui/material";
 import type { PaletteOptions } from "@mui/material/styles";
+import { type Theme } from "@mui/material/styles";
 
 const componentsOverrides = {
   MuiButton: {
@@ -54,7 +55,7 @@ const componentsOverrides = {
   },
   MuiMenu: {
     styleOverrides: {
-      paper: ({ theme }) => ({
+      paper: ({ theme }: { theme: Theme }) => ({
         p: 0,
         "&::-webkit-scrollbar": {
           width: "0.75rem",
@@ -72,7 +73,7 @@ const componentsOverrides = {
   },
   MuiMenuItem: {
     styleOverrides: {
-      root: ({ theme }) => ({
+      root: ({ theme }: { theme: Theme }) => ({
         backgroundColor: theme.palette.secondary.main,
         "&.Mui-selected": {
           backgroundColor: theme.palette.secondary.main,
