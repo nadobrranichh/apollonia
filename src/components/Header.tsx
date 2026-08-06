@@ -6,16 +6,18 @@ import {
   ListItem,
   useMediaQuery,
   SwipeableDrawer,
+  IconButton,
 } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
-import ApolloniaLogo from "../assets/logo.png";
+import ApolloniaLogo from "../assets/logo-dark.png";
 import { headerList } from "../lists/headerList";
 import { useLocation } from "react-router-dom";
 import ImageBox from "./ImageBox";
-import HamburgerMenuIcon from "../assets/hamburger-menu-svgrepo-com.svg";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import LanguageToggle from "./LanguageToggle";
+import { alpha } from "@mui/material/styles";
+import MenuIcon from "@mui/icons-material/Menu";
 
 export default function Header() {
   const { t } = useTranslation();
@@ -24,10 +26,7 @@ export default function Header() {
   const isMd = useMediaQuery("(min-width: 1000px)");
 
   const listItemStyles = (url: string) => ({
-    fontSize: "1.2rem",
     paddingX: "0.2rem",
-    lineHeight: "1.5rem",
-    color: "secondary.contrastText",
     textTransform: "uppercase",
     borderBottom: location.pathname === `/${url}` ? "1px solid white" : "none",
   });
@@ -42,10 +41,15 @@ export default function Header() {
       sx={{
         display: "flex",
         justifyContent: isMd ? "center" : "space-between",
-        paddingX: isMd ? 0 : "1rem",
         alignItems: "center",
+        paddingX: isMd ? 0 : "1rem",
+        borderBottom: (theme) => `1px solid ${theme.palette.grey[300]}`,
+        background: (theme) => alpha(theme.palette.background.default, 0.85),
+        backdropFilter: "blur(3px)",
+        position: "sticky",
+        top: 0,
+        zIndex: 1000,
         height: isMd ? "10rem" : "7.5rem",
-        bgcolor: "secondary.main",
       }}
     >
       <ImageBox
@@ -75,11 +79,15 @@ export default function Header() {
         </List>
       ) : (
         <>
-          <ImageBox
-            src={HamburgerMenuIcon}
-            height={"3rem"}
-            onClick={toggleDrawer}
-          />
+          <IconButton onClick={toggleDrawer}>
+            <MenuIcon
+              sx={{
+                fontSize: "3rem",
+                color: (theme) => theme.palette.primary.main,
+              }}
+            />
+          </IconButton>
+
           <SwipeableDrawer
             anchor="right"
             open={drawerIsOpen}
