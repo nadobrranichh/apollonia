@@ -7,6 +7,8 @@ const componentsOverrides = {
       root: {
         borderRadius: "1rem",
         padding: "0.5rem 1.5rem",
+        fontSize: "1.1rem",
+        fontFamily: "Poppins, Arial",
       },
     },
   },
@@ -96,12 +98,21 @@ const typographyOverrides = {
   fontFamily: "Playfair Display, Poppins, Arial",
   h3: {
     fontSize: "2.8rem",
+    fontStyle: "italic",
+    fontWeight: "bold",
+  },
+  h4: {
+    fontSize: "1.8rem",
+    fontStyle: "italic",
+    fontWeight: "bold",
   },
   body1: {
-    fontSize: "1.4rem",
+    fontSize: "1.3rem",
+    fontStyle: "italic",
   },
   body2: {
-    fontSize: "1rem",
+    fontSize: "1.1rem",
+    fontStyle: "normal",
   },
 };
 
