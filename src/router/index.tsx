@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import RootLayout from "../components/RootLayout.tsx";
 import HomePage from "../pages/HomePage.tsx";
-import LocationPage from "../pages/LocationPage.tsx";
+import VisitPage from "../pages/VisitPage.tsx";
 import ServicesPage from "../pages/ServicesPage.tsx";
 import ReviewsPage from "../pages/ReviewsPage.tsx";
 import ShopPage from "../pages/ShopPage.tsx";
@@ -21,8 +21,8 @@ export const router = createBrowserRouter([
         element: <HomePage />,
       },
       {
-        path: "/location",
-        element: <LocationPage />,
+        path: "/visit",
+        element: <VisitPage />,
       },
       {
         path: "/services",

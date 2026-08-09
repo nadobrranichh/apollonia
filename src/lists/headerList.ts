@@ -7,7 +7,7 @@ export const headerList: HeaderListItem[] = [
   },
   {
     titleKey: "pages.location",
-    url: "location",
+    url: "visit",
   },
   {
     titleKey: "pages.services",
