@@ -28,7 +28,6 @@ export default function FounderQuoteSection() {
           width: "90%",
           rotate: "-1deg",
           padding: "2rem",
-          border: (theme) => `1px solid ${theme.palette.grey[300]}`,
           borderRadius: "1.5rem",
           bgcolor: "background.default",
           boxShadow: (theme) => `0px 0px 2rem ${theme.palette.grey[500]}`,

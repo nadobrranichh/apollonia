@@ -26,7 +26,8 @@ export default function TreatmentCard({
       <Box
         sx={{
           height: "15rem",
-          backgroundColor: "secondary.light",
+          background: (theme) =>
+            `linear-gradient(90deg, ${theme.palette.secondary.main}, ${theme.palette.secondary.dark})`,
           margin: "-1.5rem -1.5rem 1.5rem",
           display: "flex",
           flexDirection: "column",
@@ -38,6 +39,7 @@ export default function TreatmentCard({
           (Array.isArray(imageSrc) ? (
             imageSrc.map((img) => (
               <ImageBox
+                key={img}
                 src={img}
                 height="3rem"
                 sx={{
@@ -58,37 +60,27 @@ export default function TreatmentCard({
           ))}
       </Box>
       <Box sx={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-        <Typography variant="h4">{title}</Typography>
+        <Typography variant="h5">{title}</Typography>
         <Typography variant="body2" sx={{ fontStyle: "italic" }}>
           {description}
         </Typography>
         <hr />
         <Box sx={{ display: "flex", justifyContent: "space-between" }}>
           {time ? (
-            <Box sx={{ display: "flex", gap: "0.5rem" }}>
-              <Typography sx={{ fontFamily: "Poppins, Arial" }}>
-                ${price}
-              </Typography>
-              <Typography
-                sx={{
-                  color: (theme) => theme.palette.grey[500],
-                  transform: "translateY(-3px)",
-                }}
-              >
-                -
-              </Typography>
-              <Typography
+            <Typography variant="body2" sx={{ fontFamily: "Poppins, Arial" }}>
+              ${price}{" "}
+              <Box
+                component="span"
                 sx={{
                   textTransform: "uppercase",
                   color: (theme) => theme.palette.grey[500],
-                  fontFamily: "Poppins, Arial",
                 }}
               >
-                {time}.
-              </Typography>
-            </Box>
+                &bull; {time}.
+              </Box>
+            </Typography>
           ) : (
-            <Typography sx={{ fontFamily: "Poppins, Arial" }}>
+            <Typography variant="body2" sx={{ fontFamily: "Poppins, Arial" }}>
               ${price}
             </Typography>
           )}
@@ -100,9 +92,7 @@ export default function TreatmentCard({
             to="/"
             sx={{
               textDecoration: "none",
-              padding: "0.2rem",
               textTransform: "uppercase",
-              transform: "translateY(-3px)",
             }}
           >
             Explore

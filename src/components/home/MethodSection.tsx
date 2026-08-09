@@ -4,7 +4,7 @@ import { methodStepsList } from "../../lists/methodStepsList";
 export default function MethodSection() {
   return (
     <Box component="section" sx={{ padding: "4rem 1.5rem" }}>
-      <Typography variant="h3" sx={{ marginBottom: "0.75rem" }}>
+      <Typography variant="h3">
         Whitening without the{" "}
         <Box component="span" sx={{ color: "secondary.main" }}>
           flinch
@@ -32,6 +32,7 @@ export default function MethodSection() {
       >
         {methodStepsList.map((step) => (
           <Box
+            key={step.id}
             sx={{
               display: "flex",
               justifyContent: "space-between",
@@ -41,6 +42,7 @@ export default function MethodSection() {
           >
             <Box>
               <Typography
+                variant="body2"
                 sx={{
                   color: "secondary.main",
                   display: "inline",
@@ -50,7 +52,7 @@ export default function MethodSection() {
               >
                 {step.id}.
               </Typography>
-              <Typography sx={{ color: "text.primary", display: "inline" }}>
+              <Typography variant="body2" sx={{ display: "inline" }}>
                 {step.content}
               </Typography>
             </Box>

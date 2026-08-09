@@ -15,15 +15,11 @@ export default function MetricsSection() {
       }}
     >
       {metricsList.map((m) => (
-        <Box sx={{ padding: "2rem", backgroundColor: "background.default" }}>
-          <Typography
-            variant="h3"
-            sx={{
-              fontWeight: "bold",
-              marginBottom: "0.5rem",
-              fontStyle: "normal",
-            }}
-          >
+        <Box
+          key={m.title}
+          sx={{ padding: "2rem", backgroundColor: "background.default" }}
+        >
+          <Typography variant="h3" sx={{ fontStyle: "normal" }}>
             {m.title}
           </Typography>
           <Typography variant="body2" sx={{ fontFamily: "Poppins, Arial" }}>

@@ -10,7 +10,11 @@ const componentsOverrides = {
         padding: "0.5rem 1.5rem",
         fontSize: "1.1rem",
         fontFamily: "Poppins, Arial",
+        fontStyle: "normal",
       },
+      contained: ({ theme }: { theme: Theme }) => ({
+        background: `linear-gradient(90deg, ${theme.palette.secondary.main}, ${theme.palette.secondary.dark})`,
+      }),
     },
   },
   MuiInputLabel: {
@@ -101,9 +105,15 @@ const typographyOverrides = {
     fontSize: "2.8rem",
     fontStyle: "italic",
     fontWeight: "bold",
+    marginBottom: "1rem",
   },
   h4: {
-    fontSize: "1.8rem",
+    fontSize: "2.4rem",
+    fontWeight: "bold",
+    fontStyle: "italic",
+  },
+  h5: {
+    fontSize: "1.65rem",
     fontStyle: "italic",
     fontWeight: "bold",
   },
@@ -145,8 +155,8 @@ const lightPalette: PaletteOptions = {
   },
   secondary: secondaryPalette,
   background: {
-    default: "#f8f3ff",
-    paper: "#ffffff",
+    default: "#f3ebfd",
+    paper: "#f8f3ff",
   },
   text: {
     primary: "#2d0c42",

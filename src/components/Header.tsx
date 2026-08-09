@@ -49,7 +49,7 @@ export default function Header() {
         position: "sticky",
         top: 0,
         zIndex: 1000,
-        height: isMd ? "10rem" : "7.5rem",
+        height: isMd ? "10rem" : "6rem",
       }}
     >
       <ImageBox
@@ -82,7 +82,7 @@ export default function Header() {
           <IconButton onClick={toggleDrawer}>
             <MenuIcon
               sx={{
-                fontSize: "3rem",
+                fontSize: "2.5rem",
                 color: (theme) => theme.palette.primary.main,
               }}
             />
