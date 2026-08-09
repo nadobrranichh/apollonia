@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, ScrollRestoration } from "react-router-dom";
 import Header from "./Header";
 import Footer from "./Footer";
 import { Box } from "@mui/material";
@@ -9,6 +9,7 @@ export default function RootLayout() {
       <Header />
       <Outlet />
       <Footer />
+      <ScrollRestoration />
     </Box>
   );
 }
