@@ -27,7 +27,8 @@ export default function HeroSection() {
       <Typography
         variant="h3"
         sx={{
-          marginBottom: "1.5rem",
+          position: "relative",
+          zIndex: 1,
         }}
       >
         A house of the{" "}
