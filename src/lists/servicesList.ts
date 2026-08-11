@@ -23,7 +23,7 @@ export const servicesList: ServiceItem[] = [
     imageStyles: {
       position: "absolute",
       width: { xs: "3.8rem", md: "4.5rem" },
-      marginLeft: { xs: "63%", sm: "70%" },
+      marginLeft: "10rem",
     },
   },
   {
@@ -43,8 +43,8 @@ export const servicesList: ServiceItem[] = [
     image: WhiteningTrayImg,
     imageStyles: {
       position: "absolute",
-      width: { xs: "2.8rem", md: "3.5rem" },
-      marginLeft: "95.5%",
+      width: { xs: "2.5rem", md: "3.5rem" },
+      margin: "1.5rem 0 0 17.1rem",
     },
   },
   {
@@ -55,7 +55,7 @@ export const servicesList: ServiceItem[] = [
     imageStyles: {
       position: "absolute",
       width: { xs: "4.2rem", md: "5rem" },
-      marginLeft: "63%",
+      margin: "-0.75rem 0 0 10rem",
     },
   },
 ];

@@ -1,8 +1,12 @@
-import { Box, Typography, Button, useMediaQuery } from "@mui/material";
+import { Box, Typography, Button, useMediaQuery, Card } from "@mui/material";
 import type { ServiceItem } from "../../types/listsTypes";
-import ServicePriceContainer from "./ServicePriceContainer";
-import { serviceStyles, serviceTitleStyles } from "../../styles/servicesStyles";
 import { useTranslation } from "react-i18next";
+import ImageBox from "../ImageBox";
+import {
+  descriptionStyles,
+  captionStyles,
+  servicePriceStyles,
+} from "../../styles/typographyStyles";
 
 export default function Service({ item }: { item: ServiceItem }) {
   const { t, i18n } = useTranslation();
@@ -12,54 +16,36 @@ export default function Service({ item }: { item: ServiceItem }) {
   const isMobile = useMediaQuery("(max-width: 600px)");
   const message = `Hello! I'd like to book an appointment for ${t(`${i18nKey}.title`)}`;
   return (
-    <Box sx={{ ...serviceStyles, position: image ? "relative" : "static" }}>
+    <Card>
       <Box
         sx={{
           display: "flex",
           justifyContent: "space-between",
-          alignItems: "center",
-          minHeight: "3rem",
-          height: { md: "4.5rem" },
-          width: "100%",
+          marginBottom: "0.5rem",
         }}
       >
-        <Typography
-          sx={{
-            ...serviceTitleStyles,
-            marginLeft: { xs: "0.7rem", md: "1.25rem" },
-            width: { xs: "63%", md: "70%" },
-            maxWidth: "400px",
-          }}
-        >
+        <Typography sx={{ fontWeight: "bold" }}>
           {t(`${i18nKey}.title`)}
         </Typography>
-
-        <ServicePriceContainer
-          price={price}
-          comment={
-            priceCommentExists ? t(`${i18nKey}.priceComment`) : undefined
-          }
-        />
-
-        {image && (
-          <Box component="img" src={image} sx={imageStyles || null}></Box>
-        )}
+        <Box sx={{ flexShrink: 0, marginLeft: "0.5rem" }}>
+          <Typography sx={servicePriceStyles}>${price}</Typography>
+          {priceCommentExists && (
+            <Typography sx={captionStyles}>
+              {t(`${i18nKey}.priceComment`)}
+            </Typography>
+          )}
+        </Box>
+        {image && <ImageBox src={image} sx={imageStyles} />}
       </Box>
       <Typography
-        sx={{
-          textAlign: "center",
-          mx: "0.7rem",
-          fontSize: { xs: "0.8rem", md: "0.9rem" },
-        }}
+        variant="body2"
+        sx={{ ...descriptionStyles, marginBottom: "0.5rem" }}
       >
         {t(`${i18nKey}.description`)}
       </Typography>
       <Button
         variant="contained"
-        sx={{
-          my: "1rem",
-          textTransform: "uppercase",
-        }}
+        sx={{ width: "100%" }}
         href={
           isMobile
             ? `sms:+16475141552?body=${encodeURIComponent(message)}`
@@ -68,6 +54,6 @@ export default function Service({ item }: { item: ServiceItem }) {
       >
         {t("services.bookService")}
       </Button>
-    </Box>
+    </Card>
   );
 }
