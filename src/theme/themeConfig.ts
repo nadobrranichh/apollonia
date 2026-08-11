@@ -1,19 +1,43 @@
 import { createTheme } from "@mui/material";
-import type { PaletteOptions } from "@mui/material/styles";
+import type { Components, PaletteOptions } from "@mui/material/styles";
 import { type Theme } from "@mui/material/styles";
 
-const componentsOverrides = {
-  MuiButton: {
+const componentsOverrides: Components<Theme> = {
+  MuiCard: {
+    styleOverrides: {
+      root: ({ theme }) => ({
+        borderRadius: "1.5rem",
+        padding: "1.2rem",
+        boxShadow: `0px 0px 0.5rem ${theme.palette.grey[500]}`,
+        cursor: "pointer",
+      }),
+    },
+  },
+  MuiIconButton: {
     styleOverrides: {
       root: {
+        padding: 0,
+      },
+    },
+  },
+  MuiButton: {
+    styleOverrides: {
+      root: ({ theme }) => ({
         borderRadius: "1rem",
         padding: "0.5rem 1.5rem",
         fontSize: "1.1rem",
         fontFamily: "Poppins, Arial",
         fontStyle: "normal",
-      },
-      contained: ({ theme }: { theme: Theme }) => ({
+        textTransform: "none",
+        cursor: "pointer",
+        color:
+          theme.palette.mode === "light"
+            ? theme.palette.secondary.dark
+            : theme.palette.secondary.light,
+      }),
+      contained: ({ theme }) => ({
         background: `linear-gradient(90deg, ${theme.palette.secondary.main}, ${theme.palette.secondary.dark})`,
+        color: theme.palette.secondary.contrastText,
       }),
     },
   },
@@ -24,6 +48,7 @@ const componentsOverrides = {
       },
     },
   },
+
   MuiOutlinedInput: {
     styleOverrides: {
       root: {
@@ -59,7 +84,7 @@ const componentsOverrides = {
   },
   MuiMenu: {
     styleOverrides: {
-      paper: ({ theme }: { theme: Theme }) => ({
+      paper: ({ theme }) => ({
         p: 0,
         "&::-webkit-scrollbar": {
           width: "0.75rem",
@@ -77,7 +102,7 @@ const componentsOverrides = {
   },
   MuiMenuItem: {
     styleOverrides: {
-      root: ({ theme }: { theme: Theme }) => ({
+      root: ({ theme }) => ({
         backgroundColor: theme.palette.secondary.main,
         "&.Mui-selected": {
           backgroundColor: theme.palette.secondary.main,
@@ -127,6 +152,7 @@ const typographyOverrides = {
   },
 };
 
+// PURPLE
 const greyColors = {
   50: "#faf9fc",
   100: "#f3f1f7",

@@ -19,7 +19,7 @@ export default function FounderQuoteSection() {
         sx={{
           borderRadius: "2rem",
           width: "90%",
-          boxShadow: (theme) => `0px 0px 2rem ${theme.palette.grey[500]}`,
+          boxShadow: (theme) => `0px 0px 1rem ${theme.palette.grey[500]}`,
         }}
       />
       <Card
@@ -28,9 +28,6 @@ export default function FounderQuoteSection() {
           width: "90%",
           rotate: "-1deg",
           padding: "2rem",
-          borderRadius: "1.5rem",
-          bgcolor: "background.default",
-          boxShadow: (theme) => `0px 0px 2rem ${theme.palette.grey[500]}`,
           overflow: "visible",
         }}
       >

@@ -1,6 +1,7 @@
-import { Box, Card, Link, Typography } from "@mui/material";
+import { Box, Card, Divider, Link, Typography } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
 import ImageBox from "./ImageBox";
+import { descriptionStyles } from "../styles/typographyStyles";
 
 export default function TreatmentCard({
   imageSrc,
@@ -16,13 +17,7 @@ export default function TreatmentCard({
   time?: string;
 }) {
   return (
-    <Card
-      sx={{
-        borderRadius: "1.5rem",
-        padding: "1.5rem",
-        boxShadow: (theme) => `0px 0px 0.5rem ${theme.palette.grey[500]}`,
-      }}
-    >
+    <Card>
       <Box
         sx={{
           height: "15rem",
@@ -61,10 +56,8 @@ export default function TreatmentCard({
       </Box>
       <Box sx={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
         <Typography variant="h5">{title}</Typography>
-        <Typography variant="body2" sx={{ fontStyle: "italic" }}>
-          {description}
-        </Typography>
-        <hr />
+        <Typography sx={descriptionStyles}>{description}</Typography>
+        <Divider />
         <Box sx={{ display: "flex", justifyContent: "space-between" }}>
           {time ? (
             <Typography variant="body2" sx={{ fontFamily: "Poppins, Arial" }}>
