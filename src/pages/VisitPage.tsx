@@ -1,4 +1,4 @@
-import { Box, Typography, Link } from "@mui/material";
+import { Box, Typography, Link, Divider } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
 
 const directions = [
@@ -62,7 +62,7 @@ export default function LocationPage() {
           className="map-embed"
         ></iframe>
       </Box>
-      <hr />
+      <Divider />
       <Box id="directions" sx={{ scrollMarginTop: "8.5rem" }}>
         <Typography
           variant="body2"
@@ -84,7 +84,7 @@ export default function LocationPage() {
           Open in Google Maps
         </Link>
       </Box>
-      <hr />
+      <Divider />
       <Box>
         <Typography
           variant="body2"
@@ -115,7 +115,7 @@ export default function LocationPage() {
           ))}
         </Box>
       </Box>
-      <hr />
+      <Divider />
       <Box>
         <Typography
           variant="body2"

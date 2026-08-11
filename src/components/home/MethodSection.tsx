@@ -7,9 +7,8 @@ export default function MethodSection() {
       <Typography variant="h3">
         Whitening without the{" "}
         <Box component="span" sx={{ color: "secondary.main" }}>
-          flinch
+          flinch.
         </Box>
-        .
       </Typography>
       <Typography>
         Most whitening relies on high-strength peroxide. Ours pairs red-light

@@ -3,7 +3,7 @@ import { fetchReviews } from "../../http/http";
 import { Box, IconButton, Typography } from "@mui/material";
 import { type ReviewType } from "../../types";
 import StarIcon from "@mui/icons-material/Star";
-import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
+import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { useState } from "react";
 
@@ -35,16 +35,14 @@ export default function ReviewsSection() {
 
   return (
     <Box component="section" sx={{ paddingX: "1.5rem" }}>
-      <Typography variant="h3" sx={{ marginBottom: "2rem" }}>
-        What our customers say
-      </Typography>
+      <Typography variant="h3">What our customers say</Typography>
       {reviews && (
         <Box sx={{ display: "flex", justifyContent: "space-between" }}>
           <IconButton
             sx={{ alignSelf: "center", position: "relative", zIndex: 1 }}
             onClick={() => handleChangeActiveReview(-1)}
           >
-            <ArrowBackIosIcon />
+            <ArrowBackIosNewIcon />
           </IconButton>
           <Box
             sx={{
