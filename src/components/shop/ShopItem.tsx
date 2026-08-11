@@ -1,8 +1,9 @@
 import { useState } from "react";
 import type { ProductType } from "../../types";
-import { Box, Link, Skeleton, Typography } from "@mui/material";
+import { Box, Button, Card, Link, Skeleton, Typography } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
 import ImageBox from "../ImageBox";
+import { servicePriceStyles } from "../../styles/typographyStyles";
 
 export default function ShopItem({
   item,
@@ -12,7 +13,6 @@ export default function ShopItem({
   conversionRate: { rate: number; currency: string };
 }) {
   const { rate, currency } = conversionRate;
-  const [hoverVisibility, setHoverVisibility] = useState<boolean>(false);
   const [showSkeleton, setShowSkeleton] = useState<boolean>(true);
 
   return (
@@ -21,48 +21,11 @@ export default function ShopItem({
       to={`/shopitem/${item.id}`}
       sx={{ textDecoration: "none" }}
     >
-      <Box
-        onMouseEnter={() => setHoverVisibility(true)}
-        onMouseLeave={() => setHoverVisibility(false)}
-        sx={{
-          height: "100%",
-          border: "1px solid white",
-          cursor: "pointer",
-          position: "relative",
-        }}
-      >
+      <Card>
         <Box
           sx={{
-            width: "100%",
-            height: "100%",
-            position: "absolute",
-            bgcolor: "rgba(255,255,255,0.3)",
-            opacity: hoverVisibility ? 1 : 0,
-            transition: "opacity 0.2s",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            zIndex: 1000,
-          }}
-        >
-          <Typography
-            sx={{
-              textTransform: "uppercase",
-              fontSize: "1rem",
-              bgcolor: "secondary.dark",
-              padding: "0.5rem",
-              color: "text.primary",
-              fontWeight: 500,
-            }}
-          >
-            View more
-          </Typography>
-        </Box>
-
-        <Box
-          sx={{
-            position: "relative",
-            minWidth: "300px",
+            margin: "-1.2rem -1.2rem 1rem",
+            minWidth: "19rem",
             aspectRatio: "1 / 1",
           }}
         >
@@ -94,38 +57,25 @@ export default function ShopItem({
           />
         </Box>
 
-        <Box
-          sx={{
-            padding: "0.7rem",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-between",
-            height: "7.5rem",
-          }}
-        >
+        <Box sx={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
           <Typography
-            sx={{
-              textTransform: "uppercase",
-              fontSize: "1.2rem",
-              fontWeight: 550,
-              color: "text.primary",
-              lineHeight: "2rem",
-            }}
+            variant="body1"
+            sx={{ fontWeight: "bold", marginBottom: "0.5rem" }}
           >
             {item.title}
           </Typography>
           <Typography
             sx={{
-              fontSize: "1.2rem",
-              color: "text.primary",
-              fontFamily: "Times New Roman",
-              lineHeight: "1.5rem",
+              ...servicePriceStyles,
+              textAlign: "start",
+              marginBottom: "0.5rem",
             }}
           >
             ${Math.round((item.price_in_cents / 100) * rate)} {currency}
           </Typography>
+          <Button variant="contained">Learn more</Button>
         </Box>
-      </Box>
+      </Card>
     </Link>
   );
 }

@@ -1,5 +1,4 @@
 import { Box, Typography } from "@mui/material";
-import { pageTitleStyle } from "../styles/typographyStyles";
 import { useQuery } from "@tanstack/react-query";
 import { configureConversionRate, fetchProducts } from "../http/http";
 import ShopItem from "../components/shop/ShopItem";
@@ -32,10 +31,8 @@ export default function ShopPage() {
   }, [conversionRate]);
 
   return (
-    <Box component="main" sx={{ padding: "4rem 0" }}>
-      <Typography sx={{ ...pageTitleStyle, textAlign: "center" }}>
-        {t("shop.title")}
-      </Typography>
+    <Box component="main" sx={{ padding: "3rem 1.8rem" }}>
+      <Typography variant="h3">{t("shop.title")}</Typography>
       {products && conversionRate && (
         <Box
           sx={{
@@ -46,7 +43,6 @@ export default function ShopPage() {
               md: "1fr 1fr",
               xl: "1fr 1fr 1fr",
             },
-            width: { xs: "80%", sm: "60%", md: "80%" },
             gap: { xs: "2rem", md: "4rem" },
           }}
         >
