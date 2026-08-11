@@ -1,7 +1,8 @@
-import { Box } from "@mui/material";
-import SwipeButton from "./SwipeButton";
+import { Box, IconButton } from "@mui/material";
 import ImageBox from "../ImageBox";
 import { useRef, useState } from "react";
+import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
 export default function ProductImagesContainer({
   imageUrls,
@@ -34,16 +35,14 @@ export default function ProductImagesContainer({
       sx={{
         display: "flex",
         justifyContent: hasMultiple ? "space-between" : "center",
-        alignItems: "start",
+        alignItems: "center",
+        height: `${containerHeight}px`,
       }}
     >
       {hasMultiple && (
-        <SwipeButton
-          variant="light"
-          direction="left"
-          onClickCallback={prevImage}
-          sx={{ mt: `${containerHeight / 2 - 20}px` }}
-        />
+        <IconButton onClick={prevImage}>
+          <ArrowBackIosNewIcon />
+        </IconButton>
       )}
       <Box
         className="imagebox"
@@ -65,6 +64,7 @@ export default function ProductImagesContainer({
               position: "absolute",
               transform: `translateX(${100 * (i - currentImage)}%)`,
               transition: "transform 0.4s",
+              borderRadius: "1rem",
             }}
             onLoad={(e) => {
               const img = e.target as HTMLImageElement;
@@ -78,12 +78,9 @@ export default function ProductImagesContainer({
         ))}
       </Box>
       {hasMultiple && (
-        <SwipeButton
-          variant="light"
-          direction="right"
-          onClickCallback={nextImage}
-          sx={{ mt: `${containerHeight / 2 - 20}px` }}
-        />
+        <IconButton onClick={nextImage}>
+          <ArrowForwardIosIcon />
+        </IconButton>
       )}
     </Box>
   );

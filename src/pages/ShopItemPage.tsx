@@ -6,9 +6,9 @@ import { Link as RouterLink } from "react-router-dom";
 import ProductImagesContainer from "../components/shop/ProductImagesContainer";
 import { useEffect } from "react";
 import ShopItemControls from "../components/shop/ShopItemControls";
-import ArrowLeftIcon from "../assets/arrow-left.svg";
-import ImageBox from "../components/ImageBox";
+import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import { useTranslation } from "react-i18next";
+import MarkdownRenderer from "../components/MarkdownRenderer";
 
 export default function ShopItemPage() {
   const { t } = useTranslation();
@@ -27,51 +27,35 @@ export default function ShopItemPage() {
   }, [item]);
 
   return (
-    <Box
-      component="main"
-      sx={{
-        padding: "3.5rem 0",
-        display: "flex",
-        justifyContent: "center",
-      }}
-    >
-      <Box sx={{ width: "90%" }}>
-        <Link
-          component={RouterLink}
-          to="/shop"
+    <Box component="main" sx={{ padding: "3rem 1.8rem" }}>
+      <Link component={RouterLink} to="/shop" sx={{ textDecoration: "none" }}>
+        <ArrowBackIosIcon sx={{ fontSize: "1rem" }} />
+        {t("shopitem.backToShop")}
+      </Link>
+      {item && (
+        <Box
           sx={{
-            fontSize: "1.1rem",
-            fontWeight: 300,
-            textDecoration: "none",
-            display: "flex",
-            alignItems: "center",
-            gap: "0.3rem",
+            marginTop: "1.5rem",
+            display: { xs: "flex", lg: "grid" },
+            gridTemplateColumns: { lg: "1fr 1fr" },
+            flexDirection: "column",
           }}
         >
-          <ImageBox
-            src={ArrowLeftIcon}
-            alt="icon"
-            sx={{ width: "24px", height: "24px" }}
-          />
-          <Typography sx={{ display: "inline", color: "text.primary" }}>
-            {t("shopitem.backToShop")}
-          </Typography>
-        </Link>
-        {item && (
-          <Box
-            sx={{
-              marginTop: "3rem",
-              width: "100%",
-              display: { xs: "flex", lg: "grid" },
-              gridTemplateColumns: { xs: "none", lg: "repeat(2,1fr)" },
-              flexDirection: { xs: "column", lg: null },
-            }}
-          >
+          <Box sx={{ marginBottom: "1rem" }}>
             <ProductImagesContainer imageUrls={item.image_urls || []} />
+            <Typography
+              variant="h4"
+              sx={{ textAlign: "center", marginY: "1rem" }}
+            >
+              {item.title}
+            </Typography>
             <ShopItemControls item={item} />
           </Box>
-        )}
-      </Box>
+          <Box>
+            <MarkdownRenderer>{item.description}</MarkdownRenderer>
+          </Box>
+        </Box>
+      )}
     </Box>
   );
 }
