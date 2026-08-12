@@ -88,8 +88,8 @@
     "billingInfo": "Billing Address Information",
     "firstName": "First Name",
     "lastName": "Last Name",
-    "address1": "Address1",
-    "address2": "Address2",
+    "address1": "Address field 1",
+    "address2": "Address field 2 (optional)",
     "countries": {
       "canada": {
         "label": "Canada",

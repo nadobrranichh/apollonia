@@ -1,5 +1,11 @@
-import { Box, Typography, TextField, Button, Checkbox } from "@mui/material";
-import { useState } from "react";
+import {
+  Box,
+  Typography,
+  TextField,
+  Button,
+  Checkbox,
+  Card,
+} from "@mui/material";
 import { useForm } from "react-hook-form";
 import { useMutation } from "@tanstack/react-query";
 import { useCartStore } from "../../store/cart-store";
@@ -11,6 +17,7 @@ import AddressFields from "./AddressFields";
 import { countriesStates } from "../../constants/variables-constants";
 import { useTranslation } from "react-i18next";
 import { useEllipsis } from "../../hooks/useEllipsis";
+import { descriptionStyles } from "../../styles/typographyStyles";
 
 export default function DeliveryForm() {
   const { t } = useTranslation();
@@ -18,12 +25,13 @@ export default function DeliveryForm() {
   const { cart } = useCartStore();
   const shipping = useAddressState();
   const billing = useAddressState();
-  const [billingSameAsShipping, setBillingSameAsShipping] = useState(false);
+
   const {
     register,
     handleSubmit,
     formState: { errors },
     control,
+    watch,
   } = useForm<FormValues>({
     defaultValues: {
       email: "",
@@ -32,6 +40,7 @@ export default function DeliveryForm() {
       billing: { country: "Canada", state: countriesStates["Canada"][0] },
     },
   });
+  const billingSameAsShipping = watch("billingSameAsShipping");
   const { mutate, isPending, error } = useMutation({
     mutationFn: submitCheckoutForm,
     onSuccess: (data) => {
@@ -40,19 +49,13 @@ export default function DeliveryForm() {
   });
 
   return (
-    <Box
-      sx={{
-        border: "1px solid white",
-        width: { xs: "95%", sm: "80%", lg: "45%" },
-        padding: "1.5rem",
-      }}
-    >
-      <Typography>{t("checkout.title")}</Typography>
+    <Card>
+      <Typography variant="h5">{t("checkout.title")}</Typography>
       <form
         onSubmit={handleSubmit((formData) => mutate({ formData, cart }))}
         noValidate
         style={{
-          padding: "1rem 0",
+          paddingTop: "1rem",
           display: "flex",
           flexDirection: "column",
           gap: "0.7rem",
@@ -84,18 +87,10 @@ export default function DeliveryForm() {
         />
 
         <Box sx={{ display: "flex", alignItems: "center" }}>
-          <Checkbox
-            sx={{
-              color: "#fff",
-              "&.Mui-checked": {
-                color: "#fff",
-              },
-            }}
-            {...register("billingSameAsShipping", {
-              onChange: (e) => setBillingSameAsShipping(e.target.checked),
-            })}
-          />
-          <Typography>{t("checkout.billingSameAsShipping")}</Typography>
+          <Checkbox {...register("billingSameAsShipping")} />
+          <Typography sx={descriptionStyles}>
+            {t("checkout.billingSameAsShipping")}
+          </Typography>
         </Box>
 
         {!billingSameAsShipping && (
@@ -112,24 +107,17 @@ export default function DeliveryForm() {
           />
         )}
 
-        <Button
-          disableRipple
-          disableElevation
-          variant="contained"
-          type="submit"
-          sx={{ width: "100%", mt: "1rem" }}
-        >
+        <Button variant="contained" type="submit">
           {isPending
             ? t("checkout.submitting") + ellipsis
             : t("checkout.submitAndCheckout")}
         </Button>
       </form>
       {error && (
-        <Box sx={{ color: "#ffafaf" }}>
-          <Typography>An error occured!</Typography>
-          <Typography>{error.message}</Typography>
+        <Box>
+          <ErrorText>An error occured! {error.message}</ErrorText>
         </Box>
       )}
-    </Box>
+    </Card>
   );
 }

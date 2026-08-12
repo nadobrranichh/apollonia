@@ -41,31 +41,27 @@ const componentsOverrides: Components<Theme> = {
       }),
     },
   },
-  MuiInputLabel: {
-    styleOverrides: {
-      root: {
-        color: "#fff",
-      },
-    },
-  },
-
   MuiOutlinedInput: {
     styleOverrides: {
-      root: {
-        color: "#fff",
+      root: ({ theme }) => ({
+        borderRadius: "1rem",
+        fontSize: "1rem",
+        fontFamily: "Poppins, Arial",
         "& .MuiOutlinedInput-notchedOutline": {
-          borderColor: "#fff",
+          borderColor: theme.palette.grey[300],
         },
-        "&:hover .MuiOutlinedInput-notchedOutline": {
-          borderColor: "#fff",
-        },
+
         "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-          borderColor: "#fff",
+          borderColor: theme.palette.grey[400],
+          boxShadow: `0 0 0.3rem ${theme.palette.grey[500]}`,
         },
-      },
-      input: {
-        color: "#fff",
-      },
+      }),
+      input: ({ theme }) => ({
+        color:
+          theme.palette.mode === "light"
+            ? theme.palette.grey[900]
+            : theme.palette.grey[100],
+      }),
     },
   },
   MuiSelect: {
@@ -122,6 +118,18 @@ const componentsOverrides: Components<Theme> = {
       }),
     },
   },
+  MuiCheckbox: {
+    styleOverrides: {
+      root: ({ theme }) => ({
+        padding: 0,
+        fontSize: "9rem",
+        color: theme.palette.secondary.main,
+        "&.Mui-checked": {
+          color: theme.palette.secondary.main,
+        },
+      }),
+    },
+  },
 };
 
 const typographyOverrides = {
@@ -173,6 +181,13 @@ const secondaryPalette = {
   contrastText: "#ede9fe",
 };
 
+const errorPalette = {
+  main: "#dc2626",
+  light: "#f87171",
+  dark: "#991b1b",
+  contrastText: "#fef2f2",
+};
+
 const lightPalette: PaletteOptions = {
   mode: "light",
   primary: {
@@ -180,6 +195,7 @@ const lightPalette: PaletteOptions = {
     contrastText: "#ede9fe",
   },
   secondary: secondaryPalette,
+  error: errorPalette,
   background: {
     default: "#f3ebfd",
     paper: "#f8f3ff",
@@ -198,6 +214,7 @@ const darkPalette: PaletteOptions = {
     contrastText: "#2d0c42",
   },
   secondary: secondaryPalette,
+  error: errorPalette,
   background: {
     default: "#12061d",
     paper: "#1d1028",

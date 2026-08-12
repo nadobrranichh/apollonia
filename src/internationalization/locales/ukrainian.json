@@ -88,8 +88,8 @@
     "billingInfo": "Платіжна адреса",
     "firstName": "Ім'я",
     "lastName": "Прізвище",
-    "address1": "Адреса (1)",
-    "address2": "Адреса (2)",
+    "address1": "Поле адреси 1",
+    "address2": "Поле адреси 2 (необов'язкове)",
     "countries": {
       "canada": {
         "label": "Канада",

@@ -34,7 +34,7 @@ export default function AddressFields({
 
   return (
     <>
-      <Typography sx={{ textTransform: "uppercase" }}>
+      <Typography sx={{ fontWeight: "bold" }}>
         {t(`checkout.${value}Info`)}
       </Typography>
       <Box
@@ -47,7 +47,6 @@ export default function AddressFields({
               `${value}.firstName`,
               required("First name is required"),
             )}
-            sx={{ width: "100%" }}
           />
           {errors?.[value]?.firstName && (
             <ErrorText>{errors[value].firstName.message}</ErrorText>
@@ -61,7 +60,6 @@ export default function AddressFields({
               `${value}.lastName`,
               required("Last name is required"),
             )}
-            sx={{ width: "100%" }}
           />
           {errors?.[value]?.lastName && (
             <ErrorText>{errors[value].lastName.message}</ErrorText>
@@ -163,13 +161,19 @@ export default function AddressFields({
           )}
         </Box>
       </Box>
-      <TextField
-        placeholder={t("checkout.phoneNumber")}
-        {...register(
-          `${value}.phoneNumber`,
-          required("Phone number is required"),
+      <Box>
+        <TextField
+          placeholder={t("checkout.phoneNumber")}
+          {...register(
+            `${value}.phoneNumber`,
+            required("Phone number is required"),
+          )}
+          sx={{ width: "100%" }}
+        />
+        {errors?.[value]?.phoneNumber && (
+          <ErrorText>{errors[value].phoneNumber.message}</ErrorText>
         )}
-      />
+      </Box>
     </>
   );
 }

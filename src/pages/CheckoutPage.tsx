@@ -1,11 +1,12 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Card, Stack, Typography } from "@mui/material";
 import { ONTARIO_HST } from "../constants/variables-constants";
 import { useCartStore } from "../store/cart-store";
-import CheckoutItem from "../components/shop/CheckoutItem";
 import DeliveryForm from "../components/shop/DeliveryForm";
 import { useQuery } from "@tanstack/react-query";
 import { configureConversionRate } from "../http/http";
 import { useTranslation } from "react-i18next";
+import { servicePriceStyles } from "../styles/typographyStyles";
+import CartItemContainer from "../components/shop/CartItemContainer";
 
 export default function CheckoutPage() {
   const { t } = useTranslation();
@@ -35,32 +36,32 @@ export default function CheckoutPage() {
         justifyContent: "center",
         alignItems: { xs: "center", lg: "start" },
         flexDirection: { xs: "column", lg: "row" },
-        padding: "2rem 0 5rem 0",
+        padding: "4rem 1rem",
         gap: "2rem",
       }}
     >
       <DeliveryForm />
-      <Box
+      <Card
         sx={{
-          width: { xs: "95%", sm: "70%", md: "60%", lg: "auto" },
-          border: "1px solid white",
+          // width: { xs: "95%", sm: "70%", md: "60%", lg: "auto" },
+          // border: "1px solid white",
           padding: "1rem",
           alignself: "start",
         }}
       >
-        <Typography sx={{ fontWeight: 600, fontSize: "1.5rem" }}>
-          {t("checkout.summary")}:
-        </Typography>
-        {cart.map((item) => (
-          <CheckoutItem key={item.id} item={item} />
-        ))}
-        <Typography>
+        <Typography variant="h5">{t("checkout.summary")}:</Typography>
+        <Stack spacing={2} sx={{ marginY: "1.5rem" }}>
+          {cart.map((item) => (
+            <CartItemContainer key={item.id} item={item} />
+          ))}
+        </Stack>
+        <Typography sx={servicePriceStyles}>
           {t("checkout.subtotal")}: ${subTotal} {currency}
         </Typography>
-        <Typography>
+        <Typography sx={servicePriceStyles}>
           {t("checkout.hst")}: ${hst} {currency}
         </Typography>
-      </Box>
+      </Card>
     </Box>
   );
 }
