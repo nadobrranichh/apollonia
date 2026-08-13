@@ -20,7 +20,7 @@ export default function MethodPage() {
   const smallHeadingVariant = useResponsiveHeadingVariant("small");
   return (
     <SectionBox component="main">
-      <Stack spacing={10} component="main" sx={{ padding: "3rem 1.8rem" }}>
+      <Stack spacing={10}>
         <Box
           component="section"
           sx={{
