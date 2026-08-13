@@ -2,6 +2,7 @@
   "pages": {
     "home": "Home",
     "location": "Location",
+    "method": "Method",
     "services": "Services",
     "reviews": "Reviews",
     "shop": "Shop",

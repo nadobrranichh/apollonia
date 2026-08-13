@@ -9,6 +9,7 @@ import ShopItemPage from "../pages/ShopItemPage.tsx";
 import CartPage from "../pages/CartPage.tsx";
 import CheckoutPage from "../pages/CheckoutPage.tsx";
 import PaymentResultPage from "../pages/PaymentResultPage.tsx";
+import MethodPage from "../pages/MethodPage.tsx";
 
 export const router = createBrowserRouter([
   {
@@ -37,6 +38,7 @@ export const router = createBrowserRouter([
       { path: "/cart", element: <CartPage /> },
       { path: "/checkout", element: <CheckoutPage /> },
       { path: "/payment-result", element: <PaymentResultPage /> },
+      { path: "/method", element: <MethodPage /> },
     ],
   },
 ]);

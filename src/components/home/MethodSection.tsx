@@ -1,5 +1,5 @@
 import { Box, Typography, Button } from "@mui/material";
-import { methodStepsList } from "../../lists/methodStepsList";
+import { methodStepsList } from "../../lists/methodLists.tsx";
 
 export default function MethodSection() {
   return (
@@ -52,7 +52,7 @@ export default function MethodSection() {
                 {step.id}.
               </Typography>
               <Typography variant="body2" sx={{ display: "inline" }}>
-                {step.content}
+                {step.title}
               </Typography>
             </Box>
 

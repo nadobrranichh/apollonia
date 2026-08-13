@@ -10,6 +10,10 @@ export const headerList: HeaderListItem[] = [
     url: "visit",
   },
   {
+    titleKey: "pages.method",
+    url: "method",
+  },
+  {
     titleKey: "pages.services",
     url: "services",
   },
