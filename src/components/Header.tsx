@@ -59,7 +59,7 @@ export default function Header() {
         position: "sticky",
         top: 0,
         zIndex: 1000,
-        height: isLg ? "10rem" : "6rem",
+        height: "6rem",
       }}
     >
       <ImageBox
