@@ -3,13 +3,15 @@ import { persist } from "zustand/middleware";
 
 export const useActiveThemeStore = create<{
   activeTheme: "light" | "dark";
-  setActiveTheme: (newTheme: "light" | "dark") => void;
+  toggleActiveTheme: () => void;
 }>()(
   persist(
     (set) => ({
       activeTheme: "light",
-      setActiveTheme: (newTheme: "light" | "dark") =>
-        set(() => ({ activeTheme: newTheme })),
+      toggleActiveTheme: () =>
+        set(({ activeTheme }) => ({
+          activeTheme: activeTheme === "light" ? "dark" : "light",
+        })),
     }),
     { name: "theme" },
   ),
