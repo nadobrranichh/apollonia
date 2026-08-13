@@ -1,29 +1,22 @@
-import { Box, Button, Card, Typography } from "@mui/material";
+import { Box, Button, Stack, Typography } from "@mui/material";
 import { Fragment } from "react/jsx-runtime";
 import { servicesList } from "../lists/servicesList";
 import Service from "../components/services/Service";
 import GemService from "../components/services/GemService";
 import { captionStyles, descriptionStyles } from "../styles/typographyStyles";
+import { SectionBox } from "../components/SectionBox";
+import { useResponsiveHeadingVariant } from "../hooks/useResponsiveHeadingVariant";
 export default function ServicesPage() {
+  const headingVariant = useResponsiveHeadingVariant();
+  const smallHeadingVariant = useResponsiveHeadingVariant("small");
+
   return (
-    <Box
-      component="main"
-      sx={{
-        padding: "3rem 1.8rem",
-      }}
-    >
-      <Typography variant="h3">What we offer</Typography>
+    <SectionBox component="main">
+      <Typography variant={headingVariant}>What we offer</Typography>
       <Typography sx={{ marginBottom: "2rem" }}>
         Whitening, cleaning, and small finishing touches - all at your pace.
       </Typography>
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          gap: "1.5rem",
-          marginBottom: "2rem",
-        }}
-      >
+      <Stack spacing={3} sx={{ marginBottom: "2rem", alignItems: "center" }}>
         {servicesList.map((s) => {
           return (
             <Fragment key={s.id}>
@@ -32,26 +25,29 @@ export default function ServicesPage() {
             </Fragment>
           );
         })}
-      </Box>
-      <Card
-        sx={{
-          textAlign: "center",
-          display: "flex",
-          flexDirection: "column",
-          gap: "1rem",
-        }}
-      >
+      </Stack>
+
+      <Stack spacing={2} sx={{ textAlign: "center", paddingY: "3rem" }}>
         <Typography sx={captionStyles}>Not sure yet?</Typography>
-        <Typography sx={{ fontWeight: "bold" }}>
+        <Typography variant={smallHeadingVariant}>
           Let's talk it through first.
         </Typography>
         <Typography sx={descriptionStyles}>
           No pressure - just send a message and we'll help you figure out the
           right treatment for you.
         </Typography>
-        <Button variant="contained">Text us a question</Button>
-        <Button variant="outlined">DM us on Instagram</Button>
-      </Card>
-    </Box>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: { xs: "column", sm: "row" },
+            justifyContent: "center",
+            gap: "1rem",
+          }}
+        >
+          <Button variant="contained">Text us a question</Button>
+          <Button variant="outlined">DM us on Instagram</Button>
+        </Box>
+      </Stack>
+    </SectionBox>
   );
 }

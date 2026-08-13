@@ -16,7 +16,7 @@ export default function Service({ item }: { item: ServiceItem }) {
   const isMobile = useMediaQuery("(max-width: 600px)");
   const message = `Hello! I'd like to book an appointment for ${t(`${i18nKey}.title`)}`;
   return (
-    <Card>
+    <Card sx={{ maxWidth: "30rem" }}>
       <Box
         sx={{
           display: "flex",

@@ -24,6 +24,7 @@ export default function GemService() {
         display: "flex",
         flexDirection: "column",
         gap: "0.5rem",
+        maxWidth: "30rem",
       }}
     >
       <Box
