@@ -39,6 +39,12 @@ const componentsOverrides: Components<Theme> = {
         background: `linear-gradient(90deg, ${theme.palette.secondary.main}, ${theme.palette.secondary.dark})`,
         color: theme.palette.secondary.contrastText,
       }),
+      outlined: ({ theme }) => ({
+        color:
+          theme.palette.mode === "light"
+            ? theme.palette.grey[700]
+            : theme.palette.grey[100],
+      }),
     },
   },
   MuiOutlinedInput: {
