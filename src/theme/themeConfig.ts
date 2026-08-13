@@ -138,23 +138,36 @@ const componentsOverrides: Components<Theme> = {
   },
 };
 
+const headingBase = {
+  fontWeight: "bold" as const,
+  fontStyle: "italic" as const,
+};
+
 const typographyOverrides = {
   fontFamily: "Playfair Display, Poppins, Arial",
-  h3: {
-    fontSize: "2.8rem",
-    fontStyle: "italic",
+  heading: {
     fontWeight: "bold",
+  },
+  h1: {
+    ...headingBase,
+    marginBottom: "1rem",
+  },
+  h2: {
+    ...headingBase,
+    marginBottom: "1rem",
+  },
+  h3: {
+    ...headingBase,
+    fontSize: "2.8rem",
     marginBottom: "1rem",
   },
   h4: {
+    ...headingBase,
     fontSize: "2.4rem",
-    fontWeight: "bold",
-    fontStyle: "italic",
   },
   h5: {
+    ...headingBase,
     fontSize: "1.65rem",
-    fontStyle: "italic",
-    fontWeight: "bold",
   },
   body1: {
     fontSize: "1.3rem",
