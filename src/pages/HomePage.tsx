@@ -25,7 +25,7 @@ export default function HomePage() {
       <MethodAndQuoteSection />
 
       {/* signature treatments section */}
-      <SectionBox>
+      <SectionBox sx={{ paddingTop: "5rem" }}>
         <Typography variant={headingVariant} sx={{ marginBottom: "0.5rem" }}>
           Our{" "}
           <Box component="span" sx={{ color: "secondary.main" }}>
@@ -77,7 +77,7 @@ export default function HomePage() {
       </SectionBox>
 
       {/* dental accesories section */}
-      <SectionBox id="accesories" sx={{ paddingY: "3rem" }}>
+      <SectionBox id="accesories" sx={{ paddingTop: "5rem" }}>
         <Typography variant={headingVariant} sx={{ marginBottom: "0.5rem" }}>
           Our dental{" "}
           <Box component="span" sx={{ color: "secondary.main" }}>
@@ -126,7 +126,7 @@ export default function HomePage() {
         sx={{
           display: "flex",
           justifyContent: "center",
-          paddingY: "5rem",
+          paddingY: "4rem",
         }}
       >
         <Card
