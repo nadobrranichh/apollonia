@@ -6,9 +6,12 @@ import { useTranslation } from "react-i18next";
 import { useQuery } from "@tanstack/react-query";
 import { configureConversionRate } from "../http/http";
 import { servicePriceStyles } from "../styles/typographyStyles";
+import { SectionBox } from "../components/SectionBox";
+import { useResponsiveHeadingVariant } from "../hooks/useResponsiveHeadingVariant";
 export default function CartPage() {
   const { t } = useTranslation();
   const { cart } = useCartStore();
+  const headingVariant = useResponsiveHeadingVariant();
 
   const { data: conversionRate } = useQuery({
     queryFn: configureConversionRate,
@@ -25,29 +28,29 @@ export default function CartPage() {
     0,
   );
   return (
-    <Box component="main" sx={{ padding: "3rem 1.8rem" }}>
-      <Typography variant="h3">{t("cart.title")}</Typography>
-      <Box>
+    <SectionBox component="main">
+      <Typography variant={headingVariant}>{t("cart.title")}</Typography>
+      <Box sx={{ paddingX: { xs: 0, lg: "10rem" } }}>
         {cart.length > 0 ? (
           <>
             <Box
               sx={{
                 display: "flex",
                 flexDirection: "column",
-                gap: "2rem",
+                gap: "1rem",
               }}
             >
               {cart.map((cartItem) => (
                 <CartItemContainer key={cartItem.id} item={cartItem} />
               ))}
-              <Box>
+              <Box sx={{ marginTop: "3rem", textAlign: "center" }}>
                 <Typography sx={{ ...servicePriceStyles, textAlign: "center" }}>
                   {t("cart.subtotal")}: ${subTotal} {currency}
                 </Typography>
                 <Button
                   component={RouterLink}
                   to="/checkout"
-                  sx={{ width: "100%" }}
+                  sx={{ paddingX: "5rem" }}
                   variant="contained"
                 >
                   {t("cart.checkout")}
@@ -66,6 +69,6 @@ export default function CartPage() {
           </Box>
         )}
       </Box>
-    </Box>
+    </SectionBox>
   );
 }

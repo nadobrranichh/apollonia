@@ -6,6 +6,8 @@ import LoadingBlock from "../components/LoadingBlock";
 import ErrorBlock from "../components/ErrorBlock";
 import { useTranslation } from "react-i18next";
 import { useEffect } from "react";
+import { SectionBox } from "../components/SectionBox";
+import { useResponsiveHeadingVariant } from "../hooks/useResponsiveHeadingVariant";
 
 export default function ShopPage() {
   const { t } = useTranslation();
@@ -26,13 +28,15 @@ export default function ShopPage() {
     gcTime: Infinity, // doesn't get garbage collected
   });
 
+  const headingVariant = useResponsiveHeadingVariant();
+
   useEffect(() => {
     console.log(conversionRate);
   }, [conversionRate]);
 
   return (
-    <Box component="main" sx={{ padding: "3rem 1.8rem" }}>
-      <Typography variant="h3">{t("shop.title")}</Typography>
+    <SectionBox component="main">
+      <Typography variant={headingVariant}>{t("shop.title")}</Typography>
       {products && conversionRate && (
         <Box
           sx={{
@@ -40,8 +44,7 @@ export default function ShopPage() {
             display: "grid",
             gridTemplateColumns: {
               xs: "1fr",
-              md: "1fr 1fr",
-              xl: "1fr 1fr 1fr",
+              md: "repeat(3,1fr)",
             },
             gap: { xs: "2rem", md: "4rem" },
           }}
@@ -59,6 +62,6 @@ export default function ShopPage() {
       )}
       {isLoading && <LoadingBlock i18nKey="products" height="50vh" light />}
       {isError && <ErrorBlock message={error.message} height="50vh" light />}
-    </Box>
+    </SectionBox>
   );
 }

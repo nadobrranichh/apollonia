@@ -1,4 +1,4 @@
-import { Box, Card, Stack, Typography } from "@mui/material";
+import { Card, Stack, Typography } from "@mui/material";
 import { ONTARIO_HST } from "../constants/variables-constants";
 import { useCartStore } from "../store/cart-store";
 import DeliveryForm from "../components/shop/DeliveryForm";
@@ -7,6 +7,7 @@ import { configureConversionRate } from "../http/http";
 import { useTranslation } from "react-i18next";
 import { servicePriceStyles } from "../styles/typographyStyles";
 import CartItemContainer from "../components/shop/CartItemContainer";
+import { SectionBox } from "../components/SectionBox";
 
 export default function CheckoutPage() {
   const { t } = useTranslation();
@@ -29,7 +30,7 @@ export default function CheckoutPage() {
   const hst = Math.ceil(subTotal * ONTARIO_HST * 100) / 100;
 
   return (
-    <Box
+    <SectionBox
       component="main"
       sx={{
         display: "flex",
@@ -43,8 +44,6 @@ export default function CheckoutPage() {
       <DeliveryForm />
       <Card
         sx={{
-          // width: { xs: "95%", sm: "70%", md: "60%", lg: "auto" },
-          // border: "1px solid white",
           padding: "1rem",
           alignself: "start",
         }}
@@ -62,6 +61,6 @@ export default function CheckoutPage() {
           {t("checkout.hst")}: ${hst} {currency}
         </Typography>
       </Card>
-    </Box>
+    </SectionBox>
   );
 }

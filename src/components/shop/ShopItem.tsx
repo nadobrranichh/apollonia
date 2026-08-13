@@ -19,14 +19,22 @@ export default function ShopItem({
     <Link
       component={RouterLink}
       to={`/shopitem/${item.id}`}
-      sx={{ textDecoration: "none" }}
+      sx={{ textDecoration: "none", height: "100%" }}
     >
-      <Card>
+      <Card
+        sx={{
+          height: "100%",
+          display: "flex",
+          flexDirection: "column",
+          gap: "0.5rem",
+        }}
+      >
         <Box
           sx={{
-            margin: "-1.2rem -1.2rem 1rem",
+            margin: "-1.2rem -1.2rem 0.5rem",
             minWidth: "19rem",
             aspectRatio: "1 / 1",
+            height: "22rem",
           }}
         >
           {showSkeleton && (
@@ -57,24 +65,20 @@ export default function ShopItem({
           />
         </Box>
 
-        <Box sx={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-          <Typography
-            variant="body1"
-            sx={{ fontWeight: "bold", marginBottom: "0.5rem" }}
-          >
-            {item.title}
-          </Typography>
-          <Typography
-            sx={{
-              ...servicePriceStyles,
-              textAlign: "start",
-              marginBottom: "0.5rem",
-            }}
-          >
-            ${Math.round((item.price_in_cents / 100) * rate)} {currency}
-          </Typography>
-          <Button variant="contained">Learn more</Button>
-        </Box>
+        <Typography sx={{ fontWeight: "bold", marginBottom: "0.5rem" }}>
+          {item.title}
+        </Typography>
+        <Typography
+          sx={{
+            ...servicePriceStyles,
+            textAlign: "start",
+            marginBottom: "0.5rem",
+            marginTop: "auto",
+          }}
+        >
+          ${Math.round((item.price_in_cents / 100) * rate)} {currency}
+        </Typography>
+        <Button variant="contained">Learn more</Button>
       </Card>
     </Link>
   );
