@@ -17,13 +17,21 @@ export default function TreatmentCard({
   time?: string;
 }) {
   return (
-    <Card>
+    <Card
+      sx={{
+        maxWidth: "30rem",
+        height: "100%",
+        display: "flex",
+        flexDirection: "column",
+        gap: "0.5rem",
+      }}
+    >
       <Box
         sx={{
           height: "15rem",
           background: (theme) =>
             `linear-gradient(90deg, ${theme.palette.secondary.main}, ${theme.palette.secondary.dark})`,
-          margin: "-1.5rem -1.5rem 1.5rem",
+          margin: "-1.5rem -1.5rem 0.5rem",
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
@@ -54,43 +62,41 @@ export default function TreatmentCard({
             />
           ))}
       </Box>
-      <Box sx={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-        <Typography variant="h5">{title}</Typography>
-        <Typography sx={descriptionStyles}>{description}</Typography>
-        <Divider />
-        <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-          {time ? (
-            <Typography variant="body2" sx={{ fontFamily: "Poppins, Arial" }}>
-              ${price}{" "}
-              <Box
-                component="span"
-                sx={{
-                  textTransform: "uppercase",
-                  color: (theme) => theme.palette.grey[500],
-                }}
-              >
-                &bull; {time}.
-              </Box>
-            </Typography>
-          ) : (
-            <Typography variant="body2" sx={{ fontFamily: "Poppins, Arial" }}>
-              ${price}
-            </Typography>
-          )}
+      <Typography variant="h5">{title}</Typography>
+      <Typography sx={descriptionStyles}>{description}</Typography>
+      <Divider sx={{ marginTop: "auto" }} />
+      <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+        {time ? (
+          <Typography variant="body2" sx={{ fontFamily: "Poppins, Arial" }}>
+            ${price}{" "}
+            <Box
+              component="span"
+              sx={{
+                textTransform: "uppercase",
+                color: (theme) => theme.palette.grey[500],
+              }}
+            >
+              &bull; {time}.
+            </Box>
+          </Typography>
+        ) : (
+          <Typography variant="body2" sx={{ fontFamily: "Poppins, Arial" }}>
+            ${price}
+          </Typography>
+        )}
 
-          <Link
-            variant="body2"
-            component={RouterLink}
-            // to={`/treatments#${title.toLowerCase().replaceAll(" ", "-")}`}
-            to="/"
-            sx={{
-              textDecoration: "none",
-              textTransform: "uppercase",
-            }}
-          >
-            Explore
-          </Link>
-        </Box>
+        <Link
+          variant="body2"
+          component={RouterLink}
+          // to={`/treatments#${title.toLowerCase().replaceAll(" ", "-")}`}
+          to="/"
+          sx={{
+            textDecoration: "none",
+            textTransform: "uppercase",
+          }}
+        >
+          Explore
+        </Link>
       </Box>
     </Card>
   );

@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Button, Card, Link, Typography } from "@mui/material";
 import HeroSection from "../components/home/HeroSection";
 import WhiteningImg from "../assets/regular-whitening-teeth.png";
 import TreatmentCard from "../components/TreatmentCard";
@@ -6,12 +6,14 @@ import SwarovskiCrystalsImg from "../assets/tooth-gems.png";
 import GoldenToothGemsImg from "../assets/golden-tooth-gems.png";
 import WhiteningTrayImg from "../assets/whitening-tray-cropped.png";
 import SportsguardImg from "../assets/sportsguard.png";
-import MethodSection from "../components/home/MethodSection";
-import FounderQuoteSection from "../components/home/FounderQuoteSection";
-import ReviewsSection from "../components/home/ReviewsSection";
-import MetricsSection from "../components/home/MetricsSection";
+import MethodAndQuoteSection from "../components/home/MethodAndQuoteSection";
+import { Link as RouterLink } from "react-router-dom";
+import { SectionBox } from "../components/SectionBox";
+import { useResponsiveHeadingVariant } from "../hooks/useResponsiveHeadingVariant";
 
 export default function HomePage() {
+  const headingVariant = useResponsiveHeadingVariant();
+
   return (
     <Box
       component="main"
@@ -20,13 +22,11 @@ export default function HomePage() {
       }}
     >
       <HeroSection />
-      <MetricsSection />
-      <FounderQuoteSection />
-      <MethodSection />
+      <MethodAndQuoteSection />
 
       {/* signature treatments section */}
-      <Box sx={{ padding: "0 1.5rem 4rem" }}>
-        <Typography variant="h3">
+      <SectionBox>
+        <Typography variant={headingVariant} sx={{ marginBottom: "0.5rem" }}>
           Our{" "}
           <Box component="span" sx={{ color: "secondary.main" }}>
             signature
@@ -43,7 +43,13 @@ export default function HomePage() {
           results.
         </Typography>
 
-        <Box sx={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
+        <Box
+          sx={{
+            display: "grid",
+            gridTemplateColumns: { xs: "1fr", lg: "1fr 1fr 1fr" },
+            gap: "2rem",
+          }}
+        >
           <TreatmentCard
             imageSrc={WhiteningImg}
             title="Painless Teeth Whitening Treatment"
@@ -68,11 +74,11 @@ export default function HomePage() {
             time="70 min"
           />
         </Box>
-      </Box>
+      </SectionBox>
 
       {/* dental accesories section */}
-      <Box sx={{ padding: "0 1.5rem 4rem" }}>
-        <Typography variant="h3">
+      <SectionBox id="accesories" sx={{ paddingY: "3rem" }}>
+        <Typography variant={headingVariant} sx={{ marginBottom: "0.5rem" }}>
           Our dental{" "}
           <Box component="span" sx={{ color: "secondary.main" }}>
             accessories:
@@ -88,7 +94,13 @@ export default function HomePage() {
           your appointment.
         </Typography>
 
-        <Box sx={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
+        <Box
+          sx={{
+            display: "grid",
+            gridTemplateColumns: { xs: "1fr", lg: "1fr 1fr 1fr" },
+            gap: "2rem",
+          }}
+        >
           <TreatmentCard
             imageSrc={[SwarovskiCrystalsImg, GoldenToothGemsImg]}
             title="Tooth gems"
@@ -108,9 +120,52 @@ export default function HomePage() {
             price={"220"}
           />
         </Box>
-      </Box>
+      </SectionBox>
 
-      <ReviewsSection />
+      <SectionBox
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          paddingY: "5rem",
+        }}
+      >
+        <Card
+          sx={{
+            padding: "2.2rem 1.2rem",
+            display: "flex",
+            flexDirection: "column",
+            gap: "0.75rem",
+            maxWidth: "30rem",
+          }}
+        >
+          <Typography variant="h4">Come see us</Typography>
+          <Typography sx={{ marginBottom: "1rem" }}>
+            Your next smile starts here. Find us at{" "}
+            <Link
+              component={RouterLink}
+              to="/visit"
+              sx={{
+                color: "secondary.main",
+                textDecoration: "none",
+                fontWeight: "bold",
+              }}
+            >
+              821 Eglinton Ave West
+            </Link>{" "}
+            and come say hello.
+          </Typography>
+          <Button variant="contained" component={RouterLink} to="/visit">
+            See on the map
+          </Button>
+          <Button
+            variant="outlined"
+            component={RouterLink}
+            to="/visit#directions"
+          >
+            Get directions
+          </Button>
+        </Card>
+      </SectionBox>
     </Box>
   );
 }

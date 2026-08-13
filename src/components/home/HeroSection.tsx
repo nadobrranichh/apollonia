@@ -1,14 +1,21 @@
 import { Box, Button, Typography } from "@mui/material";
 import ImageBox from "../ImageBox";
 import LogoImg from "/favicon.png";
+import { SectionBox } from "../SectionBox";
+import { useResponsiveHeadingVariant } from "../../hooks/useResponsiveHeadingVariant";
+import { metricsList } from "../../lists/metricsList";
+import { Link as RouterLink } from "react-router-dom";
 
 export default function HeroSection() {
+  const mainHeadingVariant = useResponsiveHeadingVariant("main");
+  const metricsHeadingVariant = useResponsiveHeadingVariant();
+
   return (
-    <Box
-      component="section"
+    <SectionBox
       sx={{
         position: "relative",
-        padding: "7rem 1.5rem 3rem",
+        paddingTop: "7rem",
+        paddingBottom: "3rem",
       }}
     >
       <ImageBox
@@ -25,7 +32,7 @@ export default function HeroSection() {
       />
 
       <Typography
-        variant="h3"
+        variant={mainHeadingVariant}
         sx={{
           position: "relative",
           zIndex: 1,
@@ -41,27 +48,69 @@ export default function HeroSection() {
         </Box>{" "}
         smile.
       </Typography>
-      <Typography
+      <Box
         sx={{
-          fontStyle: "italic",
-          marginBottom: "1rem",
+          marginBottom: "3rem",
+          display: { xs: "block", lg: "grid" },
+          gridTemplateColumns: "1fr 1fr",
         }}
       >
-        Apollonia is a small Toronto practice devoted to painless teeth
-        whitening and quiet, sensitivity‑conscious dentistry — invented by
-        Nataliia, refined over six years, performed in a room the colour of a
-        Roman dusk.
-      </Typography>
+        <Typography
+          sx={{
+            fontStyle: "italic",
+            marginBottom: "1rem",
+          }}
+        >
+          Apollonia is a small Toronto practice devoted to painless teeth
+          whitening and quiet, sensitivity‑conscious dentistry — invented by
+          Nataliia, refined over six years, performed in a room the colour of a
+          Roman dusk.
+        </Typography>
+        <Box></Box>
 
-      <Button
-        sx={{ display: "block", marginBottom: "0.5rem" }}
-        variant="contained"
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: { xs: "column", lg: "row" },
+            gap: "0.5rem",
+          }}
+        >
+          <Button component={RouterLink} to="/services" variant="contained">
+            Browse treatments
+          </Button>
+          <Button component={RouterLink} to="/visit" variant="outlined">
+            Visit us
+          </Button>
+        </Box>
+      </Box>
+      <Box
+        sx={{
+          display: "grid",
+          gridTemplateColumns: { xs: "1fr 1fr", md: "1fr 1fr 1fr 1fr" },
+          gap: "1px",
+          backgroundColor: (theme) => theme.palette.grey[300],
+          borderTop: (theme) => `1px solid ${theme.palette.grey[300]}`,
+          borderBottom: (theme) => `1px solid ${theme.palette.grey[300]}`,
+          marginBottom: "3.5rem",
+        }}
       >
-        Browse treatments
-      </Button>
-      <Button sx={{ display: "block" }} variant="outlined">
-        Visit us
-      </Button>
-    </Box>
+        {metricsList.map((m) => (
+          <Box
+            key={m.title}
+            sx={{ padding: "2rem", backgroundColor: "background.default" }}
+          >
+            <Typography
+              variant={metricsHeadingVariant}
+              sx={{ fontStyle: "normal" }}
+            >
+              {m.title}
+            </Typography>
+            <Typography variant="body2" sx={{ fontFamily: "Poppins, Arial" }}>
+              {m.text}
+            </Typography>
+          </Box>
+        ))}
+      </Box>
+    </SectionBox>
   );
 }
