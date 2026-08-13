@@ -1,5 +1,6 @@
 import { Box, Typography, Button } from "@mui/material";
 import { methodStepsList } from "../../lists/methodLists.tsx";
+import { Link as RouterLink } from "react-router-dom";
 
 export default function MethodSection() {
   return (
@@ -70,7 +71,9 @@ export default function MethodSection() {
           </Box>
         ))}
       </Box>
-      <Button variant="outlined">Read the full method</Button>
+      <Button component={RouterLink} to="/method" variant="outlined">
+        Read the full method
+      </Button>
     </Box>
   );
 }
