@@ -90,7 +90,7 @@ export default function MethodSection() {
         </Button>
       </Box>
 
-      <Stack spacing={4} sx={{ alignItems: "center" }}>
+      <Stack spacing={4} sx={{ alignItems: "center", position: "relative" }}>
         <ImageBox
           src={FounderImg}
           sx={{
@@ -102,13 +102,14 @@ export default function MethodSection() {
         />
         <Card
           sx={{
-            position: "relative",
+            position: { xs: "relative", md: "absolute" },
+            top: { md: "70%" },
+            left: { md: "4rem" },
             width: { xs: "100%", lg: "90%" },
             rotate: "-1deg",
             padding: "2rem",
             overflow: "visible",
             maxWidth: "35rem",
-            transform: { xs: "none", md: "translate(3rem, -10rem)" },
           }}
         >
           <FormatQuoteIcon
