@@ -61,32 +61,23 @@ export default function LocationPage() {
           gridTemplateColumns: { xs: "1fr", md: "1fr 1fr" },
         }}
       >
-        <Box>
-          <Box
-            id="map"
-            sx={{
-              height: "14rem",
-            }}
-          >
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d721.1156222969039!2d-79.42507180000003!3d43.7009369!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89dc3ae490fe4b65%3A0xc5ee99956777f13e!2sApollonia%20Preventative%20Dental%20Care!5e0!3m2!1sen!2sua!4v1744016825863!5m2!1sen!2sua"
-              style={{
-                border: "none",
-                height: "100%",
-                width: "100%",
-              }}
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              className="map-embed"
-            ></iframe>
-          </Box>
-
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d721.1156222969039!2d-79.42507180000003!3d43.7009369!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89dc3ae490fe4b65%3A0xc5ee99956777f13e!2sApollonia%20Preventative%20Dental%20Care!5e0!3m2!1sen!2sua!4v1744016825863!5m2!1sen!2sua"
+          style={{
+            border: "none",
+            height: "100%",
+            width: "100%",
+          }}
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+          className="map-embed"
+        ></iframe>
+        <Stack spacing={4}>
           <Box
             id="directions"
             sx={{
               scrollMarginTop: "8.5rem",
               display: "flex",
-              paddingTop: "1rem",
             }}
           >
             <Box sx={{ width: "50%" }}>
@@ -119,9 +110,7 @@ export default function LocationPage() {
               </Typography>
             </Box>
           </Box>
-        </Box>
-        <Box>
-          <Box sx={{ marginBottom: "2rem" }}>
+          <Box>
             <Typography variant="body2" sx={subtextStyles}>
               Getting here:
             </Typography>
@@ -131,7 +120,6 @@ export default function LocationPage() {
                 display: "flex",
                 flexDirection: { xs: "column", lg: "row" },
                 gap: "0.5rem",
-                marginTop: "0.5rem",
               }}
             >
               {directions.map((d) => (
@@ -152,7 +140,6 @@ export default function LocationPage() {
                 gridTemplateColumns: { xs: "1fr 1fr", lg: "repeat(4,1fr)" },
                 justifyContent: "space-between",
                 gap: "1rem",
-                paddingY: "0.5rem",
               }}
             >
               {weeklyHours.map((h) => (
@@ -168,34 +155,22 @@ export default function LocationPage() {
               ))}
             </Box>
           </Box>
-
-          <Stack sx={{ textAlign: "center", paddingY: "1rem" }}>
-            <Typography sx={captionStyles}>Can't make it in yet?</Typography>
-            <Typography>Say hello first.</Typography>
-            <Box
-              sx={{
-                marginX: "auto",
-                display: "flex",
-                flexDirection: { xs: "column", lg: "row" },
-                gap: "0.5rem",
-              }}
-            >
-              <Button
-                variant="contained"
-                sx={{ ...subtextStyles, color: "primary.contrastText" }}
-              >
-                DM on instagram
-              </Button>
-              <Button
-                variant="outlined"
-                sx={{ ...subtextStyles, color: "primary.main" }}
-              >
-                Text an SMS
-              </Button>
-            </Box>
-          </Stack>
-        </Box>
+        </Stack>
       </Box>
+      <Stack spacing={2} sx={{ textAlign: "center", paddingY: "4rem" }}>
+        <Typography sx={captionStyles}>Can't make it in yet?</Typography>
+        <Typography variant="h4">Say hello first.</Typography>
+        <Stack
+          spacing={1}
+          direction={{ xs: "column", sm: "row" }}
+          sx={{
+            justifyContent: "center",
+          }}
+        >
+          <Button variant="contained">DM on instagram</Button>
+          <Button variant="outlined">Text an SMS</Button>
+        </Stack>
+      </Stack>
     </SectionBox>
   );
 }
