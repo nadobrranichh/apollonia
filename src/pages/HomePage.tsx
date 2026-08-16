@@ -1,4 +1,4 @@
-import { Box, Button, Card, Link, Typography } from "@mui/material";
+import { Box, Button, Link, Stack, Typography } from "@mui/material";
 import HeroSection from "../components/home/HeroSection";
 import WhiteningImg from "../assets/regular-whitening-teeth.png";
 import TreatmentCard from "../components/TreatmentCard";
@@ -13,6 +13,7 @@ import { useResponsiveHeadingVariant } from "../hooks/useResponsiveHeadingVarian
 
 export default function HomePage() {
   const headingVariant = useResponsiveHeadingVariant();
+  const smallHeadingVariant = useResponsiveHeadingVariant("small");
 
   return (
     <Box
@@ -124,21 +125,11 @@ export default function HomePage() {
 
       <SectionBox
         sx={{
-          display: "flex",
-          justifyContent: "center",
           paddingY: "4rem",
         }}
       >
-        <Card
-          sx={{
-            padding: "2.2rem 1.2rem",
-            display: "flex",
-            flexDirection: "column",
-            gap: "0.75rem",
-            maxWidth: "30rem",
-          }}
-        >
-          <Typography variant="h4">Come see us</Typography>
+        <Stack spacing={3} sx={{ alignItems: "center" }}>
+          <Typography variant={smallHeadingVariant}>Come see us</Typography>
           <Typography sx={{ marginBottom: "1rem" }}>
             Your next smile starts here. Find us at{" "}
             <Link
@@ -154,17 +145,19 @@ export default function HomePage() {
             </Link>{" "}
             and come say hello.
           </Typography>
-          <Button variant="contained" component={RouterLink} to="/visit">
-            See on the map
-          </Button>
-          <Button
-            variant="outlined"
-            component={RouterLink}
-            to="/visit#directions"
-          >
-            Get directions
-          </Button>
-        </Card>
+          <Stack direction={{ xs: "column", sm: "row" }} spacing={1}>
+            <Button variant="contained" component={RouterLink} to="/visit">
+              See on the map
+            </Button>
+            <Button
+              variant="outlined"
+              component={RouterLink}
+              to="/visit#directions"
+            >
+              Get directions
+            </Button>
+          </Stack>
+        </Stack>
       </SectionBox>
     </Box>
   );
