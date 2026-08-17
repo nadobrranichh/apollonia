@@ -28,3 +28,7 @@ export const descriptionStyles = {
   fontSize: "1rem",
   fontStyle: "italic",
 };
+
+export const secondaryFont = {
+  fontFamily: "Poppins, Arial",
+};

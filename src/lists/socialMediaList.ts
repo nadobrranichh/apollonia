@@ -1,10 +1,9 @@
-import FacebookIcon from "../assets/facebook-176-svgrepo-com.svg";
-import InstagramIcon from "../assets/instagram-svgrepo-com.svg";
-import TiktokIcon from "../assets/tiktok-svgrepo-com.svg";
-import YoutubeIcon from "../assets/youtube-168-svgrepo-com.svg";
-import type { SocialMediaListItem } from "../types/listsTypes";
+import TiktokIcon from "../components/TiktokIcon";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import YouTubeIcon from "@mui/icons-material/YouTube";
+import FacebookIcon from "@mui/icons-material/Facebook";
 
-export const socialMediaist: SocialMediaListItem[] = [
+export const socialMediaist = [
   {
     platform: "Instagram",
     icon: InstagramIcon,
@@ -12,7 +11,7 @@ export const socialMediaist: SocialMediaListItem[] = [
   },
   {
     platform: "YouTube",
-    icon: YoutubeIcon,
+    icon: YouTubeIcon,
     url: "https://youtube.com/@nataliiashchepaniak?si=8RSzGEpjyMtXntIU",
   },
   {

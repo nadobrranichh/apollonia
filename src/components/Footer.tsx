@@ -1,35 +1,19 @@
-import { Box, Link, List, ListItem, Typography } from "@mui/material";
-import { headerList } from "../lists/headerList";
-import { Link as RouterLink } from "react-router-dom";
+import { Box, Stack, Typography } from "@mui/material";
 import { socialMediaist } from "../lists/socialMediaList";
+import LogoImg from "/favicon.png";
+import { SectionBox } from "./SectionBox";
 import ImageBox from "./ImageBox";
+import {
+  captionStyles,
+  descriptionStyles,
+  secondaryFont,
+  servicePriceStyles,
+} from "../styles/typographyStyles";
+import { headerList } from "../lists/headerList";
 import { useTranslation } from "react-i18next";
-
-const titleStyles = {
-  fontFamily: "Poppins,Arial",
-  fontWeight: 600,
-  fontSize: "1.2rem",
-  textTransform: " uppercase",
-  color: "secondary.contrastText",
-  padding: 0,
-};
-
-const subtitleStyles = {
-  fontFamily: "Poppins,Arial",
-  fontSize: "0.9rem",
-  lineHeight: "1.4rem",
-  color: "secondary.contrastText",
-  padding: 0,
-};
-
-const textStyles = {
-  fontFamily: "Poppins, Arial",
-  fontSize: "0.9rem",
-  lineHeight: "1.4rem",
-  textDecoration: "none",
-  color: "secondary.light",
-  padding: 0,
-};
+import { Link } from "@mui/material";
+import { Link as RouterLink } from "react-router-dom";
+import { SocialIconLink } from "./SocialIconLink";
 
 export default function Footer() {
   const { t } = useTranslation();
@@ -37,81 +21,119 @@ export default function Footer() {
     <Box
       component="footer"
       sx={{
-        bgcolor: "secondary.dark",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        paddingTop: "2.5rem",
-        paddingBottom: "1.5rem",
+        backgroundColor: (theme) =>
+          theme.palette.mode === "light"
+            ? theme.palette.grey[200]
+            : theme.palette.grey[900],
       }}
     >
-      <Typography component="p" sx={{ ...titleStyles, marginBottom: "0.5rem" }}>
-        {t("footer.follow")}
-      </Typography>
-      <Box
+      <SectionBox
         sx={{
-          width: "65%",
-          maxWidth: "400px",
-          display: "flex",
-          justifyContent: "space-between",
+          display: "grid",
+          gridTemplateColumns: { xs: "1fr 1fr", md: "3fr 1fr 1fr" },
+          gap: { xs: "2rem", md: "4rem" },
+          paddingY: "6rem",
         }}
       >
-        {socialMediaist.map((item) => {
-          return (
-            <Link
-              component={RouterLink}
-              key={item.platform}
-              to={item.url}
-              target="_blank"
-              sx={{
-                width: "3rem",
-                height: "3rem",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                bgcolor: "secondary.light",
-                borderRadius: "50%",
-                transition: "background-color 0.3s",
-                textDecoration: "none",
-                "&:hover": {
-                  bgcolor: "secondary.contrastText",
-                },
-              }}
-            >
-              <ImageBox src={item.icon} height="2rem" width="2rem" />
-            </Link>
-          );
-        })}
-      </Box>
-      <Box sx={{ display: "flex", gap: "2.5rem", marginTop: "1.5rem" }}>
-        <Box>
-          <Typography sx={titleStyles}>{t("footer.book")}:</Typography>
-          <Typography sx={subtitleStyles}>{t("footer.dm")}</Typography>
-
-          <Typography sx={subtitleStyles}>{t("footer.call")}:</Typography>
-          <Typography sx={textStyles}>+1 647 514 1552</Typography>
-
-          <Typography sx={subtitleStyles}>{t("footer.email")}:</Typography>
-          <Typography sx={textStyles}>nshchepaniak@hotmail.com</Typography>
+        <Box sx={{ gridColumn: { xs: "span 2", md: "span 1" } }}>
+          <ImageBox src={LogoImg} sx={{ height: "1.3rem" }} />
+          <Typography sx={{ ...servicePriceStyles, display: "inline" }}>
+            Apollonia
+          </Typography>
+          <Typography
+            variant="body2"
+            sx={{
+              ...descriptionStyles,
+              ...secondaryFont,
+              marginTop: "0.45rem",
+            }}
+          >
+            A small Toronto practice for painless whitening and quiet,
+            sensitivity-conscious dentistry.
+          </Typography>
         </Box>
-        <List sx={{ listStyle: "none", padding: 0 }}>
-          <Typography sx={titleStyles}>{t("footer.navigate")}</Typography>
-          {headerList.slice(0, 5).map((item) => (
-            <ListItem sx={{ padding: 0 }} key={item.titleKey}>
-              <Link component={RouterLink} to={item.url} sx={textStyles}>
-                {t(`${item.titleKey}`)}
+        <Box>
+          <Typography
+            sx={{
+              ...servicePriceStyles,
+              textAlign: "start",
+              marginBottom: "0.5rem",
+            }}
+          >
+            Explore
+          </Typography>
+          <Stack spacing={1} sx={{ alignItems: "start" }}>
+            {headerList.slice(1, 6).map((item) => (
+              <Link
+                component={RouterLink}
+                to={item.url}
+                key={item.titleKey}
+                sx={{
+                  ...secondaryFont,
+                  ...descriptionStyles,
+                  textDecoration: "none",
+                }}
+                variant="body2"
+              >
+                {t(item.titleKey)}
               </Link>
-            </ListItem>
-          ))}
-        </List>
-      </Box>
-      <Typography
+            ))}
+          </Stack>
+        </Box>
+        <Box>
+          <Typography sx={{ ...servicePriceStyles, marginBottom: "0.5rem" }}>
+            Follow Along
+          </Typography>
+          <Box
+            sx={{
+              display: "grid",
+              float: "right",
+              gridTemplateColumns: {
+                xs: "repeat(3, minmax(0, 2.5rem))",
+                md: "repeat(4,1fr)",
+              },
+              gap: { xs: "0.5rem", md: "1rem" },
+            }}
+          >
+            {socialMediaist.map((m) => (
+              <SocialIconLink
+                key={m.platform}
+                component={RouterLink}
+                to={m.url}
+              >
+                <m.icon
+                  sx={{
+                    color: (theme) =>
+                      theme.palette.mode === "light"
+                        ? "secondary.dark"
+                        : "secondary.light",
+                  }}
+                />
+              </SocialIconLink>
+            ))}
+          </Box>
+        </Box>
+      </SectionBox>
+
+      <SectionBox
         sx={{
-          ...textStyles,
-          marginTop: "2rem",
+          paddingBottom: "1rem",
+          display: "flex",
+          flexDirection: { xs: "column", md: "row" },
+          justifyContent: "space-between",
+          textAlign: "center",
         }}
       >
-        © Apollonia, {new Date().getFullYear()}
+        <Typography sx={{ ...descriptionStyles, ...secondaryFont }}>
+          © {new Date().getFullYear()} Apollonia Dental Care. All rights
+          reserved.
+        </Typography>
+        <Typography sx={{ ...descriptionStyles, ...secondaryFont }}>
+          821 Eglinton Ave West, Toronto, ON
+        </Typography>
+      </SectionBox>
+      <Typography sx={{ ...captionStyles, textAlign: "center" }}>
+        Website developed by Nazar Shchepaniak
       </Typography>
     </Box>
   );
