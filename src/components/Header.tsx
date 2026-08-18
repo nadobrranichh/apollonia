@@ -9,9 +9,10 @@ import {
   IconButton,
   Stack,
 } from "@mui/material";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { Link as RouterLink } from "react-router-dom";
 import ApolloniaLogo from "../assets/logo-dark.png";
-import { headerList } from "../lists/headerList";
+import { pagesList } from "../lists/pagesList";
 import { useLocation } from "react-router-dom";
 import ImageBox from "./ImageBox";
 import { useState } from "react";
@@ -45,6 +46,22 @@ export default function Header() {
     color: (theme: Theme) => theme.palette.primary.main,
   };
 
+  const ThemeToggle = () => (
+    <IconButton onClick={toggleActiveTheme}>
+      {activeTheme === "light" ? (
+        <DarkModeIcon sx={iconStyles} />
+      ) : (
+        <LightModeIcon sx={iconStyles} />
+      )}
+    </IconButton>
+  );
+
+  const CartLink = ({ color = "primary.main" }: { color?: string }) => (
+    <IconButton component={RouterLink} to="/cart" onClick={toggleDrawer}>
+      <ShoppingCartIcon sx={{ color }} />
+    </IconButton>
+  );
+
   return (
     <Box
       component="header"
@@ -62,17 +79,20 @@ export default function Header() {
         height: "6rem",
       }}
     >
-      <ImageBox
-        src={ApolloniaLogo}
-        alt="logo"
-        height="70%"
-        sx={{ marginRight: { xs: 0, md: "1rem" } }}
-      />
+      <Link sx={{ height: "70%" }} component={RouterLink} to="/">
+        <ImageBox
+          src={ApolloniaLogo}
+          alt="logo"
+          height="100%"
+          sx={{ marginRight: { xs: 0, md: "1rem" } }}
+        />
+      </Link>
       {isLg ? (
         <List sx={{ display: "flex", gap: "0.6vw" }}>
-          {headerList.map((item) => (
+          {pagesList.map((item) => (
             <ListItem key={item.titleKey}>
               <Link
+                key={item.titleKey}
                 component={RouterLink}
                 to={item.url}
                 sx={{ textDecoration: "none" }}
@@ -85,7 +105,13 @@ export default function Header() {
               </Link>
             </ListItem>
           ))}
-          <ListItem key="language-toggle">
+          <ListItem>
+            <CartLink />
+          </ListItem>
+          <ListItem>
+            <ThemeToggle />
+          </ListItem>
+          <ListItem>
             <LanguageToggle />
           </ListItem>
         </List>
@@ -93,13 +119,7 @@ export default function Header() {
         <>
           <Box sx={{ display: "flex", gap: "1rem" }}>
             <LanguageToggle />
-            <IconButton onClick={toggleActiveTheme}>
-              {activeTheme === "light" ? (
-                <DarkModeIcon sx={iconStyles} />
-              ) : (
-                <LightModeIcon sx={iconStyles} />
-              )}
-            </IconButton>
+            <ThemeToggle />
             <IconButton onClick={toggleDrawer}>
               <MenuIcon sx={iconStyles} />
             </IconButton>
@@ -117,14 +137,8 @@ export default function Header() {
               },
             }}
           >
-            <Stack
-              spacing={3}
-              sx={{
-                width: "12rem",
-                paddingTop: "3rem",
-              }}
-            >
-              {headerList.map((item) => (
+            <Stack spacing={3} sx={{ padding: "3rem 4rem 0 1rem" }}>
+              {pagesList.map((item) => (
                 <Link
                   key={item.titleKey}
                   component={RouterLink}
@@ -137,13 +151,15 @@ export default function Header() {
                     sx={{
                       ...listItemStyles(item.url),
                       color: "primary.contrastText",
-                      marginLeft: "1rem",
                     }}
                   >
                     {t(`${item.titleKey}`)}
                   </Typography>
                 </Link>
               ))}
+              <Typography>
+                <CartLink color="primary.contrastText" />
+              </Typography>
             </Stack>
           </SwipeableDrawer>
         </>
