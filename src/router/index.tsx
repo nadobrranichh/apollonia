@@ -3,7 +3,6 @@ import RootLayout from "../components/RootLayout.tsx";
 import HomePage from "../pages/HomePage.tsx";
 import VisitPage from "../pages/VisitPage.tsx";
 import ServicesPage from "../pages/ServicesPage.tsx";
-import ReviewsPage from "../pages/ReviewsPage.tsx";
 import ShopPage from "../pages/ShopPage.tsx";
 import ShopItemPage from "../pages/ShopItemPage.tsx";
 import CartPage from "../pages/CartPage.tsx";
@@ -28,10 +27,6 @@ export const router = createBrowserRouter([
       {
         path: "/services",
         element: <ServicesPage />,
-      },
-      {
-        path: "/reviews",
-        element: <ReviewsPage />,
       },
       { path: "/shop", element: <ShopPage /> },
       { path: "/shopitem/:id", element: <ShopItemPage /> },
