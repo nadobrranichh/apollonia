@@ -9,7 +9,7 @@ import {
   secondaryFont,
   servicePriceStyles,
 } from "../styles/typographyStyles";
-import { headerList } from "../lists/headerList";
+import { pagesList } from "../lists/pagesList";
 import { useTranslation } from "react-i18next";
 import { Link } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
@@ -63,7 +63,7 @@ export default function Footer() {
             Explore
           </Typography>
           <Stack spacing={1} sx={{ alignItems: "start" }}>
-            {headerList.slice(1, 6).map((item) => (
+            {pagesList.map((item) => (
               <Link
                 component={RouterLink}
                 to={item.url}
