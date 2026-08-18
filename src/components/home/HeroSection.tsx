@@ -11,13 +11,7 @@ export default function HeroSection() {
   const metricsHeadingVariant = useResponsiveHeadingVariant();
 
   return (
-    <SectionBox
-      sx={{
-        position: "relative",
-        paddingTop: "7rem",
-        paddingBottom: "3rem",
-      }}
-    >
+    <SectionBox sx={{ position: "relative" }}>
       <ImageBox
         src={LogoImg}
         height="12rem"
@@ -91,7 +85,6 @@ export default function HeroSection() {
           backgroundColor: (theme) => theme.palette.grey[300],
           borderTop: (theme) => `1px solid ${theme.palette.grey[300]}`,
           borderBottom: (theme) => `1px solid ${theme.palette.grey[300]}`,
-          marginBottom: "3.5rem",
         }}
       >
         {metricsList.map((m) => (
