@@ -1,8 +1,9 @@
-import { styled } from "@mui/material/styles";
+import { styled, useTheme } from "@mui/material/styles";
 import Box, { type BoxProps } from "@mui/material/Box";
 import type { ComponentType } from "react";
 import { motion, type MotionProps } from "motion/react";
 import { fade } from "../motion/variants";
+import { useMediaQuery } from "@mui/material";
 
 const StyledBox = styled(Box)(({ theme }) => ({
   paddingLeft: "1.8rem",
@@ -21,6 +22,7 @@ export function SectionBox({
   component = "section",
   ...props
 }: BoxProps & MotionProps) {
+  const isLg = useMediaQuery(useTheme().breakpoints.up("lg"));
   return (
     <MotionStyledBox
       component={component}
@@ -29,7 +31,7 @@ export function SectionBox({
       variants={fade({ withStagger: true })}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.2 }}
+      viewport={{ once: true, amount: isLg ? 0.2 : 0.1 }}
     />
   );
 }
