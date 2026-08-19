@@ -1,4 +1,4 @@
-import { Box, Typography, IconButton, Card, Stack } from "@mui/material";
+import { Box, Typography, IconButton, Stack } from "@mui/material";
 import ImageBox from "../ImageBox";
 import { useCartStore, type CartItem } from "../../store/cart-store";
 import { useState } from "react";
@@ -7,6 +7,8 @@ import { configureConversionRate } from "../../http/http";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import CloseIcon from "@mui/icons-material/Close";
+import { MotionCard } from "../../motion/components";
+import { fade } from "../../motion/variants";
 
 export default function CartItemContainer({ item }: { item: CartItem }) {
   const { updateQuantity, removeItem } = useCartStore();
@@ -22,7 +24,12 @@ export default function CartItemContainer({ item }: { item: CartItem }) {
   const { rate, currency } = conversionRate!;
 
   return (
-    <Card sx={{ position: "relative", padding: "0.75rem" }}>
+    <MotionCard
+      variants={fade()}
+      layout
+      exit={{ y: -30, opacity: 0 }}
+      sx={{ position: "relative", padding: "0.75rem" }}
+    >
       <IconButton
         sx={{ position: "absolute", top: "0.75rem", right: "0.75rem" }}
         onClick={() => removeItem(item.id)}
@@ -84,6 +91,6 @@ export default function CartItemContainer({ item }: { item: CartItem }) {
           </Stack>
         </Stack>
       </Stack>
-    </Card>
+    </MotionCard>
   );
 }

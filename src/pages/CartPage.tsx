@@ -8,6 +8,9 @@ import { configureConversionRate } from "../http/http";
 import { servicePriceStyles } from "../styles/typographyStyles";
 import { SectionBox } from "../components/SectionBox";
 import { useResponsiveHeadingVariant } from "../hooks/useResponsiveHeadingVariant";
+import { MotionBox } from "../motion/components";
+import { fade } from "../motion/variants";
+import { AnimatePresence } from "motion/react";
 export default function CartPage() {
   const { t } = useTranslation();
   const { cart } = useCartStore();
@@ -32,32 +35,34 @@ export default function CartPage() {
       <Typography variant={headingVariant}>{t("cart.title")}</Typography>
       <Box sx={{ paddingX: { xs: 0, lg: "10rem" } }}>
         {cart.length > 0 ? (
-          <>
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                gap: "1rem",
-              }}
-            >
+          <MotionBox
+            variants={fade({ withStagger: true })}
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "1rem",
+            }}
+          >
+            <AnimatePresence mode="popLayout">
               {cart.map((cartItem) => (
                 <CartItemContainer key={cartItem.id} item={cartItem} />
               ))}
-              <Box sx={{ marginTop: "3rem", textAlign: "center" }}>
-                <Typography sx={{ ...servicePriceStyles, textAlign: "center" }}>
-                  {t("cart.subtotal")}: ${subTotal} {currency}
-                </Typography>
-                <Button
-                  component={RouterLink}
-                  to="/checkout"
-                  sx={{ paddingX: "5rem" }}
-                  variant="contained"
-                >
-                  {t("cart.checkout")}
-                </Button>
-              </Box>
+            </AnimatePresence>
+
+            <Box sx={{ marginTop: "3rem", textAlign: "center" }}>
+              <Typography sx={{ ...servicePriceStyles, textAlign: "center" }}>
+                {t("cart.subtotal")}: ${subTotal} {currency}
+              </Typography>
+              <Button
+                component={RouterLink}
+                to="/checkout"
+                sx={{ paddingX: "5rem" }}
+                variant="contained"
+              >
+                {t("cart.checkout")}
+              </Button>
             </Box>
-          </>
+          </MotionBox>
         ) : (
           <Box sx={{ textAlign: "center", paddingY: "4rem" }}>
             <Typography sx={{ marginBottom: "2rem" }}>
