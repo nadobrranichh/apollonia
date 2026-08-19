@@ -10,6 +10,8 @@ import { Link as RouterLink } from "react-router-dom";
 import { SectionBox } from "../components/SectionBox";
 import { useResponsiveHeadingVariant } from "../hooks/useResponsiveHeadingVariant";
 import { captionStyles } from "../styles/typographyStyles";
+import { MotionBox, MotionStack } from "../motion/components";
+import { fade } from "../motion/variants";
 
 const directions = [
   {
@@ -72,8 +74,9 @@ export default function LocationPage() {
           referrerPolicy="no-referrer-when-downgrade"
           className="map-embed"
         ></iframe>
-        <Stack spacing={4}>
-          <Box
+        <MotionStack spacing={4} variants={fade({ withStagger: true })}>
+          <MotionBox
+            variants={fade({ withStagger: true })}
             id="directions"
             sx={{
               scrollMarginTop: "8.5rem",
@@ -109,8 +112,8 @@ export default function LocationPage() {
                 @apollonia_whitening
               </Typography>
             </Box>
-          </Box>
-          <Box>
+          </MotionBox>
+          <MotionBox variants={fade({ withStagger: true })}>
             <Typography variant="body2" sx={subtextStyles}>
               Getting here:
             </Typography>
@@ -129,8 +132,8 @@ export default function LocationPage() {
                 </Box>
               ))}
             </Box>
-          </Box>
-          <Box>
+          </MotionBox>
+          <MotionBox variants={fade({ withStagger: true })}>
             <Typography variant="body2" sx={subtextStyles}>
               Weekly hours:
             </Typography>
@@ -154,8 +157,8 @@ export default function LocationPage() {
                 </Box>
               ))}
             </Box>
-          </Box>
-        </Stack>
+          </MotionBox>
+        </MotionStack>
       </Box>
       <Stack spacing={2} sx={{ textAlign: "center", paddingY: "4rem" }}>
         <Typography sx={captionStyles}>Can't make it in yet?</Typography>
