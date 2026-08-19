@@ -1,7 +1,10 @@
-import { Box, Card, Divider, Link, Typography } from "@mui/material";
+import { Box, Divider, Link, Typography } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
 import ImageBox from "./ImageBox";
 import { descriptionStyles } from "../styles/typographyStyles";
+import { MotionCard } from "../motion/components";
+import { fade } from "../motion/variants";
+import type { TreatmentCardProps } from "../types";
 
 export default function TreatmentCard({
   imageSrc,
@@ -9,15 +12,10 @@ export default function TreatmentCard({
   description,
   price,
   time,
-}: {
-  imageSrc?: string | string[];
-  title: string;
-  description: string;
-  price: string;
-  time?: string;
-}) {
+}: TreatmentCardProps) {
   return (
-    <Card
+    <MotionCard
+      variants={fade({ yStart: -20 })}
       sx={{
         maxWidth: "30rem",
         height: "100%",
@@ -88,16 +86,12 @@ export default function TreatmentCard({
         <Link
           variant="body2"
           component={RouterLink}
-          // to={`/treatments#${title.toLowerCase().replaceAll(" ", "-")}`}
-          to="/"
-          sx={{
-            textDecoration: "none",
-            textTransform: "uppercase",
-          }}
+          to={`/services#${title.toLowerCase().replaceAll(" ", "-")}`}
+          sx={{ textDecoration: "none", textTransform: "uppercase" }}
         >
           Explore
         </Link>
       </Box>
-    </Card>
+    </MotionCard>
   );
 }

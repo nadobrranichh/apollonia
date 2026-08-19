@@ -14,3 +14,11 @@ export type ProductType = {
   price_in_cents: number;
   image_urls: string[] | null;
 };
+
+export type TreatmentCardProps = {
+  imageSrc?: string | string[];
+  title: string;
+  description: string;
+  price: string;
+  time?: string;
+};

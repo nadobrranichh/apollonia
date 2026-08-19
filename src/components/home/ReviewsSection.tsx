@@ -71,8 +71,8 @@ export default function ReviewsSection() {
               }}
             >
               <Box>
-                {Array.from({ length: r.rating }).map(() => (
-                  <StarIcon sx={{ color: "#c7a200" }} />
+                {Array.from({ length: r.rating }).map((_, i) => (
+                  <StarIcon key={i} sx={{ color: "#c7a200" }} />
                 ))}
               </Box>
               <FormatQuoteIcon

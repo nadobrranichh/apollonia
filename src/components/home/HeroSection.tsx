@@ -1,10 +1,12 @@
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import ImageBox from "../ImageBox";
 import LogoImg from "/favicon.png";
 import { SectionBox } from "../SectionBox";
 import { useResponsiveHeadingVariant } from "../../hooks/useResponsiveHeadingVariant";
 import { metricsList } from "../../lists/metricsList";
 import { Link as RouterLink } from "react-router-dom";
+import { MotionButton } from "../../motion/components";
+import { fade } from "../../motion/variants";
 
 export default function HeroSection() {
   const mainHeadingVariant = useResponsiveHeadingVariant("main");
@@ -69,12 +71,22 @@ export default function HeroSection() {
             gap: "0.5rem",
           }}
         >
-          <Button component={RouterLink} to="/services" variant="contained">
+          <MotionButton
+            variants={fade({ yStart: 10 })}
+            component={RouterLink}
+            to="/services"
+            variant="contained"
+          >
             Browse treatments
-          </Button>
-          <Button component={RouterLink} to="/visit" variant="outlined">
+          </MotionButton>
+          <MotionButton
+            variants={fade({ yStart: 10 })}
+            component={RouterLink}
+            to="/visit"
+            variant="outlined"
+          >
             Visit us
-          </Button>
+          </MotionButton>
         </Box>
       </Box>
       <Box

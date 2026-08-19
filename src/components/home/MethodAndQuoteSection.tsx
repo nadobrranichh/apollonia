@@ -6,6 +6,8 @@ import FounderImg from "../../assets/IMG_2780-s.jpg";
 import FormatQuoteIcon from "@mui/icons-material/FormatQuote";
 import { SectionBox } from "../SectionBox.tsx";
 import { useResponsiveHeadingVariant } from "../../hooks/useResponsiveHeadingVariant.ts";
+import { MotionBox } from "../../motion/components.ts";
+import { fade } from "../../motion/variants.ts";
 
 export default function MethodSection() {
   const headingVariant = useResponsiveHeadingVariant();
@@ -34,7 +36,8 @@ export default function MethodSection() {
           </Box>
         </Typography>
 
-        <Box
+        <MotionBox
+          variants={fade({ withStagger: true })}
           sx={{
             marginBottom: "2rem",
             borderTop: (theme) => `1px solid ${theme.palette.grey[300]}`,
@@ -45,7 +48,8 @@ export default function MethodSection() {
           }}
         >
           {methodStepsList.map((step) => (
-            <Box
+            <MotionBox
+              variants={fade({ yStart: -20 })}
               key={step.id}
               sx={{
                 display: "flex",
@@ -82,9 +86,9 @@ export default function MethodSection() {
               >
                 {step.time}
               </Typography>
-            </Box>
+            </MotionBox>
           ))}
-        </Box>
+        </MotionBox>
         <Button component={RouterLink} to="/method" variant="outlined">
           Read the full method
         </Button>
