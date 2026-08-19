@@ -11,11 +11,13 @@ import type { ServiceItem } from "../types/listsTypes";
 export const servicesList: ServiceItem[] = [
   {
     id: 1,
+    type: "standard",
     i18nKey: "services.professionalTeethCleaning",
     price: import.meta.env.VITE_SERVICE_PROFESSIONAL_TEETH_CLEANING_PRICE,
   },
   {
     id: 2,
+    type: "standard",
     i18nKey: "services.painlessTeethWhiteningTreatment",
     price: import.meta.env
       .VITE_SERVICE_PAINLESS_TEETH_WHITENING_TREATMENT_PRICE,
@@ -28,16 +30,20 @@ export const servicesList: ServiceItem[] = [
   },
   {
     id: 3,
+    type: "standard",
     i18nKey: "services.teethWhiteningMaintenanceSession",
     price: import.meta.env.VITE_SERVICE_MAINTENANCE_SESSION_PRICE,
   },
+  { id: 4, type: "gems" },
   {
-    id: 4,
+    id: 5,
+    type: "standard",
     i18nKey: "services.whiteSpotLesionsRemoval",
     price: import.meta.env.VITE_SERVICE_LESIONS_REMOVAL_PRICE,
   },
   {
-    id: 5,
+    id: 6,
+    type: "standard",
     i18nKey: "services.customTeethWhiteningTrays",
     price: import.meta.env.VITE_SERVICE_TRAYS_PRICE,
     image: WhiteningTrayImg,
@@ -48,7 +54,8 @@ export const servicesList: ServiceItem[] = [
     },
   },
   {
-    id: 6,
+    id: 7,
+    type: "standard",
     i18nKey: "services.sportsguard",
     price: import.meta.env.VITE_SERVICE_SPORTSGUARD_PRICE,
     image: SportsguardImg,

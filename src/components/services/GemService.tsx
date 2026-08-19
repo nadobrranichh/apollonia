@@ -1,11 +1,4 @@
-import {
-  Box,
-  Button,
-  Card,
-  Divider,
-  Typography,
-  useMediaQuery,
-} from "@mui/material";
+import { Box, Button, Divider, Typography, useMediaQuery } from "@mui/material";
 import ToothGemsImg from "../../assets/tooth-gems.png";
 import GoldenToothGemsImg from "../../assets/golden-tooth-gems.png";
 import ImageBox from "../ImageBox";
@@ -14,12 +7,17 @@ import {
   captionStyles,
   servicePriceStyles,
 } from "../../styles/typographyStyles";
+import { MotionCard } from "../../motion/components";
+import { fade } from "../../motion/variants";
 
 export default function GemService() {
   const { t } = useTranslation();
   const isMobile = useMediaQuery("(max-width: 1000px)");
   return (
-    <Card
+    <MotionCard
+      variants={fade({ yStart: 20 })}
+      initial="hidden"
+      whileInView="visible"
       sx={{
         display: "flex",
         flexDirection: "column",
@@ -112,6 +110,6 @@ export default function GemService() {
       >
         Book Now
       </Button>
-    </Card>
+    </MotionCard>
   );
 }

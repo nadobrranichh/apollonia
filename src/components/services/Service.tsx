@@ -1,5 +1,5 @@
-import { Box, Typography, Button, useMediaQuery, Card } from "@mui/material";
-import type { ServiceItem } from "../../types/listsTypes";
+import { Box, Typography, Button, useMediaQuery } from "@mui/material";
+import type { StandardServiceItem } from "../../types/listsTypes";
 import { useTranslation } from "react-i18next";
 import ImageBox from "../ImageBox";
 import {
@@ -7,8 +7,10 @@ import {
   captionStyles,
   servicePriceStyles,
 } from "../../styles/typographyStyles";
+import { MotionCard } from "../../motion/components";
+import { fade } from "../../motion/variants";
 
-export default function Service({ item }: { item: ServiceItem }) {
+export default function Service({ item }: { item: StandardServiceItem }) {
   const { t, i18n } = useTranslation();
   const { i18nKey, price, image, imageStyles } = item;
   const priceCommentExists = i18n.exists(`${i18nKey}.priceComment`);
@@ -16,7 +18,12 @@ export default function Service({ item }: { item: ServiceItem }) {
   const isMobile = useMediaQuery("(max-width: 600px)");
   const message = `Hello! I'd like to book an appointment for ${t(`${i18nKey}.title`)}`;
   return (
-    <Card sx={{ maxWidth: "30rem" }}>
+    <MotionCard
+      variants={fade({ yStart: 20 })}
+      initial="hidden"
+      whileInView="visible"
+      sx={{ maxWidth: "30rem" }}
+    >
       <Box
         sx={{
           display: "flex",
@@ -54,6 +61,6 @@ export default function Service({ item }: { item: ServiceItem }) {
       >
         {t("services.bookService")}
       </Button>
-    </Card>
+    </MotionCard>
   );
 }
