@@ -1,4 +1,4 @@
-import { Box, Button, Card, Divider, Stack, Typography } from "@mui/material";
+import { Box, Card, Divider, Stack, Typography } from "@mui/material";
 import ImageBox from "../components/ImageBox";
 import FounderImg from "../assets/IMG_2779-s.jpg";
 import { captionStyles, descriptionStyles } from "../styles/typographyStyles";
@@ -14,15 +14,17 @@ import { convertToRoman } from "../../utils/convertToRoman";
 import { Link as RouterLink } from "react-router-dom";
 import { SectionBox } from "../components/SectionBox";
 import { useResponsiveHeadingVariant } from "../hooks/useResponsiveHeadingVariant";
+import { MotionBox, MotionStack } from "../motion/components";
+import { fade } from "../motion/variants";
+import { MotionButton } from "../motion/components";
 
 export default function MethodPage() {
   const headingVariant = useResponsiveHeadingVariant();
   const smallHeadingVariant = useResponsiveHeadingVariant("small");
   return (
-    <SectionBox component="main">
-      <Stack spacing={10}>
-        <Box
-          component="section"
+    <Box component="main">
+      <Stack spacing={15} sx={{ paddingY: { xs: "5rem", lg: "5rem" } }}>
+        <SectionBox
           sx={{
             display: "grid",
             gridTemplateColumns: { xs: "1fr", lg: "1fr 1fr" },
@@ -57,13 +59,14 @@ export default function MethodPage() {
               Nataliia Shchepaniak &bull; Founder
             </Typography>
           </Box>
-        </Box>
+        </SectionBox>
 
-        <Box component="section">
+        <SectionBox>
           <Typography variant={smallHeadingVariant}>
             Four quiet rules:
           </Typography>
-          <Box
+          <MotionBox
+            variants={fade({ withStagger: true })}
             sx={{
               paddingTop: "2rem",
               display: "grid",
@@ -73,23 +76,24 @@ export default function MethodPage() {
           >
             {[
               rulesList.map((r) => (
-                <Stack spacing={1} key={r.id}>
+                <MotionStack variants={fade()} spacing={1} key={r.id}>
                   <Typography variant="h5" sx={{ color: "secondary.main" }}>
                     {r.id}.
                   </Typography>
                   <Typography>{r.title}</Typography>
                   <Typography sx={captionStyles}>{r.description}</Typography>
-                </Stack>
+                </MotionStack>
               )),
             ]}
-          </Box>
-        </Box>
+          </MotionBox>
+        </SectionBox>
 
-        <Box component="section">
+        <SectionBox>
           <Typography variant={smallHeadingVariant}>
             The treatment, step by step:
           </Typography>
-          <Box
+          <MotionBox
+            variants={fade({ withStagger: true })}
             sx={{
               paddingTop: "2rem",
               display: "grid",
@@ -103,7 +107,12 @@ export default function MethodPage() {
           >
             {[
               methodStepsList.map((step) => (
-                <Stack spacing={0.5} key={step.id} sx={{ maxWidth: "20rem" }}>
+                <MotionStack
+                  variants={fade()}
+                  spacing={0.5}
+                  key={step.id}
+                  sx={{ maxWidth: "20rem" }}
+                >
                   <Typography sx={{ color: "secondary.main" }}>
                     {convertToRoman(step.id)}.
                   </Typography>
@@ -118,19 +127,18 @@ export default function MethodPage() {
                   >
                     {step.time}
                   </Typography>
-                </Stack>
+                </MotionStack>
               )),
             ]}
-          </Box>
-        </Box>
+          </MotionBox>
+        </SectionBox>
 
-        <Box
+        <SectionBox
           sx={{
             display: "grid",
             gridTemplateColumns: { xs: "1fr", xl: "1fr 2fr" },
             gap: "3rem",
           }}
-          component="section"
         >
           <Box>
             <Typography variant={smallHeadingVariant}>
@@ -142,7 +150,8 @@ export default function MethodPage() {
               you to feel it.
             </Typography>
           </Box>
-          <Box
+          <MotionBox
+            variants={fade({ withStagger: true })}
             sx={{
               display: "grid",
               gridTemplateColumns: { xs: "1fr", md: "1fr 1fr" },
@@ -150,7 +159,8 @@ export default function MethodPage() {
             }}
           >
             {materialsList.map((m) => (
-              <Stack
+              <MotionStack
+                variants={fade()}
                 spacing={1}
                 key={m.id}
                 sx={{
@@ -170,12 +180,12 @@ export default function MethodPage() {
                 </Typography>
                 <Typography>{m.title}</Typography>
                 <Typography sx={captionStyles}>{m.description}</Typography>
-              </Stack>
+              </MotionStack>
             ))}
-          </Box>
-        </Box>
+          </MotionBox>
+        </SectionBox>
 
-        <Box
+        <SectionBox
           component="section"
           sx={{
             display: "grid",
@@ -239,31 +249,32 @@ export default function MethodPage() {
               borderRadius: "0.5rem",
             }}
           />
-        </Box>
+        </SectionBox>
 
-        <Stack
-          component="section"
-          spacing={3}
-          sx={{
-            alignItems: "center",
-            textAlign: "center",
-            paddingY: { xs: "3rem", xl: "10rem" },
-          }}
-        >
-          <FormatQuoteIcon sx={{ fontSize: { xs: "2rem", lg: "5rem" } }} />
-          <Typography variant={headingVariant}>
-            The opposite of fast isn't slow.
-            <br />
-            <Box component="span" sx={{ color: "secondary.main" }}>
-              It's deliberate.
-            </Box>
-          </Typography>
-          <Typography sx={{ ...captionStyles, textTransform: "uppercase" }}>
-            - On the door of the operatory
-          </Typography>
-        </Stack>
+        <SectionBox>
+          <Stack
+            spacing={3}
+            sx={{
+              alignItems: "center",
+              textAlign: "center",
+              paddingY: { xs: "3rem", xl: "10rem" },
+            }}
+          >
+            <FormatQuoteIcon sx={{ fontSize: { xs: "2rem", lg: "5rem" } }} />
+            <Typography variant={headingVariant}>
+              The opposite of fast isn't slow.
+              <br />
+              <Box component="span" sx={{ color: "secondary.main" }}>
+                It's deliberate.
+              </Box>
+            </Typography>
+            <Typography sx={{ ...captionStyles, textTransform: "uppercase" }}>
+              - On the door of the operatory
+            </Typography>
+          </Stack>
+        </SectionBox>
 
-        <Box component="section" sx={{ paddingY: "2rem" }}>
+        <SectionBox>
           <Card
             sx={{
               padding: {
@@ -295,14 +306,18 @@ export default function MethodPage() {
               </Typography>
             </Stack>
             <Stack spacing={1} sx={{ justifyContent: "center" }}>
-              <Button variant="contained">Book a reading</Button>
-              <Button component={RouterLink} to="/services" variant="outlined">
+              <MotionButton variant="contained">Book a reading</MotionButton>
+              <MotionButton
+                component={RouterLink}
+                to="/services"
+                variant="outlined"
+              >
                 See the menu
-              </Button>
+              </MotionButton>
             </Stack>
           </Card>
-        </Box>
+        </SectionBox>
       </Stack>
-    </SectionBox>
+    </Box>
   );
 }
