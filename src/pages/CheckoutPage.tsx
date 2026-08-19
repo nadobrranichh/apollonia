@@ -8,6 +8,7 @@ import { useTranslation } from "react-i18next";
 import { servicePriceStyles } from "../styles/typographyStyles";
 import CartItemContainer from "../components/shop/CartItemContainer";
 import { SectionBox } from "../components/SectionBox";
+import { AnimatePresence } from "motion/react";
 
 export default function CheckoutPage() {
   const { t } = useTranslation();
@@ -33,26 +34,22 @@ export default function CheckoutPage() {
     <SectionBox
       component="main"
       sx={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: { xs: "center", lg: "start" },
-        flexDirection: { xs: "column", lg: "row" },
-        padding: "4rem 1rem",
+        display: "grid",
+        gridTemplateColumns: { xs: "1fr", lg: "1fr 1fr" },
+        paddingY: "4rem",
         gap: "2rem",
+        alignItems: "start",
       }}
     >
       <DeliveryForm />
-      <Card
-        sx={{
-          padding: "1rem",
-          alignself: "start",
-        }}
-      >
+      <Card>
         <Typography variant="h5">{t("checkout.summary")}:</Typography>
         <Stack spacing={2} sx={{ marginY: "1.5rem" }}>
-          {cart.map((item) => (
-            <CartItemContainer key={item.id} item={item} />
-          ))}
+          <AnimatePresence mode="popLayout">
+            {cart.map((item) => (
+              <CartItemContainer key={item.id} item={item} />
+            ))}
+          </AnimatePresence>
         </Stack>
         <Typography sx={servicePriceStyles}>
           {t("checkout.subtotal")}: ${subTotal} {currency}
