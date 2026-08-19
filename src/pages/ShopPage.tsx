@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import { useQuery } from "@tanstack/react-query";
 import { configureConversionRate, fetchProducts } from "../http/http";
 import ShopItem from "../components/shop/ShopItem";
@@ -8,6 +8,8 @@ import { useTranslation } from "react-i18next";
 import { useEffect } from "react";
 import { SectionBox } from "../components/SectionBox";
 import { useResponsiveHeadingVariant } from "../hooks/useResponsiveHeadingVariant";
+import { MotionBox } from "../motion/components";
+import { fade } from "../motion/variants";
 
 export default function ShopPage() {
   const { t } = useTranslation();
@@ -38,7 +40,10 @@ export default function ShopPage() {
     <SectionBox component="main">
       <Typography variant={headingVariant}>{t("shop.title")}</Typography>
       {products && conversionRate && (
-        <Box
+        <MotionBox
+          variants={fade({ withStagger: true })}
+          initial="hidden"
+          whileInView="visible"
           sx={{
             justifySelf: "center",
             display: "grid",
@@ -46,7 +51,7 @@ export default function ShopPage() {
               xs: "1fr",
               md: "repeat(3,1fr)",
             },
-            gap: { xs: "2rem", md: "4rem" },
+            gap: { xs: "2rem", md: "3rem" },
           }}
         >
           {products
@@ -58,7 +63,7 @@ export default function ShopPage() {
                 conversionRate={conversionRate}
               />
             ))}
-        </Box>
+        </MotionBox>
       )}
       {isLoading && <LoadingBlock i18nKey="products" height="50vh" light />}
       {isError && <ErrorBlock message={error.message} height="50vh" light />}

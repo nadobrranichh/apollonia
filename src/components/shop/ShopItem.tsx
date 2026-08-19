@@ -1,9 +1,11 @@
 import { useState } from "react";
 import type { ProductType } from "../../types";
-import { Box, Button, Card, Link, Skeleton, Typography } from "@mui/material";
+import { Box, Button, Card, Skeleton, Typography } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
 import ImageBox from "../ImageBox";
 import { servicePriceStyles } from "../../styles/typographyStyles";
+import { MotionLink } from "../../motion/components";
+import { fade } from "../../motion/variants";
 
 export default function ShopItem({
   item,
@@ -16,7 +18,8 @@ export default function ShopItem({
   const [showSkeleton, setShowSkeleton] = useState<boolean>(true);
 
   return (
-    <Link
+    <MotionLink
+      variants={fade()}
       component={RouterLink}
       to={`/shopitem/${item.id}`}
       sx={{ textDecoration: "none", height: "100%" }}
@@ -80,6 +83,6 @@ export default function ShopItem({
         </Typography>
         <Button variant="contained">Learn more</Button>
       </Card>
-    </Link>
+    </MotionLink>
   );
 }
