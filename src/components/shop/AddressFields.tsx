@@ -42,6 +42,7 @@ export default function AddressFields({
       >
         <Box>
           <TextField
+            sx={{ width: "100%" }}
             placeholder={t("checkout.firstName")}
             {...register(
               `${value}.firstName`,
@@ -55,6 +56,7 @@ export default function AddressFields({
 
         <Box>
           <TextField
+            sx={{ width: "100%" }}
             placeholder={t("checkout.lastName")}
             {...register(
               `${value}.lastName`,
