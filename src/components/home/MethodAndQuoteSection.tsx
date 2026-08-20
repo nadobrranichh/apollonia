@@ -1,5 +1,4 @@
 import { Box, Typography, Card, Stack } from "@mui/material";
-import { methodStepsList } from "../../lists/methodLists.tsx";
 import { Link as RouterLink } from "react-router-dom";
 import ImageBox from "../ImageBox.tsx";
 import FounderImg from "../../assets/IMG_2780-s.jpg";
@@ -9,9 +8,11 @@ import { useResponsiveHeadingVariant } from "../../hooks/useResponsiveHeadingVar
 import { MotionBox } from "../../motion/components";
 import { fade } from "../../motion/variants.ts";
 import MotionButton from "../../motion/components/MotionButton.tsx";
+import { useMethodTexts } from "../../hooks/useMethodTexts.ts";
 
 export default function MethodSection() {
   const headingVariant = useResponsiveHeadingVariant();
+  const { methodStepsList } = useMethodTexts();
 
   return (
     <SectionBox
@@ -48,10 +49,10 @@ export default function MethodSection() {
             },
           }}
         >
-          {methodStepsList.map((step) => (
+          {methodStepsList.map((step, i) => (
             <MotionBox
               variants={fade({ yStart: -20 })}
-              key={step.id}
+              key={i}
               sx={{
                 display: "flex",
                 justifyContent: "space-between",
@@ -69,7 +70,7 @@ export default function MethodSection() {
                     fontWeight: "bold",
                   }}
                 >
-                  {step.id}.
+                  {i + 1}.
                 </Typography>
                 <Typography variant="body2" sx={{ display: "inline" }}>
                   {step.title}
@@ -85,7 +86,7 @@ export default function MethodSection() {
                 }}
                 variant="body2"
               >
-                {step.time}
+                {step.duration}
               </Typography>
             </MotionBox>
           ))}
