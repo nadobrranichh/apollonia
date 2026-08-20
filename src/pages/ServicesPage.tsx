@@ -1,4 +1,4 @@
-import { Box, Button, Stack, Typography } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 import { servicesList } from "../lists/servicesList";
 import Service from "../components/services/Service";
 import GemService from "../components/services/GemService";
@@ -6,6 +6,7 @@ import { captionStyles, descriptionStyles } from "../styles/typographyStyles";
 import { SectionBox } from "../components/SectionBox";
 import { useResponsiveHeadingVariant } from "../hooks/useResponsiveHeadingVariant";
 import type { StandardServiceItem } from "../types/listsTypes";
+import MotionButton from "../motion/components/MotionButton";
 
 export default function ServicesPage() {
   const headingVariant = useResponsiveHeadingVariant();
@@ -45,8 +46,8 @@ export default function ServicesPage() {
               gap: "1rem",
             }}
           >
-            <Button variant="contained">Text us a question</Button>
-            <Button variant="outlined">DM us on Instagram</Button>
+            <MotionButton variant="contained">Text us a question</MotionButton>
+            <MotionButton variant="outlined">DM us on Instagram</MotionButton>
           </Box>
         </Stack>
       </SectionBox>

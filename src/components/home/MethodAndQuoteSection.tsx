@@ -1,4 +1,4 @@
-import { Box, Typography, Button, Card, Stack } from "@mui/material";
+import { Box, Typography, Card, Stack } from "@mui/material";
 import { methodStepsList } from "../../lists/methodLists.tsx";
 import { Link as RouterLink } from "react-router-dom";
 import ImageBox from "../ImageBox.tsx";
@@ -8,6 +8,7 @@ import { SectionBox } from "../SectionBox.tsx";
 import { useResponsiveHeadingVariant } from "../../hooks/useResponsiveHeadingVariant.ts";
 import { MotionBox } from "../../motion/components";
 import { fade } from "../../motion/variants.ts";
+import MotionButton from "../../motion/components/MotionButton.tsx";
 
 export default function MethodSection() {
   const headingVariant = useResponsiveHeadingVariant();
@@ -89,9 +90,9 @@ export default function MethodSection() {
             </MotionBox>
           ))}
         </MotionBox>
-        <Button component={RouterLink} to="/method" variant="outlined">
+        <MotionButton component={RouterLink} to="/method" variant="outlined">
           Read the full method
-        </Button>
+        </MotionButton>
       </Box>
 
       <Stack spacing={4} sx={{ alignItems: "center", position: "relative" }}>

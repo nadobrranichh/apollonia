@@ -1,4 +1,4 @@
-import { Box, Button, Link, Stack, Typography } from "@mui/material";
+import { Box, Link, Stack, Typography } from "@mui/material";
 import HeroSection from "../components/home/HeroSection";
 import WhiteningImg from "../assets/regular-whitening-teeth.png";
 import TreatmentCard from "../components/TreatmentCard";
@@ -11,6 +11,7 @@ import { Link as RouterLink } from "react-router-dom";
 import { SectionBox } from "../components/SectionBox";
 import { useResponsiveHeadingVariant } from "../hooks/useResponsiveHeadingVariant";
 import ReviewsSection from "../components/home/ReviewsSection";
+import MotionButton from "../motion/components/MotionButton";
 
 export default function HomePage() {
   const headingVariant = useResponsiveHeadingVariant();
@@ -144,16 +145,20 @@ export default function HomePage() {
               and come say hello.
             </Typography>
             <Stack direction={{ xs: "column", sm: "row" }} spacing={1}>
-              <Button variant="contained" component={RouterLink} to="/visit">
+              <MotionButton
+                variant="contained"
+                component={RouterLink}
+                to="/visit"
+              >
                 See on the map
-              </Button>
-              <Button
+              </MotionButton>
+              <MotionButton
                 variant="outlined"
                 component={RouterLink}
                 to="/visit#directions"
               >
                 Get directions
-              </Button>
+              </MotionButton>
             </Stack>
           </Stack>
         </SectionBox>

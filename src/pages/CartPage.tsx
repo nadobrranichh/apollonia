@@ -1,4 +1,4 @@
-import { Box, Typography, Button } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
 import { useCartStore } from "../store/cart-store";
 import CartItemContainer from "../components/shop/CartItemContainer";
@@ -11,6 +11,7 @@ import { useResponsiveHeadingVariant } from "../hooks/useResponsiveHeadingVarian
 import { MotionBox } from "../motion/components";
 import { fade } from "../motion/variants";
 import { AnimatePresence } from "motion/react";
+import MotionButton from "../motion/components/MotionButton";
 export default function CartPage() {
   const { t } = useTranslation();
   const { cart } = useCartStore();
@@ -53,14 +54,14 @@ export default function CartPage() {
               <Typography sx={{ ...servicePriceStyles, textAlign: "center" }}>
                 {t("cart.subtotal")}: ${subTotal} {currency}
               </Typography>
-              <Button
+              <MotionButton
                 component={RouterLink}
                 to="/checkout"
                 sx={{ paddingX: "5rem" }}
                 variant="contained"
               >
                 {t("cart.checkout")}
-              </Button>
+              </MotionButton>
             </Box>
           </MotionBox>
         ) : (
@@ -68,9 +69,9 @@ export default function CartPage() {
             <Typography sx={{ marginBottom: "2rem" }}>
               {t("cart.noItems")}
             </Typography>
-            <Button variant="contained" component={RouterLink} to="/shop">
+            <MotionButton variant="contained" component={RouterLink} to="/shop">
               {t("cart.continueShopping")}
-            </Button>
+            </MotionButton>
           </Box>
         )}
       </Box>

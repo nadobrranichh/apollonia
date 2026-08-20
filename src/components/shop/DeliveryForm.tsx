@@ -1,11 +1,4 @@
-import {
-  Box,
-  Typography,
-  TextField,
-  Button,
-  Checkbox,
-  Card,
-} from "@mui/material";
+import { Box, Typography, TextField, Checkbox, Card } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { useMutation } from "@tanstack/react-query";
 import { useCartStore } from "../../store/cart-store";
@@ -18,6 +11,7 @@ import { countriesStates } from "../../constants/variables-constants";
 import { useTranslation } from "react-i18next";
 import { useEllipsis } from "../../hooks/useEllipsis";
 import { descriptionStyles } from "../../styles/typographyStyles";
+import MotionButton from "../../motion/components/MotionButton";
 
 export default function DeliveryForm() {
   const { t } = useTranslation();
@@ -107,11 +101,11 @@ export default function DeliveryForm() {
           />
         )}
 
-        <Button variant="contained" type="submit">
+        <MotionButton variant="contained" type="submit">
           {isPending
             ? t("checkout.submitting") + ellipsis
             : t("checkout.submitAndCheckout")}
-        </Button>
+        </MotionButton>
       </form>
       {error && (
         <Box>

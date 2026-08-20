@@ -1,4 +1,4 @@
-import { Box, Typography, Button, IconButton } from "@mui/material";
+import { Box, Typography, IconButton } from "@mui/material";
 import { useCartStore } from "../../store/cart-store";
 import { useState } from "react";
 import type { ProductType } from "../../types";
@@ -8,6 +8,7 @@ import { configureConversionRate } from "../../http/http";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import { servicePriceStyles } from "../../styles/typographyStyles";
+import MotionButton from "../../motion/components/MotionButton";
 
 export default function ShopItemControls({ item }: { item: ProductType }) {
   const { t } = useTranslation();
@@ -63,14 +64,14 @@ export default function ShopItemControls({ item }: { item: ProductType }) {
           </IconButton>
         </Box>
       )}
-      <Button
+      <MotionButton
         variant="contained"
         sx={{ width: "100%" }}
         onClick={() => addItem(item, quantity)}
         disabled={isInCart}
       >
         {isInCart ? t("shopitem.inCart") : t("shopitem.addToCart")}
-      </Button>
+      </MotionButton>
     </Box>
   );
 }

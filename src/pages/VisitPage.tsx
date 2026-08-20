@@ -1,11 +1,4 @@
-import {
-  Box,
-  Typography,
-  Link,
-  type Theme,
-  Button,
-  Stack,
-} from "@mui/material";
+import { Box, Typography, Link, type Theme, Stack } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
 import { SectionBox } from "../components/SectionBox";
 import { useResponsiveHeadingVariant } from "../hooks/useResponsiveHeadingVariant";
@@ -13,6 +6,7 @@ import { captionStyles } from "../styles/typographyStyles";
 import { MotionBox } from "../motion/components";
 import { fade } from "../motion/variants";
 import MotionStack from "../motion/components/MotionStack";
+import MotionButton from "../motion/components/MotionButton";
 
 const directions = [
   {
@@ -171,8 +165,8 @@ export default function LocationPage() {
             justifyContent: "center",
           }}
         >
-          <Button variant="contained">DM on instagram</Button>
-          <Button variant="outlined">Text an SMS</Button>
+          <MotionButton variant="contained">DM on instagram</MotionButton>
+          <MotionButton variant="outlined">Text an SMS</MotionButton>
         </Stack>
       </Stack>
     </SectionBox>
