@@ -372,12 +372,13 @@
     "canceled": "Payment canceled."
   },
   "footer": {
-    "follow": "Follow",
-    "book": "To Book",
-    "dm": "DM on insta or FB",
-    "call": "Call",
-    "email": "Email",
-    "navigate": "Navigate"
+    "subtitle": "A small Toronto practice for painless whitening and quiet, sensitivity-conscious dentistry.",
+    "explore": "Explore",
+    "followAlong": "Follow Along",
+    "copyright": "Apollonia Dental Care. All rights reserved.",
+    "address": "821 Eglinton Ave West, Toronto, ON",
+    "credit": "Website developed by",
+    "creditName": "Nazar Shchepaniak"
   },
   "loading": {
     "reviews": "Loading reviews",

@@ -48,8 +48,7 @@ export default function Footer() {
               marginTop: "0.45rem",
             }}
           >
-            A small Toronto practice for painless whitening and quiet,
-            sensitivity-conscious dentistry.
+            {t("footer.subtitle")}
           </Typography>
         </Box>
         <Box>
@@ -60,7 +59,7 @@ export default function Footer() {
               marginBottom: "0.5rem",
             }}
           >
-            Explore
+            {t("footer.explore")}
           </Typography>
           <Stack spacing={1} sx={{ alignItems: "start" }}>
             {pagesList.map((item) => (
@@ -82,7 +81,7 @@ export default function Footer() {
         </Box>
         <Box>
           <Typography sx={{ ...servicePriceStyles, marginBottom: "0.5rem" }}>
-            Follow Along
+            {t("footer.followAlong")}
           </Typography>
           <Box
             sx={{
@@ -125,15 +124,20 @@ export default function Footer() {
         }}
       >
         <Typography sx={{ ...descriptionStyles, ...secondaryFont }}>
-          © {new Date().getFullYear()} Apollonia Dental Care. All rights
-          reserved.
+          © {new Date().getFullYear()} {t("footer.copyright")}
         </Typography>
         <Typography sx={{ ...descriptionStyles, ...secondaryFont }}>
-          821 Eglinton Ave West, Toronto, ON
+          {t("footer.address")}
         </Typography>
       </SectionBox>
       <Typography sx={{ ...captionStyles, textAlign: "center" }}>
-        Website developed by Nazar Shchepaniak
+        {t("footer.credit")}:{" "}
+        <Link
+          component={RouterLink}
+          to="https://www.linkedin.com/in/nazar-shchepaniak-14906635a/"
+        >
+          {t("footer.creditName")}
+        </Link>
       </Typography>
     </Box>
   );
