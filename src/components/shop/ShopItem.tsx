@@ -6,6 +6,7 @@ import ImageBox from "../ImageBox";
 import { servicePriceStyles } from "../../styles/typographyStyles";
 import { MotionLink } from "../../motion/components";
 import { fade } from "../../motion/variants";
+import { subtleHoverScale, subtleTapScale } from "../../motion/value-presets";
 
 export default function ShopItem({
   item,
@@ -20,6 +21,8 @@ export default function ShopItem({
   return (
     <MotionLink
       variants={fade()}
+      whileHover={subtleHoverScale}
+      whileTap={subtleTapScale}
       component={RouterLink}
       to={`/shopitem/${item.id}`}
       sx={{ textDecoration: "none", height: "100%" }}

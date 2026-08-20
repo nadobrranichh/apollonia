@@ -9,6 +9,7 @@ import {
 } from "../../styles/typographyStyles";
 import { MotionCard } from "../../motion/components";
 import { fade } from "../../motion/variants";
+import { subtleHoverScale } from "../../motion/value-presets";
 
 export default function Service({ item }: { item: StandardServiceItem }) {
   const { t, i18n } = useTranslation();
@@ -20,6 +21,7 @@ export default function Service({ item }: { item: StandardServiceItem }) {
   return (
     <MotionCard
       variants={fade({ yStart: 20 })}
+      whileHover={subtleHoverScale}
       initial="hidden"
       whileInView="visible"
       sx={{ maxWidth: "30rem" }}

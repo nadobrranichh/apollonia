@@ -9,6 +9,7 @@ import {
 } from "../../styles/typographyStyles";
 import { MotionCard } from "../../motion/components";
 import { fade } from "../../motion/variants";
+import { subtleHoverScale } from "../../motion/value-presets";
 
 export default function GemService() {
   const { t } = useTranslation();
@@ -18,6 +19,7 @@ export default function GemService() {
       variants={fade({ yStart: 20 })}
       initial="hidden"
       whileInView="visible"
+      whileHover={subtleHoverScale}
       sx={{
         display: "flex",
         flexDirection: "column",
