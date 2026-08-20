@@ -67,6 +67,136 @@
       }
     }
   },
+  "method": {
+    "hero": {
+      "title": "Whitening, as it should have been",
+      "titleSpan": "all along.",
+      "subtitle": "I'm Nataliia, the only hygienist in this room, the inventor of the protocol on the menu, and the person who'll lower the chair for you. Here is what I believe - and why.",
+      "imageSubText": "Nataliia Shchepaniak• Founder"
+    },
+    "rules": {
+      "title": "Four quiet rules:",
+      "list": [
+        {
+          "title": "It must not hurt.",
+          "description": "Sensitivity is the silent reason most people never finish whitening. Every protocol on our menu is built around three sensitivity controls - gum sealants, hydroxyapatite, fluoride - before peroxide ever enters the room."
+        },
+        {
+          "title": "Light over chemistry.",
+          "description": "We use less peroxide than most studios, and pair it with red-light LED therapy. The light does the work the chemistry would have done - but kinder, and faster to dissipate."
+        },
+        {
+          "title": "Enamel before shade.",
+          "description": "A whiter tooth that's been etched and dehydrated isn't whiter for long. Hydroxyapatite reseals the surface at the end of every session. The shade you leave with is the shade you keep."
+        },
+        {
+          "title": "One chair, one hygienist.",
+          "description": "Apollonia is intentionally small. The person who plans your treatment is the person who performs it. No rotating staff, no upsell scripts. It is not for everyone but if it's for you, you'll know."
+        }
+      ]
+    },
+    "treatment": {
+      "title": "The treatment, step by step:",
+      "steps": [
+        {
+          "title": "Diagnostic shade reading",
+          "description": "We read your enamel against the VITA classical scale. A target is set in writing.",
+          "duration": "5 MIN"
+        },
+        {
+          "title": "Gum protection & isolation",
+          "description": "A light-cure resin protects every millimetre of soft tissue.",
+          "duration": "10 MIN"
+        },
+        {
+          "title": "First LED whitening pass",
+          "description": "First fifteen minutes under the blue-red dual lamp at clinical strength.",
+          "duration": "15 MIN"
+        },
+        {
+          "title": "Red-light recovery interval",
+          "description": "Red-light only. Enamel rehydrates; tissue calms; you breathe.",
+          "duration": "10 MIN"
+        },
+        {
+          "title": "Second LED whitening pass",
+          "description": "Second pass, same strength. This is where the bulk of the shift happens.",
+          "duration": "15 MIN"
+        },
+        {
+          "title": "Hydroxyapatite reseal & polish",
+          "description": "A remineralising gel locks the new shade in. We re-read your VITA card.",
+          "duration": "15 MIN"
+        }
+      ]
+    },
+    "materials": {
+      "title": "Six things, chosen carefully.",
+      "subtitle": "We don't carry a long shelf. Every material in the operatory earned its place because it does one thing well - and doesn't ask you to feel it.",
+      "items": [
+        {
+          "label": "Carbamide peroxide",
+          "caption": "The whitening agent. Lower concentration than most studios-light makes up the difference."
+        },
+        {
+          "label": "Red-light LED",
+          "caption": "650-nm therapy light. Accelerates peroxide breakdown and reduces gum inflammation."
+        },
+        {
+          "label": "Hydroxyapatite",
+          "caption": "The mineral your enamel is made of. Reseals microporosity after every session."
+        },
+        {
+          "label": "Fluoride varnish",
+          "caption": "Strengthens the surface against staining for the first 24 hours - the window that matters."
+        },
+        {
+          "label": "24K gold gel",
+          "caption": "Used only in the Golden Glow method. Reduces sensitivity further; leaves teeth softer to the tongue."
+        },
+        {
+          "label": "Air polishing",
+          "caption": "Sodium bicarbonate at low pressure for surface stain. Optional, gentle, fast."
+        }
+      ]
+    },
+    "biography": {
+      "title": "A short biography.",
+      "text": {
+        "paragraph1": "Nataliia was born and trained in Ukraine, then completed her dental hygiene qualifications in Canada. She spent her first three Canadian years working chairs that ran on volume - six minutes, fluoride, next — and learned mostly what she didn't want to do.",
+        "paragraph2": "In 2019 she opened a single-chair room on Eglinton, three blocks east of Forest Hill subway, and started writing protocols by hand on graph paper. Apollonia was the protocol she stopped throwing out.",
+        "paragraph3": "Today the studio sees a few patients a day, by reservation, with the same hygienist every visit. She prefers it that way; her patients seem to as well."
+      },
+      "info": [
+        {
+          "label": "LANGUAGES",
+          "value": "English, Ukrainian"
+        },
+        {
+          "label": "MEMBER",
+          "value": "College of Dental Hygienists of Ontario"
+        },
+        {
+          "label": "PRACTICE",
+          "value": "Apollonia Preventative Dental Care, Toronto"
+        }
+      ]
+    },
+    "quote": {
+      "title": "The opposite of fast isn't slow.",
+      "titleSpan": "It's deliberate.",
+      "caption": "ON THE DOOR OF THE OPERATORY"
+    },
+    "cta": {
+      "eyebrowLabel": "CURIOUS?",
+      "title": "Come see the room.",
+      "description": "Five minutes is enough - drop in for a free shade reading. We'll write down a target and you can leave with it.",
+      "buttons": {
+        "book": "Book a reading",
+        "menu": "See the menu"
+      }
+    }
+  },
   "services": {
     "title": "Services",
     "bookService": "Book Now",

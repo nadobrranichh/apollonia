@@ -2,12 +2,7 @@ import { Box, Card, Divider, Stack, Typography } from "@mui/material";
 import ImageBox from "../components/ImageBox";
 import FounderImg from "../assets/IMG_2779-s.jpg";
 import { captionStyles, descriptionStyles } from "../styles/typographyStyles";
-import {
-  bioList,
-  materialsList,
-  methodStepsList,
-  rulesList,
-} from "../lists/methodLists";
+import { materialsList } from "../lists/materialsList";
 import RoomImg from "../assets/IMG_2777-s.jpg";
 import FormatQuoteIcon from "@mui/icons-material/FormatQuote";
 import { convertToRoman } from "../../utils/convertToRoman";
@@ -18,31 +13,35 @@ import { MotionBox } from "../motion/components";
 import MotionStack from "../motion/components/MotionStack";
 import { fade } from "../motion/variants";
 import MotionButton from "../motion/components/MotionButton";
+import { useTranslation } from "react-i18next";
+import { useMethodTexts } from "../hooks/useMethodTexts";
 
 export default function MethodPage() {
   const headingVariant = useResponsiveHeadingVariant();
   const smallHeadingVariant = useResponsiveHeadingVariant("small");
+  const { t } = useTranslation();
+  const { bioList, materialsTexts, methodStepsList, rulesList } =
+    useMethodTexts();
+
   return (
     <Box component="main">
       <Stack spacing={15} sx={{ paddingY: { xs: "5rem", lg: "5rem" } }}>
         <SectionBox
           sx={{
             display: "grid",
-            gridTemplateColumns: { xs: "1fr", lg: "1fr 1fr" },
+            gridTemplateColumns: { xs: "1fr", sm: "1fr 1fr" },
             gap: { xs: "2rem", lg: "5rem" },
           }}
         >
           <Stack sx={{ justifyContent: "center" }}>
             <Typography variant={headingVariant}>
-              Whitening, as it should have been{" "}
+              {t("method.hero.title")}{" "}
               <Box component="span" sx={{ textDecoration: "underline" }}>
-                all along.
+                {t("method.hero.titleSpan")}
               </Box>
             </Typography>
             <Typography variant="body2" sx={{ fontFamily: "Poppins,Arial" }}>
-              I'm Nataliia, the only hygienist in this room, the inventor of the
-              protocol on the menu, and the person who'll lower the chair for
-              you. Here is what I believe - and why.
+              {t("method.hero.subtitle")}
             </Typography>
           </Stack>
           <Box>
@@ -50,6 +49,7 @@ export default function MethodPage() {
               src={FounderImg}
               sx={{
                 width: "100%",
+                minHeight: { xl: "40rem" },
                 maxHeight: { xs: "25rem", lg: "none" },
                 borderRadius: "0.5rem",
                 objectFit: "cover",
@@ -57,14 +57,14 @@ export default function MethodPage() {
               }}
             />
             <Typography sx={{ ...captionStyles, textAlign: "center" }}>
-              Nataliia Shchepaniak &bull; Founder
+              {t("method.hero.imageSubText")}
             </Typography>
           </Box>
         </SectionBox>
 
         <SectionBox>
           <Typography variant={smallHeadingVariant}>
-            Four quiet rules:
+            {t("method.rules.title")}
           </Typography>
           <MotionBox
             variants={fade({ withStagger: true })}
@@ -76,23 +76,21 @@ export default function MethodPage() {
               gap: "2rem",
             }}
           >
-            {[
-              rulesList.map((r) => (
-                <MotionStack spacing={1} key={r.id}>
-                  <Typography variant="h5" sx={{ color: "secondary.main" }}>
-                    {r.id}.
-                  </Typography>
-                  <Typography>{r.title}</Typography>
-                  <Typography sx={captionStyles}>{r.description}</Typography>
-                </MotionStack>
-              )),
-            ]}
+            {rulesList.map((rule, i) => (
+              <MotionStack spacing={1} key={i}>
+                <Typography variant="h5" sx={{ color: "secondary.main" }}>
+                  {i + 1}.
+                </Typography>
+                <Typography>{rule.title}</Typography>
+                <Typography sx={captionStyles}>{rule.description}</Typography>
+              </MotionStack>
+            ))}
           </MotionBox>
         </SectionBox>
 
         <SectionBox>
           <Typography variant={smallHeadingVariant}>
-            The treatment, step by step:
+            {t(`method.treatment.title`)}
           </Typography>
           <MotionBox
             variants={fade({ withStagger: true })}
@@ -108,14 +106,10 @@ export default function MethodPage() {
             }}
           >
             {[
-              methodStepsList.map((step) => (
-                <MotionStack
-                  spacing={0.5}
-                  key={step.id}
-                  sx={{ maxWidth: "20rem" }}
-                >
+              methodStepsList.map((step, i) => (
+                <MotionStack spacing={0.5} key={i} sx={{ maxWidth: "20rem" }}>
                   <Typography sx={{ color: "secondary.main" }}>
-                    {convertToRoman(step.id)}.
+                    {convertToRoman(i + 1)}.
                   </Typography>
                   <Typography>{step.title}</Typography>
                   <Typography sx={captionStyles}>{step.description}</Typography>
@@ -126,7 +120,7 @@ export default function MethodPage() {
                       textTransform: "uppercase",
                     }}
                   >
-                    {step.time}
+                    {step.duration}
                   </Typography>
                 </MotionStack>
               )),
@@ -143,12 +137,10 @@ export default function MethodPage() {
         >
           <Box>
             <Typography variant={smallHeadingVariant}>
-              Six things, chosen carefully.
+              {t("method.materials.title")}
             </Typography>
             <Typography variant="body2" sx={{ fontFamily: "Poppins,Arial" }}>
-              We don't carry a long shelf. Every material in the operatory
-              earned its place because it does one thing well - and doesn't ask
-              you to feel it.
+              {t("method.materials.subtitle")}
             </Typography>
           </Box>
           <MotionBox
@@ -159,7 +151,7 @@ export default function MethodPage() {
               gap: "1rem",
             }}
           >
-            {materialsList.map((m) => (
+            {materialsList.map((m, i) => (
               <MotionStack
                 spacing={1}
                 key={m.id}
@@ -178,8 +170,10 @@ export default function MethodPage() {
                 >
                   {m.marker}
                 </Typography>
-                <Typography>{m.title}</Typography>
-                <Typography sx={captionStyles}>{m.description}</Typography>
+                <Typography>{materialsTexts[i].label}</Typography>
+                <Typography sx={captionStyles}>
+                  {materialsTexts[i].caption}
+                </Typography>
               </MotionStack>
             ))}
           </MotionBox>
@@ -196,34 +190,27 @@ export default function MethodPage() {
           <Stack spacing={3}>
             <Stack spacing={2}>
               <Typography variant={smallHeadingVariant}>
-                A short biography.
+                {t("method.biography.title")}
               </Typography>
               <Typography variant="body2" sx={{ fontFamily: "Poppins, Arial" }}>
-                Nataliia was born and trained in Ukraine, then completed her
-                dental hygiene qualifications in Canada. She spent her first
-                three Canadian years working chairs that ran on volume - six
-                minutes, fluoride, next — and learned mostly what she didn't
-                want to do.
-                <br />
-                <br /> In 2019 she opened a single-chair room on Eglinton, three
-                blocks west of Forest Hill subway, and started writing protocols
-                by hand on graph paper. Apollonia was the protocol she stopped
-                throwing out.
-                <br />
-                <br /> Today the studio sees a few patients a day, by
-                reservation, with the same hygienist every visit. She prefers it
-                that way; her patients seem to as well.
+                {t("method.biography.text.paragraph1")}
+              </Typography>
+              <Typography variant="body2" sx={{ fontFamily: "Poppins, Arial" }}>
+                {t("method.biography.text.paragraph2")}
+              </Typography>
+              <Typography variant="body2" sx={{ fontFamily: "Poppins, Arial" }}>
+                {t("method.biography.text.paragraph3")}
               </Typography>
             </Stack>
             <Divider />
             <Stack spacing={3}>
               {[
-                bioList.map((b) => (
-                  <Box key={b.id}>
+                bioList.map((b, i) => (
+                  <Box key={i}>
                     <Typography
                       sx={{ ...captionStyles, textTransform: "uppercase" }}
                     >
-                      {b.caption}
+                      {b.label}
                     </Typography>
                     <Typography
                       variant="body2"
@@ -233,7 +220,7 @@ export default function MethodPage() {
                         color: "primary.main",
                       }}
                     >
-                      {b.text}
+                      {b.value}
                     </Typography>
                   </Box>
                 )),
@@ -262,14 +249,14 @@ export default function MethodPage() {
           >
             <FormatQuoteIcon sx={{ fontSize: { xs: "2rem", lg: "5rem" } }} />
             <Typography variant={headingVariant}>
-              The opposite of fast isn't slow.
+              {t("method.quote.title")}
               <br />
               <Box component="span" sx={{ color: "secondary.main" }}>
-                It's deliberate.
+                {t("method.quote.titleSpan")}
               </Box>
             </Typography>
             <Typography sx={{ ...captionStyles, textTransform: "uppercase" }}>
-              - On the door of the operatory
+              - {t("method.quote.caption")}
             </Typography>
           </Stack>
         </SectionBox>
@@ -295,24 +282,25 @@ export default function MethodPage() {
                   textTransform: "uppercase",
                 }}
               >
-                Curious?
+                {t("method.cta.eyebrowLabel")}
               </Typography>
               <Typography variant={smallHeadingVariant}>
-                Come see the room.
+                {t("method.cta.title")}
               </Typography>
               <Typography variant="body2" sx={{ fontFamily: "Poppins, Arial" }}>
-                Five minutes is enough - drop in for a free shade reading. We'll
-                write down a target and you can leave with it.
+                {t("method.cta.description")}
               </Typography>
             </Stack>
             <Stack spacing={1} sx={{ justifyContent: "center" }}>
-              <MotionButton variant="contained">Book a reading</MotionButton>
+              <MotionButton variant="contained">
+                {t("method.cta.buttons.book")}
+              </MotionButton>
               <MotionButton
                 component={RouterLink}
                 to="/services"
                 variant="outlined"
               >
-                See the menu
+                {t("method.cta.buttons.menu")}
               </MotionButton>
             </Stack>
           </Card>
