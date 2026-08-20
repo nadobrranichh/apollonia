@@ -2,8 +2,6 @@ import { motion, type MotionProps } from "motion/react";
 import {
   Box,
   Typography,
-  Button,
-  type ButtonProps,
   Stack,
   type StackProps,
   Card,
@@ -15,9 +13,7 @@ import type { LinkProps as RouterLinkProps } from "react-router-dom";
 
 export const MotionBox = motion.create(Box);
 export const MotionTypography = motion.create(Typography);
-export const MotionButton = motion.create(Button) as ComponentType<
-  (ButtonProps & MotionProps) | RouterLinkProps
->;
+
 export const MotionStack = motion.create(Stack) as ComponentType<
   StackProps & MotionProps
 >;

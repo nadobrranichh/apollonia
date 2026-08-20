@@ -5,7 +5,7 @@ import { SectionBox } from "../SectionBox";
 import { useResponsiveHeadingVariant } from "../../hooks/useResponsiveHeadingVariant";
 import { metricsList } from "../../lists/metricsList";
 import { Link as RouterLink } from "react-router-dom";
-import { MotionButton } from "../../motion/components";
+import MotionButton from "../../motion/components/MotionButton";
 import { fade } from "../../motion/variants";
 
 export default function HeroSection() {
