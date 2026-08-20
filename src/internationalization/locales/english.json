@@ -1,7 +1,7 @@
 {
   "pages": {
     "home": "Home",
-    "location": "Location",
+    "visit": "Visit",
     "method": "Method",
     "services": "Services",
     "reviews": "Reviews",
@@ -12,8 +12,60 @@
     "paragraph1": "Nataliia is an experienced dental hygienist (6 years), recognized for her groundbreaking invention, the painless teeth whitening method known as “Apollonia”.",
     "paragraph2": "Originally from Ukraine and educated in Canada, she is committed to making every dental procedure a comfortable and relaxing experience for her clients."
   },
-  "location": {
-    "address": "Location: 821 Eglinton Ave W, Toronto, ON M5N 1E6, Canada"
+  "visit": {
+    "title": "Where to find us",
+    "subtitle": "Your smile deserves a space designed around you. Come visit us and discover our treatments in person.",
+    "contact": {
+      "address": {
+        "label": "ADDRESS:",
+        "value1": "821 Eglinton Ave West,",
+        "value2": "Toronto, ON M5N 1E6, Canada",
+        "mapsLink": "Open in Google Maps"
+      },
+      "reachOut": "REACH OUT:"
+    },
+    "gettingHere": {
+      "label": "GETTING HERE:",
+      "subway": {
+        "label": "Subway",
+        "description": "Line 1 to Eglinton West, 10 min walk east."
+      },
+      "parking": {
+        "label": "Parking",
+        "description": "Green P at Forest Hill Village, 4 min away."
+      },
+      "bike": {
+        "label": "Bike",
+        "description": "Inside rack available, bring it up with you."
+      }
+    },
+    "weeklyHours": {
+      "label": "WEEKLY HOURS",
+      "monWed": {
+        "label": "MON-WED",
+        "hours": "9AM-7PM"
+      },
+      "thuFri": {
+        "label": "THU-FRI",
+        "hours": "9AM-5PM"
+      },
+      "sat": {
+        "label": "SAT",
+        "hours": "10AM-4PM"
+      },
+      "sun": {
+        "label": "SUN",
+        "hours": "CLOSED"
+      }
+    },
+    "sayHello": {
+      "eyebrowText": "Can't make it in yet?",
+      "title": "Say hello first.",
+      "buttons": {
+        "dm": "DM on Instagram",
+        "sms": "Text an SMS"
+      }
+    }
   },
   "services": {
     "title": "Services",

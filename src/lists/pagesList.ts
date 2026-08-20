@@ -1,6 +1,6 @@
 export const pagesList = [
   {
-    titleKey: "pages.location",
+    titleKey: "pages.visit",
     url: "visit",
   },
   {

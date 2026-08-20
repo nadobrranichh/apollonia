@@ -7,30 +7,19 @@ import { MotionBox } from "../motion/components";
 import { fade } from "../motion/variants";
 import MotionStack from "../motion/components/MotionStack";
 import MotionButton from "../motion/components/MotionButton";
+import { useTranslation } from "react-i18next";
 
 const directions = [
-  {
-    id: 1,
-    title: "Subway",
-    subtitle: "Line 1 to Eglinton West, 10 min walk east.",
-  },
-  {
-    id: 2,
-    title: "Parking",
-    subtitle: "Green P at Forest Hill Village, 4 min away.",
-  },
-  {
-    id: 3,
-    title: "Bike",
-    subtitle: "Inside rack available, bring it up with you.",
-  },
+  { id: 1, key: "subway" },
+  { id: 2, key: "parking" },
+  { id: 3, key: "bike" },
 ];
 
 const weeklyHours = [
-  { id: 1, days: "Mon-Wed", time: "9AM - 7PM" },
-  { id: 2, days: "Thu-Fri", time: "9AM - 5PM" },
-  { id: 3, days: "Sat", time: "10AM - 4PM" },
-  { id: 4, days: "Sun", time: "Closed" },
+  { id: 1, key: "monWed" },
+  { id: 2, key: "thuFri" },
+  { id: 3, key: "sat" },
+  { id: 4, key: "sun" },
 ];
 
 const subtextStyles = {
@@ -41,15 +30,14 @@ const subtextStyles = {
 };
 
 export default function LocationPage() {
+  const { t } = useTranslation();
   const headingVariant = useResponsiveHeadingVariant();
+
   return (
     <SectionBox component="main">
       <Box sx={{ marginBottom: "2rem" }}>
-        <Typography variant={headingVariant}>Where to find us</Typography>
-        <Typography>
-          Your smile deserves a space designed around you. Come visit us and
-          discover our treatments in person.
-        </Typography>
+        <Typography variant={headingVariant}>{t("visit.title")}</Typography>
+        <Typography>{t("visit.subtitle")}</Typography>
       </Box>
       <Box
         sx={{
@@ -80,25 +68,25 @@ export default function LocationPage() {
           >
             <Box sx={{ width: "50%" }}>
               <Typography variant="body2" sx={subtextStyles}>
-                Address:
+                {t("visit.contact.address.label")}
               </Typography>
               <Typography sx={{ ...captionStyles, color: "primary.main" }}>
-                821 Eglinton Ave West
+                {t("visit.contact.address.value1")}
               </Typography>
               <Typography sx={{ ...captionStyles, color: "primary.main" }}>
-                Toronto, ON M5N 1E6
+                {t("visit.contact.address.value2")}
               </Typography>
               <Link
                 component={RouterLink}
                 sx={{ ...captionStyles, color: "secondary.main" }}
                 to="https://maps.app.goo.gl/ZMySaD6bfVxsA8gp9"
               >
-                Open in Google Maps
+                {t("visit.contact.address.mapsLink")}
               </Link>
             </Box>
             <Box sx={{ width: "50%" }}>
               <Typography variant="body2" sx={subtextStyles}>
-                Reach out:
+                {t("visit.contact.reachOut")}
               </Typography>
               <Typography sx={{ ...captionStyles, color: "primary.main" }}>
                 +1 647 514 1552
@@ -110,7 +98,7 @@ export default function LocationPage() {
           </MotionBox>
           <MotionBox variants={fade({ withStagger: true })}>
             <Typography variant="body2" sx={subtextStyles}>
-              Getting here:
+              {t("visit.gettingHere.label")}
             </Typography>
 
             <Box
@@ -122,15 +110,19 @@ export default function LocationPage() {
             >
               {directions.map((d) => (
                 <Box key={d.id}>
-                  <Typography variant="body2">{d.title}</Typography>
-                  <Typography sx={captionStyles}>{d.subtitle}</Typography>
+                  <Typography variant="body2">
+                    {t(`visit.gettingHere.${d.key}.label`)}
+                  </Typography>
+                  <Typography sx={captionStyles}>
+                    {t(`visit.gettingHere.${d.key}.description`)}
+                  </Typography>
                 </Box>
               ))}
             </Box>
           </MotionBox>
           <MotionBox variants={fade({ withStagger: true })}>
             <Typography variant="body2" sx={subtextStyles}>
-              Weekly hours:
+              {t("visit.weeklyHours.label")}
             </Typography>
             <Box
               sx={{
@@ -142,12 +134,14 @@ export default function LocationPage() {
             >
               {weeklyHours.map((h) => (
                 <Box key={h.id}>
-                  <Typography sx={subtextStyles}>{h.days}</Typography>
+                  <Typography sx={subtextStyles}>
+                    {t(`visit.weeklyHours.${h.key}.label`)}
+                  </Typography>
                   <Typography
                     variant="body2"
                     sx={{ ...subtextStyles, color: "text.primary" }}
                   >
-                    {h.time}
+                    {t(`visit.weeklyHours.${h.key}.hours`)}
                   </Typography>
                 </Box>
               ))}
@@ -156,8 +150,10 @@ export default function LocationPage() {
         </MotionStack>
       </Box>
       <Stack spacing={2} sx={{ textAlign: "center", paddingY: "4rem" }}>
-        <Typography sx={captionStyles}>Can't make it in yet?</Typography>
-        <Typography variant="h4">Say hello first.</Typography>
+        <Typography sx={captionStyles}>
+          {t("visit.sayHello.eyebrowText")}
+        </Typography>
+        <Typography variant="h4">{t("visit.sayHello.title")}</Typography>
         <Stack
           spacing={1}
           direction={{ xs: "column", sm: "row" }}
@@ -165,8 +161,12 @@ export default function LocationPage() {
             justifyContent: "center",
           }}
         >
-          <MotionButton variant="contained">DM on instagram</MotionButton>
-          <MotionButton variant="outlined">Text an SMS</MotionButton>
+          <MotionButton variant="contained">
+            {t("visit.sayHello.buttons.dm")}
+          </MotionButton>
+          <MotionButton variant="outlined">
+            {t("visit.sayHello.buttons.sms")}
+          </MotionButton>
         </Stack>
       </Stack>
     </SectionBox>
