@@ -10,8 +10,9 @@ import { Link as RouterLink } from "react-router-dom";
 import { SectionBox } from "../components/SectionBox";
 import { useResponsiveHeadingVariant } from "../hooks/useResponsiveHeadingVariant";
 import { captionStyles } from "../styles/typographyStyles";
-import { MotionBox, MotionStack } from "../motion/components";
+import { MotionBox } from "../motion/components";
 import { fade } from "../motion/variants";
+import MotionStack from "../motion/components/MotionStack";
 
 const directions = [
   {
@@ -76,7 +77,7 @@ export default function LocationPage() {
         ></iframe>
         <MotionStack spacing={4} variants={fade({ withStagger: true })}>
           <MotionBox
-            variants={fade({ withStagger: true })}
+            variants={fade()}
             id="directions"
             sx={{
               scrollMarginTop: "8.5rem",

@@ -14,9 +14,10 @@ import { convertToRoman } from "../../utils/convertToRoman";
 import { Link as RouterLink } from "react-router-dom";
 import { SectionBox } from "../components/SectionBox";
 import { useResponsiveHeadingVariant } from "../hooks/useResponsiveHeadingVariant";
-import { MotionBox, MotionStack } from "../motion/components";
+import { MotionBox } from "../motion/components";
+import MotionStack from "../motion/components/MotionStack";
 import { fade } from "../motion/variants";
-import { MotionButton } from "../motion/components";
+import MotionButton from "../motion/components/MotionButton";
 
 export default function MethodPage() {
   const headingVariant = useResponsiveHeadingVariant();
@@ -67,6 +68,7 @@ export default function MethodPage() {
           </Typography>
           <MotionBox
             variants={fade({ withStagger: true })}
+            viewport={{ once: true, amount: 0.2 }}
             sx={{
               paddingTop: "2rem",
               display: "grid",
@@ -76,7 +78,7 @@ export default function MethodPage() {
           >
             {[
               rulesList.map((r) => (
-                <MotionStack variants={fade()} spacing={1} key={r.id}>
+                <MotionStack spacing={1} key={r.id}>
                   <Typography variant="h5" sx={{ color: "secondary.main" }}>
                     {r.id}.
                   </Typography>
@@ -108,7 +110,6 @@ export default function MethodPage() {
             {[
               methodStepsList.map((step) => (
                 <MotionStack
-                  variants={fade()}
                   spacing={0.5}
                   key={step.id}
                   sx={{ maxWidth: "20rem" }}
@@ -160,7 +161,6 @@ export default function MethodPage() {
           >
             {materialsList.map((m) => (
               <MotionStack
-                variants={fade()}
                 spacing={1}
                 key={m.id}
                 sx={{
