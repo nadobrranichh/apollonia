@@ -7,16 +7,18 @@ import { SectionBox } from "../components/SectionBox";
 import { useResponsiveHeadingVariant } from "../hooks/useResponsiveHeadingVariant";
 import type { StandardServiceItem } from "../types/listsTypes";
 import MotionButton from "../motion/components/MotionButton";
+import { useTranslation } from "react-i18next";
 
 export default function ServicesPage() {
   const headingVariant = useResponsiveHeadingVariant();
   const smallHeadingVariant = useResponsiveHeadingVariant("small");
+  const { t } = useTranslation();
 
   return (
     <SectionBox component="main">
-      <Typography variant={headingVariant}>What we offer</Typography>
+      <Typography variant={headingVariant}>{t("services.title")}</Typography>
       <Typography sx={{ marginBottom: "2rem" }}>
-        Whitening, cleaning, and small finishing touches - all at your pace.
+        {t("services.subtitle")}
       </Typography>
       <Stack spacing={3} sx={{ marginBottom: "2rem", alignItems: "center" }}>
         {servicesList.map((s) => {
@@ -30,13 +32,14 @@ export default function ServicesPage() {
 
       <SectionBox>
         <Stack spacing={2} sx={{ textAlign: "center", paddingY: "3rem" }}>
-          <Typography sx={captionStyles}>Not sure yet?</Typography>
+          <Typography sx={captionStyles}>
+            {t("services.cta.eyebrowLabel")}
+          </Typography>
           <Typography variant={smallHeadingVariant}>
-            Let's talk it through first.
+            {t("services.cta.title")}
           </Typography>
           <Typography sx={descriptionStyles}>
-            No pressure - just send a message and we'll help you figure out the
-            right treatment for you.
+            {t("services.cta.subtitle")}
           </Typography>
           <Box
             sx={{
@@ -46,8 +49,12 @@ export default function ServicesPage() {
               gap: "1rem",
             }}
           >
-            <MotionButton variant="contained">Text us a question</MotionButton>
-            <MotionButton variant="outlined">DM us on Instagram</MotionButton>
+            <MotionButton variant="contained">
+              {t("services.cta.buttons.sms")}
+            </MotionButton>
+            <MotionButton variant="outlined">
+              {t("services.cta.buttons.dm")}
+            </MotionButton>
           </Box>
         </Stack>
       </SectionBox>

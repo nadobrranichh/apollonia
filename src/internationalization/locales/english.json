@@ -198,7 +198,8 @@
     }
   },
   "services": {
-    "title": "Services",
+    "title": "What we offer",
+    "subtitle": "Whitening, cleaning, and small finishing touches - all at your pace.",
     "bookService": "Book Now",
     "professionalTeethCleaning": {
       "title": "Professional Teeth Cleaning",
@@ -239,6 +240,15 @@
     "sportsguard": {
       "title": "Sportsguard",
       "description": "Custom fit protective device worn over the teeth — typically covering the upper teeth — to safeguard the mouth from injuries during sports and physical activities."
+    },
+    "cta": {
+      "eyebrowLabel": "Not sure yet?",
+      "title": "Let's talk it through first.",
+      "subtitle": "No pressure - just send a message and we'll help you figure out the right treatment for you.",
+      "buttons": {
+        "dm": "DM us on Instagram",
+        "sms": "Text us a question"
+      }
     }
   },
   "reviews": {
