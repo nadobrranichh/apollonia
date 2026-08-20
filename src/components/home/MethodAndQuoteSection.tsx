@@ -6,7 +6,7 @@ import FounderImg from "../../assets/IMG_2780-s.jpg";
 import FormatQuoteIcon from "@mui/icons-material/FormatQuote";
 import { SectionBox } from "../SectionBox.tsx";
 import { useResponsiveHeadingVariant } from "../../hooks/useResponsiveHeadingVariant.ts";
-import { MotionBox } from "../../motion/components.ts";
+import { MotionBox } from "../../motion/components";
 import { fade } from "../../motion/variants.ts";
 
 export default function MethodSection() {
