@@ -3,15 +3,20 @@ import ImageBox from "../ImageBox";
 import LogoImg from "/favicon.png";
 import { SectionBox } from "../SectionBox";
 import { useResponsiveHeadingVariant } from "../../hooks/useResponsiveHeadingVariant";
-import { metricsList } from "../../lists/metricsList";
 import { Link as RouterLink } from "react-router-dom";
 import MotionButton from "../../motion/components/MotionButton";
 import { fade } from "../../motion/variants";
+import { useTranslation } from "react-i18next";
 
 export default function HeroSection() {
   const mainHeadingVariant = useResponsiveHeadingVariant("main");
   const metricsHeadingVariant = useResponsiveHeadingVariant();
+  const { t } = useTranslation();
 
+  const metricsList = t("home.metrics", { returnObjects: true }) as {
+    number: string;
+    description: string;
+  }[];
   return (
     <SectionBox sx={{ position: "relative" }}>
       <ImageBox
@@ -34,15 +39,15 @@ export default function HeroSection() {
           zIndex: 1,
         }}
       >
-        A house of the{" "}
+        {t("home.hero.title1")}{" "}
         <Box component="span" sx={{ color: "secondary.main" }}>
-          brighter
+          {t("home.hero.titleSpan1")}
         </Box>{" "}
-        &{" "}
+        {t("home.hero.title2")}{" "}
         <Box component="span" sx={{ color: "secondary.main" }}>
-          braver
+          {t("home.hero.titleSpan2")}
         </Box>{" "}
-        smile.
+        {t("home.hero.title3")}
       </Typography>
       <Box
         sx={{
@@ -57,10 +62,7 @@ export default function HeroSection() {
             marginBottom: "1rem",
           }}
         >
-          Apollonia is a small Toronto practice devoted to painless teeth
-          whitening and quiet, sensitivity‑conscious dentistry — invented by
-          Nataliia, refined over six years, performed in a room the colour of a
-          Roman dusk.
+          {t("home.hero.subtitle")}
         </Typography>
         <Box></Box>
 
@@ -77,7 +79,7 @@ export default function HeroSection() {
             to="/services"
             variant="contained"
           >
-            Browse treatments
+            {t("home.hero.buttons.browse")}
           </MotionButton>
           <MotionButton
             variants={fade({ yStart: 10 })}
@@ -85,7 +87,7 @@ export default function HeroSection() {
             to="/visit"
             variant="outlined"
           >
-            Visit us
+            {t("home.hero.buttons.visit")}
           </MotionButton>
         </Box>
       </Box>
@@ -101,17 +103,17 @@ export default function HeroSection() {
       >
         {metricsList.map((m) => (
           <Box
-            key={m.title}
+            key={m.number}
             sx={{ padding: "2rem", backgroundColor: "background.default" }}
           >
             <Typography
               variant={metricsHeadingVariant}
               sx={{ fontStyle: "normal" }}
             >
-              {m.title}
+              {m.number}
             </Typography>
             <Typography variant="body2" sx={{ fontFamily: "Poppins, Arial" }}>
-              {m.text}
+              {m.description}
             </Typography>
           </Box>
         ))}
