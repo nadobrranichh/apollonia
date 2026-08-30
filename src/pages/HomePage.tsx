@@ -1,21 +1,27 @@
 import { Box, Link, Stack, Typography } from "@mui/material";
 import HeroSection from "../components/home/HeroSection";
-import WhiteningImg from "../assets/regular-whitening-teeth.png";
 import TreatmentCard from "../components/TreatmentCard";
-import SwarovskiCrystalsImg from "../assets/tooth-gems.png";
-import GoldenToothGemsImg from "../assets/golden-tooth-gems.png";
-import WhiteningTrayImg from "../assets/whitening-tray-cropped.png";
-import SportsguardImg from "../assets/sportsguard.png";
 import MethodAndQuoteSection from "../components/home/MethodAndQuoteSection";
 import { Link as RouterLink } from "react-router-dom";
 import { SectionBox } from "../components/SectionBox";
 import { useResponsiveHeadingVariant } from "../hooks/useResponsiveHeadingVariant";
 import ReviewsSection from "../components/home/ReviewsSection";
 import MotionButton from "../motion/components/MotionButton";
+import { useTranslation } from "react-i18next";
+import type { TreatmentCardProps } from "../types";
+import { treatmentsAssets, accesoriesAssets } from "../lists/treatmentsAssets";
 
 export default function HomePage() {
   const headingVariant = useResponsiveHeadingVariant();
   const smallHeadingVariant = useResponsiveHeadingVariant("small");
+  const { t } = useTranslation();
+
+  const treatments = t("home.treatments.cards", {
+    returnObjects: true,
+  }) as TreatmentCardProps[];
+  const accessories = t("home.accesories.cards", {
+    returnObjects: true,
+  }) as TreatmentCardProps[];
 
   return (
     <Box component="main">
@@ -29,11 +35,11 @@ export default function HomePage() {
         {/* signature treatments section */}
         <SectionBox>
           <Typography variant={headingVariant} sx={{ marginBottom: "0.5rem" }}>
-            Our{" "}
+            {t("home.treatments.title1")}{" "}
             <Box component="span" sx={{ color: "secondary.main" }}>
-              signature
+              {t("home.treatments.titleSpan")}
             </Box>{" "}
-            treatments:
+            {t("home.treatments.title2")}
           </Typography>
           <Typography
             sx={{
@@ -41,8 +47,7 @@ export default function HomePage() {
               marginBottom: "1rem",
             }}
           >
-            Designed for brighter smiles with comfort, precision, and lasting
-            results.
+            {t("home.treatments.subtitle")}
           </Typography>
 
           <Box
@@ -50,40 +55,28 @@ export default function HomePage() {
               display: "grid",
               gridTemplateColumns: { xs: "1fr", lg: "1fr 1fr 1fr" },
               gap: "2rem",
+              placeItems: "center",
             }}
           >
-            <TreatmentCard
-              imageSrc={WhiteningImg}
-              title="Painless Teeth Whitening Treatment"
-              description="LED whitening with red light therapy (anti inflammatory), gum
-              protection and anti-sensitivity dental grade materials (fluoride
-              and hydroxyapatite)."
-              price={"165"}
-              time="70 min"
-            />
-            <TreatmentCard
-              imageSrc={WhiteningImg}
-              title="Professional Teeth Cleaning"
-              description="Ultrasonic scaling followed by manual scaling and polishing.Add-ons as per client request: air polishing, AirFlow cleaning and fluoride."
-              price={"165"}
-              time="70 min"
-            />
-            <TreatmentCard
-              imageSrc={WhiteningImg}
-              title="White Spot Lesions Removal"
-              description="Icon® Infiltration Concept is used for the microinvasive treatment of white dental lesions. In one patient visit, and with no drilling, Icon® can arrest the progression of early enamel white spot caries-like lesions (demineralization)."
-              price={"80"}
-              time="70 min"
-            />
+            {treatments.map((t, i) => (
+              <TreatmentCard
+                key={i}
+                imageSrc={treatmentsAssets[i].imageSrc}
+                title={t.title}
+                description={t.description}
+                price={t.price}
+                time={t.time}
+              />
+            ))}
           </Box>
         </SectionBox>
 
         {/* dental accesories section */}
         <SectionBox id="accesories">
           <Typography variant={headingVariant} sx={{ marginBottom: "0.5rem" }}>
-            Our dental{" "}
+            {t("home.accesories.title")}{" "}
             <Box component="span" sx={{ color: "secondary.main" }}>
-              accessories:
+              {t("home.accesories.titleSpan")}
             </Box>
           </Typography>
           <Typography
@@ -92,8 +85,7 @@ export default function HomePage() {
               marginBottom: "1rem",
             }}
           >
-            Crafted to complement your treatment and support your smile long
-            after your appointment.
+            {t("home.accesories.subtitle")}
           </Typography>
 
           <Box
@@ -101,26 +93,18 @@ export default function HomePage() {
               display: "grid",
               gridTemplateColumns: { xs: "1fr", lg: "1fr 1fr 1fr" },
               gap: "2rem",
+              placeItems: "center",
             }}
           >
-            <TreatmentCard
-              imageSrc={[SwarovskiCrystalsImg, GoldenToothGemsImg]}
-              title="Tooth gems"
-              description="Swarovski crystals and 18K tooth gems available for temporary (2-7 days) and semi-permanent (3-12 months) application. The procedure is done with no drilling. Gems are applied with dental bond and orthodontic composite resin. Can be polished off any time as needed. +$20 for each additional gem."
-              price={"40-90"}
-            />
-            <TreatmentCard
-              imageSrc={WhiteningTrayImg}
-              title="Custom Whitening Trays"
-              description="Designed to hold a whitening gel against your teeth, helping to lighten stains and discoloration."
-              price={"200"}
-            />
-            <TreatmentCard
-              imageSrc={SportsguardImg}
-              title="Sportsguard"
-              description="Custom fit protective device worn over the teeth — typically covering the upper teeth — to safeguard the mouth from injuries during sports and physical activities."
-              price={"220"}
-            />
+            {accessories.map((a, i) => (
+              <TreatmentCard
+                key={i}
+                imageSrc={accesoriesAssets[i].imageSrc}
+                title={a.title}
+                description={a.description}
+                price={a.price}
+              />
+            ))}
           </Box>
         </SectionBox>
 
@@ -128,9 +112,11 @@ export default function HomePage() {
 
         <SectionBox>
           <Stack spacing={3} sx={{ alignItems: "center" }}>
-            <Typography variant={smallHeadingVariant}>Come see us</Typography>
-            <Typography sx={{ marginBottom: "1rem" }}>
-              Your next smile starts here. Find us at{" "}
+            <Typography variant={smallHeadingVariant}>
+              {t("home.cta.title")}
+            </Typography>
+            <Typography sx={{ marginBottom: "1rem", textAlign: "center" }}>
+              {t("home.cta.subtitle1")}{" "}
               <Link
                 component={RouterLink}
                 to="/visit"
@@ -140,9 +126,9 @@ export default function HomePage() {
                   fontWeight: "bold",
                 }}
               >
-                821 Eglinton Ave West
+                {t("home.cta.addressSpan")}
               </Link>{" "}
-              and come say hello.
+              {t("home.cta.subtitle2")}.
             </Typography>
             <Stack direction={{ xs: "column", sm: "row" }} spacing={1}>
               <MotionButton
@@ -150,14 +136,14 @@ export default function HomePage() {
                 component={RouterLink}
                 to="/visit"
               >
-                See on the map
+                {t("home.cta.buttons.map")}
               </MotionButton>
               <MotionButton
                 variant="outlined"
                 component={RouterLink}
                 to="/visit#directions"
               >
-                Get directions
+                {t("home.cta.buttons.directions")}
               </MotionButton>
             </Stack>
           </Stack>
