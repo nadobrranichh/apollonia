@@ -9,8 +9,111 @@
     "cart": "Cart"
   },
   "home": {
-    "paragraph1": "Nataliia is an experienced dental hygienist (6 years), recognized for her groundbreaking invention, the painless teeth whitening method known as “Apollonia”.",
-    "paragraph2": "Originally from Ukraine and educated in Canada, she is committed to making every dental procedure a comfortable and relaxing experience for her clients."
+    "hero": {
+      "title1": "A house of the",
+      "titleSpan1": "brighter",
+      "title2": "&",
+      "titleSpan2": "braver",
+      "title3": "smile.",
+      "subtitle": "Apollonia is a small Toronto practice devoted to painless teeth whitening and quiet, sensitivity‑conscious dentistry — invented by Nataliia, refined over six years, performed in a room the colour of a Roman dusk.",
+      "buttons": {
+        "browse": "Browse treatments",
+        "visit": "Visit us"
+      }
+    },
+    "metrics": [
+      {
+        "number": "100+",
+        "description": "5-star reviews across Google & Instagram"
+      },
+      {
+        "number": "8-20",
+        "description": "shades whiter in a single session"
+      },
+      {
+        "number": "6+",
+        "description": "years perfecting our craft"
+      },
+      {
+        "number": "24K",
+        "description": "gold tooth gems available"
+      }
+    ],
+    "method": {
+      "title": "Whitening without the",
+      "titleSpan": "flinch.",
+      "subtitle": "Most whitening relies on high-strength peroxide. Ours pairs red-light therapy with gum sealantsand hydroxyapatite to brighten teeth with minimal sensitivity.",
+      "steps": "Here's how it works:",
+      "button": "Read the full method"
+    },
+    "quote": {
+      "text": "I trained on patients who could feel everything. I wouldn't put a single client through that — so I built a protocol that doesn't ask them to.",
+      "name": "Nataliia Shchepaniak",
+      "position": "Founder, Lead Hygienist"
+    },
+    "treatments": {
+      "title1": "Our",
+      "titleSpan": "signature",
+      "title2": "treatments:",
+      "subtitle": "Designed for brighter smiles with comfort, precision, and lasting results.",
+      "cards": [
+        {
+          "title": "Painless Teeth Whitening Treatment",
+          "description": "LED whitening with red light therapy (anti inflammatory), gum protection and anti-sensitivity dental grade materials (fluoride and hydroxyapatite).",
+          "duration": "70 MIN.",
+          "price": "$165"
+        },
+        {
+          "title": "Professional Teeth Cleaning",
+          "description": "Ultrasonic scaling followed by manual scaling and polishing.Add-ons as per client request: air polishing, AirFlow cleaning and fluoride.",
+          "duration": "70 MIN.",
+          "price": "$165"
+        },
+        {
+          "title": "White Spot Lesions Removal",
+          "description": "Icon® Infiltration Concept is used for the microinvasive treatment of white dental lesions. In one patient visit, and with no drilling, Icon® can arrest the progression of early enamel white spot caries-like lesions (demineralization).",
+          "duration": "70 MIN.",
+          "price": "$80"
+        }
+      ],
+      "explore": "Explore"
+    },
+    "accesories": {
+      "title": "Our dental",
+      "titleSpan": "accessories:",
+      "subtitle": "Crafted to complement your treatment and support your smile long after your appointment.",
+      "cards": [
+        {
+          "title": "Tooth gems",
+          "description": "Swarovski crystals and 18K tooth gems available for temporary (2-7 days) and semi-permanent (3-12 months) application. The procedure is done with no drilling. Gems are applied with dental bond and composite resin. Can be polished off any time as needed. +$20 for each additional gem.",
+          "price": "$40-90"
+        },
+        {
+          "title": "Custom Whitening Trays",
+          "description": "Designed to hold a whitening gel against your teeth, helping to lighten stains and discoloration.",
+          "price": "$200"
+        },
+        {
+          "title": "Sportsguard",
+          "description": "Custom fit protective device worn over the teeth — typically covering the upper teeth — to safeguard the mouth from injuries during sports and physical activities.",
+          "price": "$220"
+        }
+      ]
+    },
+    "explore": "Explore",
+    "reviews": {
+      "title": "What our customers say"
+    },
+    "cta": {
+      "title": "Come see us",
+      "subtitle1": "Your next smile starts here. Find us at",
+      "addressSpan": "821 Eglinton Ave West",
+      "subtitle2": "and come say hello",
+      "buttons": {
+        "map": "See on the map",
+        "directions": "Get directions"
+      }
+    }
   },
   "visit": {
     "title": "Where to find us",
