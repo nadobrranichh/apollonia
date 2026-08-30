@@ -5,6 +5,7 @@ import { descriptionStyles } from "../styles/typographyStyles";
 import { MotionCard } from "../motion/components";
 import { fade } from "../motion/variants";
 import type { TreatmentCardProps } from "../types";
+import { useTranslation } from "react-i18next";
 
 export default function TreatmentCard({
   imageSrc,
@@ -13,6 +14,7 @@ export default function TreatmentCard({
   price,
   time,
 }: TreatmentCardProps) {
+  const { t } = useTranslation();
   return (
     <MotionCard
       variants={fade({ yStart: -20 })}
@@ -79,7 +81,7 @@ export default function TreatmentCard({
           </Typography>
         ) : (
           <Typography variant="body2" sx={{ fontFamily: "Poppins, Arial" }}>
-            ${price}
+            {price}
           </Typography>
         )}
 
@@ -89,7 +91,7 @@ export default function TreatmentCard({
           to={`/services#${title.toLowerCase().replaceAll(" ", "-")}`}
           sx={{ textDecoration: "none", textTransform: "uppercase" }}
         >
-          Explore
+          {t("home.treatments.explore")}
         </Link>
       </Box>
     </MotionCard>

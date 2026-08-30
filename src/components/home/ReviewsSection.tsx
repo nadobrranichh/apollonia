@@ -7,8 +7,10 @@ import { reviewsList } from "../../lists/reviewsList";
 
 import FormatQuoteIcon from "@mui/icons-material/FormatQuote";
 import { SectionBox } from "../SectionBox";
+import { useTranslation } from "react-i18next";
 
 export default function ReviewsSection() {
+  const { t } = useTranslation();
   const [activeReviewId, setActiveReviewId] = useState(1);
   const [containerHeight, setContainerHeight] = useState(0);
   const reviewsContainerRef = useRef<HTMLDivElement>(null);
@@ -33,7 +35,7 @@ export default function ReviewsSection() {
 
   return (
     <SectionBox component="section">
-      <Typography variant="h3">What our customers say</Typography>
+      <Typography variant="h3">{t("home.reviews.title")}</Typography>
       <Box
         sx={{
           marginTop: "3rem",
