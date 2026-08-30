@@ -9,10 +9,12 @@ import { MotionBox } from "../../motion/components";
 import { fade } from "../../motion/variants.ts";
 import MotionButton from "../../motion/components/MotionButton.tsx";
 import { useMethodTexts } from "../../hooks/useMethodTexts.ts";
+import { useTranslation } from "react-i18next";
 
 export default function MethodSection() {
   const headingVariant = useResponsiveHeadingVariant();
   const { methodStepsList } = useMethodTexts();
+  const { t } = useTranslation();
 
   return (
     <SectionBox
@@ -24,17 +26,15 @@ export default function MethodSection() {
     >
       <Box>
         <Typography variant={headingVariant}>
-          Whitening without the{" "}
+          {t("home.method.title")}{" "}
           <Box component="span" sx={{ color: "secondary.main" }}>
-            flinch.
+            {t("home.method.titleSpan")}
           </Box>
         </Typography>
         <Typography>
-          Most whitening relies on high-strength peroxide. Ours pairs red-light
-          therapy with gum sealantsand hydroxyapatite to brighten teeth with
-          minimal sensitivity. <br />
+          {t("home.method.subtitle")} <br />
           <Box component="span" sx={{ color: "secondary.main" }}>
-            Here's how it works:
+            {t("home.method.steps")}
           </Box>
         </Typography>
 
@@ -92,7 +92,7 @@ export default function MethodSection() {
           ))}
         </MotionBox>
         <MotionButton component={RouterLink} to="/method" variant="outlined">
-          Read the full method
+          {t("home.method.button")}
         </MotionButton>
       </Box>
 
@@ -131,9 +131,7 @@ export default function MethodSection() {
             variant="body2"
             sx={{ fontStyle: "italic", marginBottom: "1rem" }}
           >
-            I trained on patients who could feel everything. I wouldn't put a
-            single client through that — so I built a protocol that doesn't ask
-            them to.
+            {t("home.quote.text")}
           </Typography>
           <Typography
             variant="body2"
@@ -143,7 +141,7 @@ export default function MethodSection() {
               fontWeight: "bold",
             }}
           >
-            Nataliia Shchepaniak
+            {t("home.quote.name")}
           </Typography>
           <Typography
             variant="body2"
@@ -152,7 +150,7 @@ export default function MethodSection() {
               color: (theme) => theme.palette.grey[600],
             }}
           >
-            Founder, Lead Hygienist
+            {t("home.quote.position")}
           </Typography>
         </Card>
       </Stack>
